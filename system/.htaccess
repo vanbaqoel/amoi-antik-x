@@ -1,0 +1,6 @@
+<IfModule mod_rewrite.c>
+	RewriteEngine on
+RewriteBase    /bistik/
+RewriteCond $1 !^(index\.php|images|robots\.txt)
+RewriteRule ^(.*)$ /bistik/index.php/$1 [L]
+</IfModule>
