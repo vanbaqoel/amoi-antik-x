@@ -7,18 +7,18 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
-  <link rel="stylesheet" href="../xvidocs/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href=<?= base_url("bower_components/bootstrap/dist/css/bootstrap.min.css");?>>
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="../xvidocs/bower_components/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href=<?= base_url("bower_components/font-awesome/css/font-awesome.min.css");?>>
   <!-- Ionicons -->
-  <link rel="stylesheet" href="../xvidocs/bower_components/Ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href=<?= base_url("bower_components/Ionicons/css/ionicons.min.css");?>>
   <!-- Theme style -->
-  <link rel="stylesheet" href="../xvidocs/dist/css/AdminLTE.css">
+  <link rel="stylesheet" href=<?= base_url("dist/css/AdminLTE.css");?>>
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="../xvidocs/dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href=<?= base_url("dist/css/skins/_all-skins.min.css");?>>
   <!-- iCheck -->
-  <link rel="stylesheet" href="../xvidocs/plugins/iCheck/flat/blue.css">
+  <link rel="stylesheet" href=<?= base_url("plugins/iCheck/flat/blue.css");?>>
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -33,7 +33,7 @@
 <div class="wrapper">
   <header class="main-header">
     <!-- Logo -->    
-    <a href="../xvidocs/index2.html" class="logo">
+    <a href=<?= base_url("index2.html");?> class="logo">
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg"><b>XVI</b>docs</span>
     </a>
@@ -44,13 +44,13 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="../xvidocs/images/logo.png" class="user-image" alt="User Image">
+              <img src=<?= base_url("images/logo.png");?> class="user-image" alt="User Image">
               <span class="hidden-xs">Bidang SKKI</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="../xvidocs/images/logo.png" class="img-circle" alt="User Image">
+                <img src=<?= base_url("images/logo.png");?> class="img-circle" alt="User Image">
 
                 <p>
                   Bidang SKKI - Kanwil Kalbar
@@ -301,17 +301,17 @@
 <!-- ./wrapper -->
 
 <!-- jQuery 3 -->
-<script src="../xvidocs/bower_components/jquery/dist/jquery.min.js"></script>
+<script src=<?= base_url("bower_components/jquery/dist/jquery.min.js");?>></script>
 <!-- Bootstrap 3.3.7 -->
-<script src="../xvidocs/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src=<?= base_url("bower_components/bootstrap/dist/js/bootstrap.min.js");?>></script>
 <!-- Slimscroll -->
-<script src="../xvidocs/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src=<?= base_url("bower_components/jquery-slimscroll/jquery.slimscroll.min.js");?>></script>
 <!-- FastClick -->
-<script src="../xvidocs/bower_components/fastclick/lib/fastclick.js"></script>
+<script src=<?= base_url("bower_components/fastclick/lib/fastclick.js");?>></script>
 <!-- AdminLTE App -->
-<script src="../xvidocs/dist/js/adminlte.min.js"></script>
+<script src=<?= base_url("dist/js/adminlte.min.js");?>></script>
 <!-- iCheck -->
-<script src="../xvidocs/plugins/iCheck/icheck.min.js"></script>
+<script src=<?= base_url("plugins/iCheck/icheck.min.js");?>></script>
 <!-- Page Script -->
 <script>
   $(function () {
@@ -359,6 +359,6 @@
   });
 </script>
 <!-- AdminLTE for demo purposes -->
-<script src="../xvidocs/dist/js/demo.js"></script>
+<script src=<?= base_url("dist/js/demo.js");?>></script>
 </body>
 </html>
