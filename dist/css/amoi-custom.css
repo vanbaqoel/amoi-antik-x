@@ -1,0 +1,125 @@
+.content-wrapper {
+  background-color: #ffffff;
+}
+
+.content-header {
+  margin: 0 0 12px;
+  border-bottom: 1px dotted #E2E2E2;
+  padding-bottom: 15px;
+}
+
+.content-header h1 {
+  padding: 0;
+  margin: 0 8px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #2679B5;
+}
+
+th, td {
+  white-space: nowrap;
+}
+
+table.dataTable tbody td {
+  vertical-align: middle;
+}
+
+table.dataTable thead th {
+  vertical-align: middle;
+  text-align: center;
+}
+
+tr.group.group-start td {
+  font-weight: bold;
+}
+
+tr.group.group-end td {
+  font-weight: bold;
+  text-align: center;
+}
+
+.dataTable > tbody > tr.selected {
+  background-color: #2679B5 !important;
+}
+
+div > .tableTools-container {
+  padding-bottom: 5px;
+}
+
+div.dataTables_wrapper div.dataTables_paginate {
+  margin-top: 5px;
+}
+
+div.dataTables_wrapper div.dataTables_info {
+    white-space: normal;
+}
+
+.form-horizontal .form-group{
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+#unit {
+  padding-left: 0px;
+}
+
+/* dari ace admin */
+
+.profile-user-info-striped {
+    border: 1px solid #DCEBF7;
+}
+.profile-user-info {
+    display: table;
+    width: 100%;
+    /*width: calc(100% - 24px);
+    margin: 0 auto;*/
+}
+.profile-info-row {
+    display: table-row;
+    padding-right: 0;
+    padding-left: 0;
+    border-bottom: 1px dotted #DCEBF7;
+}
+.profile-info-row:last-child .profile-info-name, .profile-info-row:last-child .profile-info-value {
+    border-bottom: none;
+}
+.profile-user-info-striped .profile-info-name {
+    color: #336199;
+    background-color: #EDF3F4;
+    border-bottom: 1px solid #F7FBFF;
+}
+.profile-info-name {
+    text-align: right;
+    padding: 6px 10px 6px 4px;
+    font-weight: 400;
+    color: #667E99;
+    background-color: transparent;
+    width: 120px;
+    vertical-align: middle;
+}
+.profile-info-name, .profile-info-value {
+    display: table-cell;
+    border-bottom: 1px dotted #D5E4F1;
+}
+.profile-info-row:last-child .profile-info-name, .profile-info-row:last-child .profile-info-value {
+    border-bottom: none;
+}
+.profile-info-row:last-child {
+    border-bottom: none;
+}
+.profile-user-info-striped .profile-info-value {
+    border-bottom: 1px dotted #DCEBF7;
+    /*padding-left: 12px;*/
+}
+.profile-info-value {
+    padding: 4px 4px 4px 4px;
+}
+.profile-info-row form-group.form-group {
+  margin-bottom: 0;
+}
+
+@media (min-width: 768px) {
+.modal-dialog {
+  width: 98%;
+}
+}
