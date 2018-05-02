@@ -145,6 +145,14 @@ $(document).ready(function () {
               width: "85px",
               sortable: false,
               className: "text-center"
+          },
+          {
+            targets: [ 0, 20 ],
+            className: "text-center"
+          },
+          {
+            targets: [ 7, 8, 9, 10, 16, 22, 23 ],
+            className: "text-right"
           }
       ],
       processing: true,
