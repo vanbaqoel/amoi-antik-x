@@ -120,3 +120,26 @@ div.dataTables_wrapper div.dataTables_info {
     min-width: 760px;
   }
 }
+
+/* For Print An Element */
+/* https://stackoverflow.com/questions/12181760/twitter-bootstrap-print-content-of-modal-window */
+@media screen {
+  #printSection {
+      display: none;
+  }
+}
+
+@media print {
+  .hide-me {
+    visibility:hidden;
+  }
+  #printSection, #printSection * {
+    visibility:visible;
+  }
+  #printSection {
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+  }
+}

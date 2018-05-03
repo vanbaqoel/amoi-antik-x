@@ -55,7 +55,7 @@
                       <h3 class="box-title"> Info </h3>
                     </div>
                     <div class="box-body">
-                      <div class="profile-user-info profile-user-info-striped">
+                      <div  id="printThis" class="profile-user-info profile-user-info-striped">
                         <div class="profile-info-row">
                           <div class="profile-info-name"> ID </div>
                           <div class="profile-info-value"><span id="txtID"></span></div>
@@ -232,7 +232,10 @@
               </div>
             </div>
             <div class="modal-footer">
-              <button class="btn btn-primary"> Cetak </button>
+              <div class="btn-group">
+                <a id="btnPrint" class="dt-button btn btn-default"><span><i class="fa fa-print bigger-110 grey"></i> <span>&nbsp;&nbsp;Cetak</span></span></a>
+                <a class="dt-button btn btn-default" data-dismiss="modal"><span><i class="fa fa-times bigger-110 grey"></i> <span>&nbsp;&nbsp;Tutup</span></span></a>
+              </div>
             </div>
           </div>
           <!-- /.modal-content -->

@@ -12,32 +12,32 @@ function view_laptop(id)
     success: function(data)
     {
       $('#txtID').text(data.id);
-      $('#txtMerek').html(data.merek);
-      $('#txtTipe').html(data.tipe);
-      $('#txtSN').html(data.sn);
-      $('#txtProcessor').html(data.bdesc);
-      $('#txtStorage').html(data.storage);
-      $('#txtRAM').html(data.ram);
-      $('#txtNIC').html(data.cdesc);
-      $('#txtWifi').html(data.ddesc);
-      $('#txtOptical').html(data.edesc);
-      $('#txtOS').html(data.fdesc);
-      $('#txtEdisiOS').html(data.gdesc);
-      $('#txtOrisinalitasOS').html(data.ori);
-      $('#txtOffice').html(data.hdesc);
-      $('#txtKoneksi').html(data.idesc);
-      $('#txtHostName').html(data.hostname);
-      $('#txtAlamatIP').html(data.alamat_ip);
-      $('#txtAntivirus').html(data.antivirus);
-      $('#txtJoinDomain').html(data.jondo);
-      $('#txtKodeBarang').html(data.kode_barang);
-      $('#txtNUP').html(data.nup);
-      $('#txtTahunPerolehan').html(data.tahun_perolehan);
-      $('#txtKondisi').html(data.jdesc);
-      $('#txtStatus').html(data.kdesc);
-      $('#txtNIP').html(data.nip);
-      $('#txtLokasi').html(data.ldesc);
-      $('#txtKeterangan').html(data.keterangan);
+      $('#txtMerek').text(data.merek);
+      $('#txtTipe').text(data.tipe);
+      $('#txtSN').text(data.sn);
+      $('#txtProcessor').text(data.bdesc);
+      $('#txtStorage').text(data.storage);
+      $('#txtRAM').text(data.ram);
+      $('#txtNIC').text(data.cdesc);
+      $('#txtWifi').text(data.ddesc);
+      $('#txtOptical').text(data.edesc);
+      $('#txtOS').text(data.fdesc);
+      $('#txtEdisiOS').text(data.gdesc);
+      $('#txtOrisinalitasOS').text(data.ori);
+      $('#txtOffice').text(data.hdesc);
+      $('#txtKoneksi').text(data.idesc);
+      $('#txtHostName').text(data.hostname);
+      $('#txtAlamatIP').text(data.alamat_ip);
+      $('#txtAntivirus').text(data.antivirus);
+      $('#txtJoinDomain').text(data.jondo);
+      $('#txtKodeBarang').text(data.kode_barang);
+      $('#txtNUP').text(data.nup);
+      $('#txtTahunPerolehan').text(data.tahun_perolehan);
+      $('#txtKondisi').text(data.jdesc);
+      $('#txtStatus').text(data.kdesc);
+      $('#txtNIP').text(data.nip);
+      $('#txtLokasi').text(data.ldesc);
+      $('#txtKeterangan').text(data.keterangan);
 
 
       $('.modal').modal('show'); // show bootstrap modal when complete loaded
@@ -167,6 +167,29 @@ function delete_laptop(id)
   }
 }
 
+function printElement(elem) {
+  /*var domClone = elem.cloneNode(true);*/
+  var domClone = elem.cloneNode(true);;
+  $('.profile-info-row').each(function( index ){
+    if (index > 3) {
+      domClone.appendChild(this.cloneNode(true));
+    }
+  });
+
+  var $printSection = document.getElementById("printSection");
+
+  if (!$printSection) {
+      var $printSection = document.createElement("div");
+      $printSection.id = "printSection";
+      document.body.appendChild($printSection);
+  }
+
+
+  $printSection.innerHTML = "<h3>&nbsp;&nbsp;DATA DETAIL LAPTOP</h3>";
+
+  $printSection.appendChild(domClone);
+}
+
 $(document).ready(function () {
 
   //Initialize Select2 Elements
@@ -255,12 +278,11 @@ $(document).ready(function () {
         {
           extend: "print",
           text: "<i class='fa fa-print bigger-110 grey'></i> <span>&nbsp;&nbsp;Cetak</span>",
-          className: "btn btn-white btn-default btn-bold",
+          className: "btn btn-default",
           titleAttr: "Cetak",
           title: 'DAFTAR LAPTOP',
-          autoPrint: true,
           exportOptions: {
-                    columns: ':visible'
+                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7 ]
                 },
           customize: function (win) {
                     $(win.document.body).css('font-size', '10pt');
@@ -268,8 +290,8 @@ $(document).ready(function () {
                         .addClass('compact')
                         .css('font-size', 'inherit');
                     $(win.document.body).find('h1')
-                        .css('text-align','center')
-                        .after('<center><h3>' + sname + '</h3></center><br />');
+                        .css('text-align','center');
+                    $('body *').removeClass('hide-me'); /* Menghindari bentrok dengan print detail */
                 }
         }
       ]
@@ -287,4 +309,11 @@ $(document).ready(function () {
 
     /* Disable Tambah button if logged in as Administrator */
     if (sk == '000') {laptop_table.button('0').disable();}
+
+    $('#btnPrint').on('click', function () {
+      printElement(document.getElementById("printThis"));
+      $('body *').addClass('hide-me'); /* Menghindari bentrok dengan print datatable */
+
+      window.print();
+    });
 })
