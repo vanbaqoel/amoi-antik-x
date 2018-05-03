@@ -2,7 +2,58 @@
 var laptop_table;
 var laptop_id;
 
-function add_laptop() {
+function view_laptop(id)
+{
+  //Ajax Load data from ajax
+  $.ajax({
+    url : "laptop/edit_laptop/" + id,
+    type: "GET",
+    dataType: "JSON",
+    success: function(data)
+    {
+      $('#txtID').text(data.id);
+      $('#txtMerek').html(data.merek);
+      $('#txtTipe').html(data.tipe);
+      $('#txtSN').html(data.sn);
+      $('#txtProcessor').html(data.bdesc);
+      $('#txtStorage').html(data.storage);
+      $('#txtRAM').html(data.ram);
+      $('#txtNIC').html(data.cdesc);
+      $('#txtWifi').html(data.ddesc);
+      $('#txtOptical').html(data.edesc);
+      $('#txtOS').html(data.fdesc);
+      $('#txtEdisiOS').html(data.gdesc);
+      $('#txtOrisinalitasOS').html(data.ori);
+      $('#txtOffice').html(data.hdesc);
+      $('#txtKoneksi').html(data.idesc);
+      $('#txtHostName').html(data.hostname);
+      $('#txtAlamatIP').html(data.alamat_ip);
+      $('#txtAntivirus').html(data.antivirus);
+      $('#txtJoinDomain').html(data.jondo);
+      $('#txtKodeBarang').html(data.kode_barang);
+      $('#txtNUP').html(data.nup);
+      $('#txtTahunPerolehan').html(data.tahun_perolehan);
+      $('#txtKondisi').html(data.jdesc);
+      $('#txtStatus').html(data.kdesc);
+      $('#txtNIP').html(data.nip);
+      $('#txtLokasi').html(data.ldesc);
+      $('#txtKeterangan').html(data.keterangan);
+
+
+      $('.modal').modal('show'); // show bootstrap modal when complete loaded
+
+      laptop_id = id;
+
+    },
+    error: function (jqXHR, textStatus, errorThrown)
+    {
+        alert('Gagal menarik data...');
+    }
+  });
+}
+
+function add_laptop()
+{
   save_method = 'add';
   $('form')[0].reset();
   $('.select2').trigger('change');
@@ -123,23 +174,26 @@ $(document).ready(function () {
 
   $('.sidebar-menu').tree();
   laptop_table =
-    $('#dynamic-table')
-    .DataTable({
+    $('#dynamic-table').DataTable({
       serverSide: false,
-        //Load data for the table's content from an Ajax source
+        /* Load data for the table's content from an Ajax source */
         ajax: {
-            url: "laptop/get_all", //Populate data using a method in controller
+            url: "laptop/get_all", /* Populate data using a method in controller */
             type: "POST"
         },
-      autoWidth: true,
+      autoWidth: false,
       scrollX: true,
       scrollCollapse: true,
       order: [],
       lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
       columnDefs: [
           {
-              targets: [ 1 ],
-              width: "85px",
+            targets: [ 0, 1 ],
+            className: "text-center"
+          },
+          {
+              targets: [ -1 ], /* targeting the last column */
+              width: "125px",
               sortable: false,
               className: "text-center"
           }
@@ -231,5 +285,6 @@ $(document).ready(function () {
       });
     }, 500);
 
+    /* Disable Tambah button if logged in as Administrator */
     if (sk == '000') {laptop_table.button('0').disable();}
 })

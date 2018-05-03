@@ -34,38 +34,22 @@ class Laptop extends CI_Controller {
         	$rows = array();
             $no++;
             $rows[] = $no;
-        	$rows[] = '<div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-default" title="Ubah" '.(($this->session->kd_unit == '000') ? 'disabled' : '').' onclick="edit_laptop('.$row->id.')"><i class="fa fa-pencil"></i></button>
-                      <button type="button" class="btn btn-sm btn-default" title="Hapus" '.(($this->session->kd_unit == '000') ? 'disabled' : '').' onclick="delete_laptop('.$row->id.')"><i class="fa fa-trash"></i></button>
-                      </div>';
+        	$rows[] = $row->id;
         	$rows[] = $row->merek;
         	$rows[] = $row->tipe;
-        	$rows[] = $row->sn;
-        	$rows[] = $row->processor;
-        	$rows[] = $row->storage;
-        	$rows[] = $row->ram;
-        	$rows[] = $row->nic;
-        	$rows[] = $row->wifi;
-        	$rows[] = $row->optical;
-        	$rows[] = $row->os;
-        	$rows[] = $row->edisi_os;
-        	$rows[] = $row->orisinalitas_os;
-        	$rows[] = $row->office;
-        	$rows[] = $row->antivirus;
-        	$rows[] = $row->alamat_ip;
         	$rows[] = $row->hostname;
-        	$rows[] = $row->join_domain;
-        	$rows[] = $row->kode_barang;
-        	$rows[] = $row->nup;
-        	$rows[] = $row->tahun_perolehan;
-        	$rows[] = $row->kondisi;
-        	$rows[] = $row->nip;
-        	$rows[] = $row->lokasi;
+        	$rows[] = $row->alamat_ip;
+        	$rows[] = $row->deskripsi;
         	$rows[] = $row->keterangan;
 
         	if ($this->session->kd_unit == '000'){
         		$rows[] = $row->kode_unit;
         	}
+        	$rows[] = '<div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-default" title="Lihat" onclick="view_laptop('.$row->id.')"><i class="fa fa-eye"></i></button>
+                      <button type="button" class="btn btn-sm btn-default" title="Ubah" '.(($this->session->kd_unit == '000') ? 'disabled' : '').' onclick="edit_laptop('.$row->id.')"><i class="fa fa-pencil"></i></button>
+                      <button type="button" class="btn btn-sm btn-default" title="Hapus" '.(($this->session->kd_unit == '000') ? 'disabled' : '').' onclick="delete_laptop('.$row->id.')"><i class="fa fa-trash"></i></button>
+                      </div>';
 
         	$data[] = $rows;
         }

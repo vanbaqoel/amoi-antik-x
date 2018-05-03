@@ -1,4 +1,4 @@
-<?php include('header_view.php'); ?>
+<?php $this->load->view('header_view.php'); ?>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -20,35 +20,18 @@
           <thead>
             <tr>
               <th>No.</th>
-              <th>Aksi</th>
+              <th>ID</th>
               <th>Merek</th>
               <th>Tipe</th>
-              <th>Serial Number</th>
-              <th>Processor</th>
-              <th>Storage</th>
-              <th>RAM</th>
-              <th>NIC</th>
-              <th>Wifi Interface</th>
-              <th>Optical</th>
-              <th>OS</th>
-              <th>Edisi OS</th>
-              <th>Orisinalitas OS</th>
-              <th>Office</th>
-              <th>Antivirus</th>
-              <th>Alamat IP</th>
               <th>Nama Komputer</th>
-              <th>Join Domain</th>
-              <th>Kode Barang</th>
-              <th>NUP</th>
-              <th>Tahun Perolehan</th>
-              <th>Kondisi</th>
-              <th>NIP Pengguna</th>
+              <th>Alamat IP</th>
               <th>Lokasi</th>
               <th>Keterangan</th>
               <?php
                 if($this->session->kd_unit == '000')
                     echo "<th>Kode Unit</th>";
               ?>
+              <th>Aksi</th>
             </tr>
           </thead>
           <tbody>
@@ -62,313 +45,194 @@
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title">Tambah Data</h4>
+              <h4 class="modal-title">Data Detil</h4>
             </div>
             <div class="modal-body">
-              <div class="clearfix" >
-                <div class="row" >
-                  <!-- form start -->
-                  <form class="form-horizontal">
+              <div class="row">
+                <div class="col-xs-12">
+                  <div class="box box-default box-solid">
+                    <div class="box-header with-border">
+                      <h3 class="box-title"> Info </h3>
+                    </div>
                     <div class="box-body">
                       <div class="profile-user-info profile-user-info-striped">
-
-                        <div class="profile-info-row form-group row">
-                          <div class="no-padding col-xs-12 col-sm-6 col-lg-3" style="display: table-cell;">
-                            <div style="display: table;width: 100%;">
-                              <div style="display: table-row;">
-                                <label class="profile-info-name control-label" for="txtMerek"> Merek </label>
-                                <div class="profile-info-value col-xs-12">
-                                  <input type="text" class="form-control text-uppercase" id="txtMerek" name="txtMerek" placeholder="Merek">
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="no-padding col-xs-12 col-sm-6 col-lg-3" style="display: table-cell;">
-                            <div style="display: table;width: 100%;">
-                              <div style="display: table-row;">
-                                <label class="profile-info-name control-label" for="txtTipe"> Tipe </label>
-                                <div class="profile-info-value col-xs-12">
-                                  <input type="text" class="form-control text-uppercase" id="txtTipe" name="txtTipe" placeholder="Tipe">
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="no-padding col-xs-12 col-sm-6 col-lg-3" style="display: table-cell;">
-                            <div style="display: table;width: 100%;">
-                              <div style="display: table-row;">
-                                <label class="profile-info-name control-label" for="txtSN"> S/N </label>
-                                <div class="profile-info-value col-xs-12">
-                                  <input type="text" class="form-control text-uppercase" id="txtSN" name="txtSN" placeholder="Serial Number">
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="no-padding col-xs-12 col-sm-6 col-lg-3" style="display: table-cell;">
-                            <div style="display: table;width: 100%;">
-                              <div style="display: table-row;">
-                                <label class="profile-info-name control-label" for="txtProcessor"> Processor </label>
-                                <div class="profile-info-value col-xs-12">
-                                  <input type="text" class="form-control text-uppercase" id="txtProcessor" name="txtProcessor" placeholder="Processor">
-                                </div>
-                              </div>
-                            </div>
-                          </div>
+                        <div class="profile-info-row">
+                          <div class="profile-info-name"> ID </div>
+                          <div class="profile-info-value"><span id="txtID"></span></div>
                         </div>
-
-                        <div class="profile-info-row form-group row">
-                          <div class="no-padding col-xs-12 col-sm-6 col-lg-3" style="display: table-cell;">
-                            <div style="display: table;width: 100%;">
-                              <div style="display: table-row;">
-                                <label class="profile-info-name control-label" for="txtStorage"> Storage </label>
-                                <div class="profile-info-value col-xs-12">
-                                  <input type="number" class="form-control text-uppercase" id="txtStorage" name="txtStorage" placeholder="Dalam GB">
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="no-padding col-xs-12 col-sm-6 col-lg-3" style="display: table-cell;">
-                            <div style="display: table;width: 100%;">
-                              <div style="display: table-row;">
-                                <label class="profile-info-name control-label" for="txtRAM"> RAM </label>
-                                <div class="profile-info-value col-xs-12">
-                                  <input type="number" class="form-control text-uppercase" id="txtRAM" name="txtRAM" placeholder="Dalam GB">
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="no-padding col-xs-12 col-sm-6 col-lg-3" style="display: table-cell;">
-                            <div style="display: table;width: 100%;">
-                              <div style="display: table-row;">
-                                <label class="profile-info-name control-label" for="cboNIC"> NIC </label>
-                                <div class="profile-info-value col-xs-12">
-                                  <select class="form-control select2" name="cboNIC" style="width: 100%;" data-placeholder="Silahkan Pilih...">
-                                    <option></option>
-                                    <option>FAST ETHERNET</option>
-                                    <option>GIGABIT ETHERNET</option>
-                                  </select>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="no-padding col-xs-12 col-sm-6 col-lg-3" style="display: table-cell;">
-                            <div style="display: table;width: 100%;">
-                              <div style="display: table-row;">
-                                <label class="profile-info-name control-label" for="cboWifi"> Wifi Interface </label>
-                                <div class="profile-info-value col-xs-12">
-                                  <select class="form-control select2" name="cboWifi" style="width: 100%;" data-placeholder="Silahkan Pilih...">
-                                    <option></option>
-                                    <option>802.11</option>
-                                    <option>802.11 a</option>
-                                    <option>802.11 a/b</option>
-                                    <option>802.11 a/b/g</option>
-                                    <option>802.11 a/b/g/n</option>
-                                    <option>802.11 a/b/g/n/ac</option>
-                                  </select>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
+                        <div class="profile-info-row">
+                          <div class="profile-info-name"> Merek </div>
+                          <div class="profile-info-value"><span id="txtMerek"></span></div>
                         </div>
-
-                        <div class="profile-info-row form-group row">
-                          <div class="no-padding col-xs-12 col-sm-6 col-lg-3" style="display: table-cell;">
-                            <div style="display: table;width: 100%;">
-                              <div style="display: table-row;">
-                                <label class="profile-info-name control-label" for="cboOptical"> Optical </label>
-                                <div class="profile-info-value col-xs-12">
-                                  <select class="form-control select2" name="cboOptical" style="width: 100%;" data-placeholder="Silahkan Pilih...">
-                                    <option></option>
-                                    <option>CD R/W</option>
-                                    <option>DVD R/W</option>
-                                    <option>BLUE-RAY</option>
-                                  </select>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="no-padding col-xs-12 col-sm-6 col-lg-3" style="display: table-cell;">
-                            <div style="display: table;width: 100%;">
-                              <div style="display: table-row;">
-                                <label class="profile-info-name control-label" for="txtOS"> OS </label>
-                                <div class="profile-info-value col-xs-12">
-                                  <input type="text" class="form-control text-uppercase" id="txtOS" name="txtOS" placeholder="Operating System">
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="no-padding col-xs-12 col-sm-6 col-lg-3" style="display: table-cell;">
-                            <div style="display: table;width: 100%;">
-                              <div style="display: table-row;">
-                                <label class="profile-info-name control-label" for="txtEdisiOS"> Edisi OS </label>
-                                <div class="profile-info-value col-xs-12">
-                                  <input type="text" class="form-control text-uppercase" id="txtEdisiOS" name="txtEdisiOS" placeholder="Edisi OS">
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="no-padding col-xs-12 col-sm-6 col-lg-3" style="display: table-cell;">
-                            <div style="display: table;width: 100%;">
-                              <div style="display: table-row;">
-                                <label class="profile-info-name control-label" for="cboOrisinalitasOS"> Orisinalitas OS </label>
-                                <div class="profile-info-value col-xs-12">
-                                  <select class="form-control select2" name="cboOrisinalitasOS" style="width: 100%;" data-placeholder="Silahkan Pilih...">
-                                    <option></option>
-                                    <option>ORIGINAL/GENUINE</option>
-                                    <option>NOT ORIGINAL/GENUINE</option>
-                                  </select>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
+                        <div class="profile-info-row">
+                          <div class="profile-info-name"> Tipe </div>
+                          <div class="profile-info-value"><span id="txtTipe"></span></div>
                         </div>
-
-                        <div class="profile-info-row form-group row">
-                          <div class="no-padding col-xs-12 col-sm-6 col-lg-3" style="display: table-cell;">
-                            <div style="display: table;width: 100%;">
-                              <div style="display: table-row;">
-                                <label class="profile-info-name control-label" for="txtOffice"> Office </label>
-                                <div class="profile-info-value col-xs-12">
-                                  <input type="text" class="form-control text-uppercase" id="txtOffice" name="txtOffice" placeholder="Office">
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="no-padding col-xs-12 col-sm-6 col-lg-3" style="display: table-cell;">
-                            <div style="display: table;width: 100%;">
-                              <div style="display: table-row;">
-                                <label class="profile-info-name control-label" for="txtAntivirus"> Antivirus </label>
-                                <div class="profile-info-value col-xs-12">
-                                  <input type="text" class="form-control text-uppercase" id="txtAntivirus" name="txtAntivirus" placeholder="Antivirus">
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="no-padding col-xs-12 col-sm-6 col-lg-3" style="display: table-cell;">
-                            <div style="display: table;width: 100%;">
-                              <div style="display: table-row;">
-                                <label class="profile-info-name control-label" for="txtAlamatIP"> Alamat IP </label>
-                                <div class="profile-info-value col-xs-12">
-                                  <input type="text" class="form-control text-uppercase" id="txtAlamatIP" name="txtAlamatIP" placeholder="Alamat IP">
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="no-padding col-xs-12 col-sm-6 col-lg-3" style="display: table-cell;">
-                            <div style="display: table;width: 100%;">
-                              <div style="display: table-row;">
-                                <label class="profile-info-name control-label" for="txtHostname"> Hostname </label>
-                                <div class="profile-info-value col-xs-12">
-                                  <input type="text" class="form-control text-uppercase" id="txtHostname" name="txtHostName" placeholder="Nama Komputer">
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="profile-info-row form-group row">
-                          <div class="no-padding col-xs-12 col-sm-6 col-lg-3" style="display: table-cell;">
-                            <div style="display: table;width: 100%;">
-                              <div style="display: table-row;">
-                                <label class="profile-info-name control-label" for="cboJoinDomain"> Join Domain </label>
-                                <div class="profile-info-value col-xs-12">
-                                  <select class="form-control select2" name="cboJoinDomain" style="width: 100%;" data-placeholder="Silahkan Pilih...">
-                                    <option></option>
-                                    <option>SUDAH</option>
-                                    <option>BELUM</option>
-                                  </select>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="no-padding col-xs-12 col-sm-6 col-lg-3" style="display: table-cell;">
-                            <div style="display: table;width: 100%;">
-                              <div style="display: table-row;">
-                                <label class="profile-info-name control-label" for="txtKodeBarang"> Kode Barang </label>
-                                <div class="profile-info-value col-xs-12">
-                                  <input type="text" class="form-control text-uppercase" id="txtKodeBarang" name="txtKodeBarang" placeholder="Kode Barang">
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="no-padding col-xs-12 col-sm-6 col-lg-3" style="display: table-cell;">
-                            <div style="display: table;width: 100%;">
-                              <div style="display: table-row;">
-                                <label class="profile-info-name control-label" for="txtNUP"> NUP </label>
-                                <div class="profile-info-value col-xs-12">
-                                  <input type="text" class="form-control text-uppercase" id="txtNUP" name="txtNUP" placeholder="NUP">
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="no-padding col-xs-12 col-sm-6 col-lg-3" style="display: table-cell;">
-                            <div style="display: table;width: 100%;">
-                              <div style="display: table-row;">
-                                <label class="profile-info-name control-label" for="txtTahunPerolehan"> Tahun Perolehan </label>
-                                <div class="profile-info-value col-xs-12">
-                                  <input type="number" class="form-control text-uppercase" id="txtTahunPerolehan" name="txtTahunPerolehan" placeholder="Tahun Perolehan">
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="profile-info-row form-group row">
-                          <div class="no-padding col-xs-12 col-sm-6 col-lg-3" style="display: table-cell;">
-                            <div style="display: table;width: 100%;">
-                              <div style="display: table-row;">
-                                <label class="profile-info-name control-label" for="cboKondisi"> Kondisi </label>
-                                <div class="profile-info-value col-xs-12">
-                                  <select class="form-control select2" name="cboKondisi" style="width: 100%;" data-placeholder="Silahkan Pilih...">
-                                    <option></option>
-                                    <option>BAIK</option>
-                                    <option>RUSAK RINGAN</option>
-                                    <option>RUSAK BERAT</option>
-                                  </select>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="no-padding col-xs-12 col-sm-6 col-lg-3" style="display: table-cell;">
-                            <div style="display: table;width: 100%;">
-                              <div style="display: table-row;">
-                                <label class="profile-info-name control-label" for="txtNIP"> NIP Pengguna </label>
-                                <div class="profile-info-value col-xs-12">
-                                  <input type="text" class="form-control text-uppercase" id="txtNIP" name="txtNIP" placeholder="NIP Pengguna">
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="no-padding col-xs-12 col-sm-6 col-lg-3" style="display: table-cell;">
-                            <div style="display: table;width: 100%;">
-                              <div style="display: table-row;">
-                                <label class="profile-info-name control-label" for="txtLokasi"> Lokasi </label>
-                                <div class="profile-info-value col-xs-12">
-                                  <input type="text" class="form-control text-uppercase" id="txtLokasi" name="txtLokasi" placeholder="Lokasi">
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="no-padding col-xs-12 col-sm-6 col-lg-3" style="display: table-cell;">
-                            <div style="display: table;width: 100%;">
-                              <div style="display: table-row;">
-                                <label class="profile-info-name control-label" for="txtKeterangan"> Keterangan </label>
-                                <div class="profile-info-value col-xs-12">
-                                  <input type="text" class="form-control text-uppercase" id="txtKeterangan" name="txtKeterangan" placeholder="Keterangan">
-                                </div>
-                              </div>
-                            </div>
-                          </div>
+                        <div class="profile-info-row">
+                          <div class="profile-info-name"> S/N </div>
+                          <div class="profile-info-value"><span id="txtSN"></span></div>
                         </div>
                       </div>
                     </div>
-                    <!-- /.box-body -->
-                    <div class="box-footer text-center">
-                      <button type="button" class="btn btn-primary" onclick="save()"><i class="fa fa-save"></i> &nbsp; Simpan</button>
-                    </div>
-                    <!-- /.box-footer -->
-                  </form>
+                  </div>
                 </div>
               </div>
+              <div class="row">
+                <div class="col-xs-12 col-sm-6">
+                  <div class="box box-success box-solid">
+                    <div class="box-header with-border">
+                      <h3 class="box-title"> Spesifikasi </h3>
+                    </div>
+                    <div class="box-body">
+                      <div class="profile-user-info profile-user-info-striped">
+                        <div class="profile-info-row">
+                          <div class="profile-info-name"> Processor </div>
+                          <div class="profile-info-value"><span id="txtProcessor"></span></div>
+                        </div>
+                        <div class="profile-info-row">
+                          <div class="profile-info-name"> Storage (GB)</div>
+                          <div class="profile-info-value"><span id="txtStorage"></span></div>
+                        </div>
+                        <div class="profile-info-row">
+                          <div class="profile-info-name"> RAM (GB)</div>
+                          <div class="profile-info-value"><span id="txtRAM"></span></div>
+                        </div>
+                        <div class="profile-info-row">
+                          <div class="profile-info-name"> NIC </div>
+                          <div class="profile-info-value"><span id="txtNIC"></span></div>
+                        </div>
+                        <div class="profile-info-row">
+                          <div class="profile-info-name"> WiFi </div>
+                          <div class="profile-info-value"><span id="txtWifi"></span></div>
+                        </div>
+                        <div class="profile-info-row">
+                          <div class="profile-info-name"> Optical </div>
+                          <div class="profile-info-value"><span id="txtOptical"></span></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                  <div class="box box-danger box-solid">
+                    <div class="box-header with-border">
+                      <h3 class="box-title"> BMN </h3>
+                    </div>
+                    <div class="box-body">
+                      <div class="profile-user-info profile-user-info-striped">
+                        <div class="profile-info-row">
+                          <div class="profile-info-name"> Kode Barang </div>
+                          <div class="profile-info-value"><span id="txtKodeBarang"></span></div>
+                        </div>
+                        <div class="profile-info-row">
+                          <div class="profile-info-name"> NUP </div>
+                          <div class="profile-info-value"><span id="txtNUP"></span></div>
+                        </div>
+                        <div class="profile-info-row">
+                          <div class="profile-info-name"> Thn Perolehan </div>
+                          <div class="profile-info-value"><span id="txtTahunPerolehan"></span></div>
+                        </div>
+                        <div class="profile-info-row">
+                          <div class="profile-info-name"> Kondisi </div>
+                          <div class="profile-info-value"><span id="txtKondisi"></span></div>
+                        </div>
+                        <div class="profile-info-row">
+                          <div class="profile-info-name"> Status </div>
+                          <div class="profile-info-value"><span id="txtStatus"></span></div>
+                        </div>
+                        <div class="profile-info-row">
+                          <div class="profile-info-name"> Lokasi </div>
+                          <div class="profile-info-value"><span id="txtLokasi"></span></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12 col-sm-6">
+                  <div class="box box-primary box-solid">
+                    <div class="box-header with-border">
+                      <h3 class="box-title"> Perangkat Lunak </h3>
+                    </div>
+                    <div class="box-body">
+                      <div class="profile-user-info profile-user-info-striped">
+                        <div class="profile-info-row">
+                          <div class="profile-info-name"> OS </div>
+                          <div class="profile-info-value"><span id="txtOS"></span></div>
+                        </div>
+                        <div class="profile-info-row">
+                          <div class="profile-info-name"> Edisi OS </div>
+                          <div class="profile-info-value"><span id="txtEdisiOS"></span></div>
+                        </div>
+                        <div class="profile-info-row">
+                          <div class="profile-info-name"> Orisinalitas OS</div>
+                          <div class="profile-info-value"><span id="txtOrisinalitasOS"></span></div>
+                        </div>
+                        <div class="profile-info-row">
+                          <div class="profile-info-name"> Office </div>
+                          <div class="profile-info-value"><span id="txtOffice"></span></div>
+                        </div>
+                        <div class="profile-info-row">
+                          <div class="profile-info-name"> Antivirus </div>
+                          <div class="profile-info-value"><span id="txtAntivirus"></span></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                  <div class="box box-warning box-solid">
+                    <div class="box-header with-border">
+                      <h3 class="box-title"> Jaringan </h3>
+                    </div>
+                    <div class="box-body">
+                      <div class="profile-user-info profile-user-info-striped">
+                        <div class="profile-info-row">
+                          <div class="profile-info-name"> Koneksi </div>
+                          <div class="profile-info-value"><span id="txtKoneksi"></span></div>
+                        </div>
+                        <div class="profile-info-row">
+                          <div class="profile-info-name"> Hostname </div>
+                          <div class="profile-info-value"><span id="txtHostname"></span></div>
+                        </div>
+                        <div class="profile-info-row">
+                          <div class="profile-info-name"> Alamat IP</div>
+                          <div class="profile-info-value"><span id="txtAlamatIP"></span></div>
+                        </div>
+                        <div class="profile-info-row">
+                          <div class="profile-info-name"> Join Domain </div>
+                          <div class="profile-info-value"><span id="txtJoinDomain"></span></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12">
+                  <div class="box box-default box-solid">
+                    <div class="box-header with-border">
+                      <h3 class="box-title"> Lain-Lain </h3>
+                    </div>
+                    <div class="box-body">
+                      <div class="profile-user-info profile-user-info-striped">
+                        <div class="profile-info-row">
+                          <div class="profile-info-name"> NIP PIC </div>
+                          <div class="profile-info-value"><span id="txtNIP"></span></div>
+                        </div>
+                        <div class="profile-info-row">
+                          <div class="profile-info-name"> Keterangan </div>
+                          <div class="profile-info-value"><span id="txtKeterangan"></span></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-primary"> Cetak </button>
             </div>
           </div>
           <!-- /.modal-content -->
@@ -381,7 +245,7 @@
   </div>
   <!-- /.content-wrapper -->
 
-<?php include('footer_view.php'); ?>
+<?php $this->load->view('footer_view.php'); ?>
 
 <!-- Page Script -->
 <script type="text/javascript"> var sk = '<?= $this->session->kd_unit; ?>';</script>
