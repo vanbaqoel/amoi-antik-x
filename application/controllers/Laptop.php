@@ -14,6 +14,7 @@ class Laptop extends CI_Controller {
         {
 	        /* Load database model */
 	        $this->load->model('laptop_model');
+	        $this->load->model('reference_model');
         } else {
             redirect(base_url('autentikasi'), 'refresh');
         }
@@ -62,6 +63,40 @@ class Laptop extends CI_Controller {
         echo json_encode($output);
 	}
 
+	public function fill_ref()
+	{
+		$ref = array();
+
+		$ref['r_processor'] = $this->reference_model->get_processor();
+		$ref['r_nic'] = $this->reference_model->get_nic();
+		$ref['r_wifi'] = $this->reference_model->get_wifi();
+		$ref['r_optical'] = $this->reference_model->get_optical();
+		$ref['r_os'] = $this->reference_model->get_os();
+		$ref['r_osedisi'] = $this->reference_model->get_osedisi();
+		$ref['r_office'] = $this->reference_model->get_office();
+		$ref['r_koneksi'] = $this->reference_model->get_koneksi();
+		$ref['r_kondisi'] = $this->reference_model->get_kondisi();
+		$ref['r_status'] = $this->reference_model->get_status();
+		$ref['r_ruang'] = $this->reference_model->get_ruang();
+
+		return $ref;
+	}
+
+	public function ru($save_method = NULL)
+	{
+		if ($save_method === NULL) {
+			show_404();
+		}
+
+		$title = ($save_method == 'add') ? 'REKAM' : 'UBAH' ;
+		$data = array(
+			'title' => $title,
+			'ref' => $this->fill_ref()
+		);
+
+		$this->load->view('laptop_ru_view', $data);
+	}
+
 	public function add_laptop()
 	{
 		$data = array(
@@ -100,15 +135,23 @@ class Laptop extends CI_Controller {
 		echo json_encode(array("status" => TRUE));
 	}
 
-	public function edit_laptop($id)
+	public function edit_laptop($id = NULL)
 	{
+		if ($id === NULL) {
+			show_404();
+		}
+
 		$data = $this->laptop_model->get_by_id($id);
 
 		echo json_encode($data);
 	}
 
-	public function update_laptop($id)
+	public function update_laptop($id = NULL)
 	{
+		if ($id === NULL) {
+			show_404();
+		}
+
 		$data = array(
 			'merek' => strtoupper($this->input->post('txtMerek')),
 			'tipe' => strtoupper($this->input->post('txtTipe')),
@@ -143,8 +186,12 @@ class Laptop extends CI_Controller {
 		echo json_encode(array("status" => TRUE));
 	}
 
-	public function delete_laptop($id)
+	public function delete_laptop($id = NULL)
 	{
+		if ($id === NULL) {
+			show_404();
+		}
+
 		$this->laptop_model->delete_laptop($id);
 		echo json_encode(array("status" => TRUE));
 	}

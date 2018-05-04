@@ -23,7 +23,7 @@
               <th>ID</th>
               <th>Merek</th>
               <th>Tipe</th>
-              <th>Nama Komputer</th>
+              <th>Hostname</th>
               <th>Alamat IP</th>
               <th>Lokasi</th>
               <th>Keterangan</th>

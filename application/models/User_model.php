@@ -11,16 +11,18 @@ class User_model extends CI_Model {
     public function get_login($user, $pass)
     {
         $sql = "SELECT
-                    USERNAME,
-                    ROLE,
-                    KD_UNIT,
-                    NAME,
-                    AVATAR
-                FROM USERS
+                    A.USERNAME,
+                    A.ROLE,
+                    A.KD_UNIT,
+                    B.TIPE,
+                    A.NAME,
+                    A.AVATAR
+                FROM USERS A, R_UNIT B
                 WHERE
-                    DELETED = 0 AND
-                    username = '$user' AND
-                    password = '".md5($user.$pass."amoipasswordsuffix")."'";
+                    A.KD_UNIT = B.KD_UNIT AND
+                    A.DELETED = 0 AND
+                    a.username = '$user' AND
+                    a.password = '".md5($user.$pass."amoipasswordsuffix")."'";
 
         $query = $this->db->query($sql);
 

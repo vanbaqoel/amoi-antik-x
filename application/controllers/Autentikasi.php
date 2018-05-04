@@ -30,6 +30,7 @@ class Autentikasi extends CI_Controller {
 				'username' => $list[0]->USERNAME,
 				'role' => $list[0]->ROLE,
 				'kd_unit' => $list[0]->KD_UNIT,
+				'tipe' => $list[0]->TIPE,
 				'name' => $list[0]->NAME,
 				'avatar' => $list[0]->AVATAR,
 				'loggedin' => TRUE
