@@ -1,25 +1,25 @@
 
-var laptop_table;
-var laptop_id;
+var pc_table;
+var pc_id;
 
-function view_laptop(id)
+function view_pc(id)
 {
   //Ajax Load data from ajax
   $.ajax({
-    url : document.location.protocol + "//" + document.location.host + "/amoi-antik/laptop/edit_laptop/" + id,
+    url : document.location.protocol + "//" + document.location.host + "/amoi-antik/pc/edit_pc/" + id,
     type: "GET",
     dataType: "JSON",
     success: function(data)
     {
       $('#txtID').text(data.id);
+      $('#txtKategori').text(data.bdesc);
       $('#txtMerek').text(data.merek);
       $('#txtTipe').text(data.tipe);
       $('#txtSN').text(data.sn);
-      $('#txtProcessor').text(data.bdesc);
+      $('#txtProcessor').text(data.cdesc);
       $('#txtStorage').text(data.storage);
       $('#txtRAM').text(data.ram);
-      $('#txtNIC').text(data.cdesc);
-      $('#txtWifi').text(data.ddesc);
+      $('#txtNIC').text(data.ddesc);
       $('#txtOptical').text(data.edesc);
       $('#txtOS').text(data.fdesc);
       $('#txtEdisiOS').text(data.gdesc);
@@ -42,7 +42,7 @@ function view_laptop(id)
 
       $('.modal').modal('show'); // show bootstrap modal when complete loaded
 
-      laptop_id = id;
+      pc_id = id;
 
     },
     error: function (jqXHR, textStatus, errorThrown)
@@ -52,24 +52,24 @@ function view_laptop(id)
   });
 }
 
-function edit_laptop(id)
+function edit_pc(id)
 {
-  window.location = document.location.protocol + "//" + document.location.host + "/amoi-antik/laptop/ru/" + id;
+  window.location = document.location.protocol + "//" + document.location.host + "/amoi-antik/pc/ru/" + id;
 }
 
-function delete_laptop(id)
+function delete_pc(id)
 {
   if(confirm('Apakah Anda yakin mau menghapus data ini?'))
   {
     // ajax delete data from database
     $.ajax({
-      url : document.location.protocol + "//" + document.location.host + "/amoi-antik/laptop/delete_laptop/" + id,
+      url : document.location.protocol + "//" + document.location.host + "/amoi-antik/pc/delete_pc/" + id,
       type: "POST",
       dataType: "JSON",
       success: function(data)
       {
         alert("Data berhasil dihapus...");
-        laptop_table.ajax.reload();
+        pc_table.ajax.reload();
       },
       error: function (jqXHR, textStatus, errorThrown)
       {
@@ -84,7 +84,7 @@ function printElement(elem)
   /*var domClone = elem.cloneNode(true);*/
   var domClone = elem.cloneNode(true);;
   $('.profile-info-row').each(function( index ){
-    if (index > 3) {
+    if (index > 4) {
       domClone.appendChild(this.cloneNode(true));
     }
   });
@@ -98,7 +98,7 @@ function printElement(elem)
   }
 
 
-  $printSection.innerHTML = "<h3>&nbsp;&nbsp;DATA DETAIL LAPTOP</h3>";
+  $printSection.innerHTML = "<h3>&nbsp;&nbsp;DATA DETAIL PC</h3>";
 
   $printSection.appendChild(domClone);
 }
@@ -109,12 +109,12 @@ $(document).ready(function () {
   $('.select2').select2();
 
   $('.sidebar-menu').tree();
-  laptop_table =
+  pc_table =
     $('#dynamic-table').DataTable({
       serverSide: false,
         /* Load data for the table's content from an Ajax source */
         ajax: {
-            url: document.location.protocol + "//" + document.location.host + "/amoi-antik/laptop/get_all", /* Populate data using a method in controller */
+            url: document.location.protocol + "//" + document.location.host + "/amoi-antik/pc/get_all", /* Populate data using a method in controller */
             type: "POST"
         },
       autoWidth: false,
@@ -167,14 +167,14 @@ $(document).ready(function () {
     $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group';
     $.fn.dataTable.Buttons.swfPath = document.location.protocol + "//" + document.location.host + "/amoi-antik/dist/swf/flashExport-1.2.4.swf";
 
-    new $.fn.dataTable.Buttons(laptop_table, {
+    new $.fn.dataTable.Buttons(pc_table, {
       buttons: [
         {
           text: "<i class='fa fa-plus bigger-110 green'></i> <span>&nbsp;&nbsp;Tambah</span>",
           className: "btn btn-default",
           titleAttr: "Tambah data baru",
           action: function ( e, dt, node, config ) {
-                    window.location = document.location.protocol + "//" + document.location.host + "/amoi-antik/laptop/ru/add";
+                    window.location = document.location.protocol + "//" + document.location.host + "/amoi-antik/pc/ru/add";
           }
         },
         {
@@ -182,7 +182,7 @@ $(document).ready(function () {
           text: "<i class='fa fa-file-excel-o bigger-110 green'></i> <span>&nbsp;&nbsp;Excel</span>",
           className: "btn btn-white btn-default btn-bold",
           titleAttr: "Simpan sebagai file Excel",
-          filename: "daftar-laptop",
+          filename: "daftar-pc",
           exportOptions: {
                     orthogonal: 'sort',
                     columns: ':visible'
@@ -193,9 +193,9 @@ $(document).ready(function () {
           text: "<i class='fa fa-print bigger-110 grey'></i> <span>&nbsp;&nbsp;Cetak</span>",
           className: "btn btn-default",
           titleAttr: "Cetak",
-          title: 'DAFTAR LAPTOP',
+          title: 'DAFTAR PC',
           exportOptions: {
-                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
                 },
           customize: function (win) {
                     $(win.document.body).css('font-size', '10pt');
@@ -210,7 +210,7 @@ $(document).ready(function () {
       ]
     });
 
-    laptop_table.buttons().container().appendTo($('.tableTools-container'));
+    pc_table.buttons().container().appendTo($('.tableTools-container'));
 
     setTimeout(function() {
       $($('.tableTools-container')).find('a.dt-button').each(function() {
@@ -221,7 +221,7 @@ $(document).ready(function () {
     }, 500);
 
     /* Disable Tambah button if logged in as Administrator */
-    if (sk == '000') {laptop_table.button('0').disable();}
+    if (sk == '000') {pc_table.button('0').disable();}
 
     $('#btnPrint').on('click', function () {
       printElement(document.getElementById("printThis"));

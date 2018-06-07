@@ -111,7 +111,12 @@
             <i class="fa fa-server"></i> <span>Server</span>
           </a>
         </li>
-        <li class="treeview">
+        <li>
+          <a href="<?= base_url("pc") ?>">
+            <i class="fa fa-desktop"></i> <span>PC</span>
+          </a>
+        </li>
+        <!-- <li class="treeview">
           <a href="#">
             <i class="fa fa-desktop"></i>
             <span>PC</span>
@@ -123,7 +128,7 @@
             <li><a href="<?= base_url("pcss") ?>"><i class="fa fa-circle-o"></i> SPAN/SAKTI</a></li>
             <li><a href="<?= base_url("pcnss") ?>"><i class="fa fa-circle-o"></i> Non SPAN/SAKTI</a></li>
           </ul>
-        </li>
+        </li> -->
         <li>
           <a href="<?= base_url("laptop") ?>">
             <i class="fa fa-laptop"></i> <span>Laptop</span>

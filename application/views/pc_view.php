@@ -5,7 +5,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        <i class="fa fa-laptop"></i> - LAPTOP/NOTEBOOK
+        <i class="fa fa-desktop"></i> - PERSONAL COMPUTER
       </h1>
     </section>
 
@@ -21,6 +21,7 @@
             <tr>
               <th>No.</th>
               <th>ID</th>
+              <th>Kategori</th>
               <th>Merek</th>
               <th>Tipe</th>
               <th>Hostname</th>
@@ -59,6 +60,10 @@
                         <div class="profile-info-row">
                           <div class="profile-info-name"> ID </div>
                           <div class="profile-info-value"><span id="txtID"></span></div>
+                        </div>
+                        <div class="profile-info-row">
+                          <div class="profile-info-name"> Kategori </div>
+                          <div class="profile-info-value"><span id="txtKategori"></span></div>
                         </div>
                         <div class="profile-info-row">
                           <div class="profile-info-name"> Merek </div>
@@ -100,10 +105,6 @@
                         <div class="profile-info-row">
                           <div class="profile-info-name"> NIC </div>
                           <div class="profile-info-value"><span id="txtNIC"></span></div>
-                        </div>
-                        <div class="profile-info-row">
-                          <div class="profile-info-name"> WiFi </div>
-                          <div class="profile-info-value"><span id="txtWifi"></span></div>
                         </div>
                         <div class="profile-info-row">
                           <div class="profile-info-name"> Optical </div>
@@ -253,7 +254,7 @@
 
 <!-- Page Script -->
 <script type="text/javascript"> var sk = '<?= $this->session->kd_unit; ?>';</script>
-<script src="<?= base_url(); ?>dist/js/amoi/laptop.js"></script>
+<script src="<?= base_url(); ?>dist/js/amoi/pc.js"></script>
 
 </body>
 </html>

@@ -145,8 +145,20 @@ div.dataTables_wrapper div.dataTables_info {
 }
 
 .input-group .input-label {
-    min-width: 111px;
+    min-width: 120px;
     text-align: right;
     color: #336199;
     background-color: #EDF3F4;
+}
+
+/* Fixing the width of a select2 with a long value in a bootstrap
+form group or input group */
+.input-group .select2-container {
+  position: relative;
+  z-index: 2;
+  float: left;
+  width: 100%;
+  margin-bottom: 0;
+  display: table;
+  table-layout: fixed;
 }

@@ -5,7 +5,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        <i class="fa fa-laptop"></i> <span id="page-title"> <?= $title ?> LAPTOP/NOTEBOOK </span>
+        <i class="fa fa-desktop"></i> <span id="page-title"> <?= $title ?> PERSONAL COMPUTER </span>
       </h1>
     </section>
 
@@ -14,6 +14,20 @@
       <div class="clearfix" >
         <form>
           <div class="row" >
+            <div class="col-sm-6 col-md-3">
+              <div class="form-group input-group">
+                <span class="input-group-addon input-label">Kategori</span>
+                <select class="form-control select2" name="cboKategori">
+                  <option></option>
+                  <?php
+                    var_dump($ref);
+                    foreach ($ref['r_kategori'] as $kategori) {
+                      echo "<option value='".$kategori['kd_kategori']."'>".$kategori['deskripsi']."</option>";
+                    }
+                  ?>
+                </select>
+              </div>
+            </div>
             <div class="col-sm-6 col-md-3">
               <div class="form-group input-group">
                 <span class="input-group-addon input-label">Merek</span>
@@ -32,6 +46,9 @@
                 <input type="text" class="form-control text-uppercase" id="txtSN" name="txtSN">
               </div>
             </div>
+
+          </div>
+          <div class="row">
             <div class="col-sm-6 col-md-3">
               <div class="form-group input-group">
                 <span class="input-group-addon input-label">Processor</span>
@@ -46,8 +63,6 @@
                 </select>
               </div>
             </div>
-          </div>
-          <div class="row">
             <div class="col-sm-6 col-md-3">
               <div class="form-group input-group">
                 <span class="input-group-addon input-label">Storage</span>
@@ -71,20 +86,6 @@
                     var_dump($ref);
                     foreach ($ref['r_nic'] as $nic) {
                       echo "<option value='".$nic['kd_nic']."'>".$nic['deskripsi']."</option>";
-                    }
-                  ?>
-                </select>
-              </div>
-            </div>
-            <div class="col-sm-6 col-md-3">
-              <div class="form-group input-group">
-                <span class="input-group-addon input-label">Wifi</span>
-                <select class="form-control select2" name="cboWifi">
-                  <option></option>
-                  <?php
-                    var_dump($ref);
-                    foreach ($ref['r_wifi'] as $wifi) {
-                      echo "<option value='".$wifi['kd_wifi']."'>".$wifi['deskripsi']."</option>";
                     }
                   ?>
                 </select>
@@ -285,7 +286,7 @@
               <div class="btn-group">
               <a href="#" class="btn btn-default btn-app" id="btnSimpan"><i class="fa fa-save"></i><span>Simpan</span></a>
               <a href="#" class="btn btn-default btn-app" id="btnReset"><i class="fa fa-refresh"></i><span>Reset</span></a>
-              <a href="<?= base_url('laptop') ?>" class="btn btn-default btn-app"><i class="fa fa-times"></i><span>Batal</span></a>
+              <a href="<?= base_url('pc') ?>" class="btn btn-default btn-app"><i class="fa fa-times"></i><span>Batal</span></a>
             </div>
         </form>
       </div>
@@ -301,7 +302,7 @@
   var sk = '<?= $this->session->kd_unit; ?>';
   var save_method = '<?= $save_method; ?>';
 </script>
-<script src="<?= base_url(); ?>dist/js/amoi/laptop_ru.js"></script>
+<script src="<?= base_url(); ?>dist/js/amoi/pc_ru.js"></script>
 
 </body>
 </html>

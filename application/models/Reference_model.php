@@ -15,9 +15,9 @@ class Reference_model extends CI_Model {
         return $query->result_array();
     }
 
-    public function get_kategori()
+    public function get_kategori($jenis)
     {
-        $query = $this->db->get('r_kategori');
+        $query = $this->db->get_where('r_kategori', array('kd_jenis' => $jenis));
 
         return $query->result_array();
     }

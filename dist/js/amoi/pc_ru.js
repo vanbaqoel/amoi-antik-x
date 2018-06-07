@@ -1,21 +1,22 @@
 
-var laptop_table;
-var laptop_id;
+var pc_table;
+var pc_id;
 
-function edit_laptop(id)
+function edit_pc(id)
 {
-  laptop_id = id;
+  pc_id = id;
   save_method = 'update';
   $('form')[0].reset();
   $('.select2').trigger('change');
 
   //Ajax Load data from ajax
   $.ajax({
-    url : document.location.protocol + "//" + document.location.host + "/amoi-antik/laptop/edit_laptop/" + id,
+    url : document.location.protocol + "//" + document.location.host + "/amoi-antik/pc/edit_pc/" + id,
     type: "GET",
     dataType: "JSON",
     success: function(data)
     {
+      $('[name="cboKategori"]').val(data.kategori).trigger('change');
       $('[name="txtMerek"]').val(data.merek);
       $('[name="txtTipe"]').val(data.tipe);
       $('[name="txtSN"]').val(data.sn);
@@ -23,7 +24,6 @@ function edit_laptop(id)
       $('[name="txtStorage"]').val(data.storage);
       $('[name="txtRAM"]').val(data.ram);
       $('[name="cboNIC"]').val(data.nic).trigger('change');
-      $('[name="cboWifi"]').val(data.wifi).trigger('change');
       $('[name="cboOptical"]').val(data.optical).trigger('change');
       $('[name="cboOS"]').val(data.os).trigger('change');
       $('[name="cboEdisiOS"]').val(data.edisi_os).trigger('change');
@@ -55,11 +55,11 @@ function save()
   var url;
   if(save_method == 'add')
   {
-    url = document.location.protocol + "//" + document.location.host + "/amoi-antik/laptop/add_laptop";
+    url = document.location.protocol + "//" + document.location.host + "/amoi-antik/pc/add_pc";
   }
   else
   {
-    url = document.location.protocol + "//" + document.location.host + "/amoi-antik/laptop/update_laptop/" + laptop_id;
+    url = document.location.protocol + "//" + document.location.host + "/amoi-antik/pc/update_pc/" + pc_id;
   }
 
    // ajax adding data to database
@@ -72,7 +72,7 @@ function save()
     {
       alert("Data berhasil disimpan...");
       //if success close modal and reload ajax table
-      window.location = document.location.protocol + "//" + document.location.host + "/amoi-antik/laptop";
+      window.location = document.location.protocol + "//" + document.location.host + "/amoi-antik/pc";
     },
     error: function (jqXHR, textStatus, errorThrown)
     {
@@ -100,7 +100,7 @@ $(document).ready(function () {
 
   if(save_method != 'add')
   {
-    edit_laptop(save_method);
+    edit_pc(save_method);
   }
 
 })
