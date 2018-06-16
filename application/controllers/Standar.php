@@ -36,7 +36,7 @@ class Standar extends CI_Controller {
             $rows[] = $row->perangkat;
             $rows[] = $row->a;
             $rows[] = $row->b;
-            $rows[] = ($row->a - $row->b);
+            // $rows[] = ($row->a - $row->b);
             // $rows[] = "<a href='#' onClick='a(" . '"' . $row->perangkat . '"' .", " . '"' . $row->kode_unit . '"' .", " . '"' . $row->nm_unit . '"' .")' id='a'>".($row->a - $row->b)."</a>";
             $rows[] = $row->c;
             $rows[] = $row->d;

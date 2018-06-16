@@ -15,14 +15,14 @@ class Nilai_spek_model extends CI_Model {
             FROM (
                 SELECT
                     id,
-                    IF(kategori IN (SELECT jenis_server FROM r_std_spesifikasi), 1, 0) kategori,
-                    IF(jumlah_processor < 1, 0, 1) jumlah_processor,
-                    IF(jumlah_core < 8, 0, 1) jumlah_core,
+                    IF(kategori > 1, 1, 0) kategori,
+                    IF(jml_processor < 1, 0, 1) jumlah_processor,
+                    IF(jml_core < 8, 0, 1) jumlah_core,
                     IF(storage < 300, 0, 1) storage,
                     IF(ram < 8, 0, 1) ram,
                     kode_unit
                 FROM t_server
-                WHERE kondisi != 'RUSAK BERAT'" . (($unit != '000') ? " AND kode_unit = '$unit'" : "") . "
+                WHERE kondisi != 4" . (($unit != '000') ? " AND kode_unit = '$unit'" : "") . "
             ) a";
 
         $query = $this->db->query($sql);
@@ -38,14 +38,14 @@ class Nilai_spek_model extends CI_Model {
             FROM (
                 SELECT
                     id,
-                    IF(processor IN (SELECT processor FROM r_std_spesifikasi), 1, 0) processor,
+                    IF(processor IN (SELECT kd_processor FROM r_processor WHERE benchmark >= 3676), 1, 0) processor,
                     IF(storage < 500, 0, 1) storage,
                     IF(ram < 2, 0, 1) ram,
-                    IF(nic IN (SELECT nic FROM r_std_spesifikasi), 1, 0) nic,
-                    IF(optical IN (SELECT optical FROM r_std_spesifikasi), 1, 0) optical,
+                    IF(nic < 2 OR nic = 9, 0, 1) nic,
+                    IF(optical < 4 OR optical = 9, 0, 1) optical,
                     kode_unit
                 FROM t_pc
-                WHERE kategori != 'SPAN' AND kondisi != 'RUSAK BERAT'" . (($unit != '000') ? " AND kode_unit = '$unit'" : "") . "
+                WHERE kondisi != 4" . (($unit != '000') ? " AND kode_unit = '$unit'" : "") . "
             ) a";
 
         $query = $this->db->query($sql);
@@ -61,14 +61,14 @@ class Nilai_spek_model extends CI_Model {
             FROM (
                 SELECT
                     id,
-                    IF(processor IN (SELECT processor FROM r_std_spesifikasi), 1, 0) processor,
+                    IF(processor IN (SELECT kd_processor FROM r_processor WHERE benchmark >= 3676), 1, 0) processor,
                     IF(storage < 250, 0, 1) storage,
                     IF(ram < 2, 0, 1) ram,
-                    IF(nic IN (SELECT nic FROM r_std_spesifikasi), 1, 0) nic,
-                    IF(wifi IN (SELECT wifi FROM r_std_spesifikasi), 1, 0) wifi,
+                    IF(nic < 2 OR nic = 9, 0, 1) nic,
+                    IF(wifi < 2 OR wifi = 9, 0, 1) wifi,
                     kode_unit
                 FROM t_laptop
-                WHERE kondisi != 'RUSAK BERAT'" . (($unit != '000') ? " AND kode_unit = '$unit'" : "") . "
+                WHERE kondisi != 4" . (($unit != '000') ? " AND kode_unit = '$unit'" : "") . "
             ) a";
 
         $query = $this->db->query($sql);

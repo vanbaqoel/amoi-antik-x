@@ -28,7 +28,7 @@ class Laptop_model extends CI_Model {
         $sql = "
             SELECT
                 a.*,
-                IF(a.orisinalitas_os = 1, 'ORIGINAL/GENUINE', 'TIDAK ORIGINAL/GENUINE') AS ori,
+                IF(a.orisinalitas_os = 1, 'GENUINE', 'TIDAK GENUINE') AS ori,
                 IF(a.join_domain = 1, 'SUDAH', 'BELUM') AS jondo,
                 b.deskripsi bdesc,
                 c.deskripsi cdesc,

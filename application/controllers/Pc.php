@@ -47,10 +47,13 @@ class Pc extends CI_Controller {
         	if ($this->session->kd_unit == '000'){
         		$rows[] = $row->kode_unit;
         	}
+
+        	$id_enc = strtr($this->encrypt->encode($row->id), array('+' => '.', '=' => '-', '/' => '~'));
+
         	$rows[] = '<div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-default" title="Lihat" onclick="view_pc('."'$row->id'".')"><i class="fa fa-eye"></i></button>
-                      <button type="button" class="btn btn-sm btn-default" title="Ubah" '.(($this->session->kd_unit == '000') ? 'disabled' : '').' onclick="edit_pc('."'$row->id'".')"><i class="fa fa-pencil"></i></button>
-                      <button type="button" class="btn btn-sm btn-default" title="Hapus" '.(($this->session->kd_unit == '000') ? 'disabled' : '').' onclick="delete_pc('."'$row->id'".')"><i class="fa fa-trash"></i></button>
+                      <button type="button" class="btn btn-sm btn-default" title="Lihat" onclick="view_pc('."'$id_enc'".')"><i class="fa fa-eye"></i></button>
+                      <button type="button" class="btn btn-sm btn-default" title="Ubah" '.(($this->session->kd_unit == '000') ? 'disabled' : '').' onclick="edit_pc('."'$id_enc'".')"><i class="fa fa-pencil"></i></button>
+                      <button type="button" class="btn btn-sm btn-default" title="Hapus" '.(($this->session->kd_unit == '000') ? 'disabled' : '').' onclick="delete_pc('."'$id_enc'".')"><i class="fa fa-trash"></i></button>
                       </div>';
 
         	$data[] = $rows;
@@ -139,20 +142,22 @@ class Pc extends CI_Controller {
 		echo json_encode(array("status" => TRUE));
 	}
 
-	public function edit_pc($id = NULL)
+	public function edit_pc($id_enc = NULL)
 	{
-		if ($id === NULL) {
+		if ($id_enc === NULL) {
 			show_404();
 		}
+
+		$id = $this->encrypt->decode(strtr($id_enc, array('.' => '+', '-' => '=', '~' => '/')));
 
 		$data = $this->pc_model->get_by_id($id);
 
 		echo json_encode($data);
 	}
 
-	public function update_pc($id = NULL)
+	public function update_pc($id_enc = NULL)
 	{
-		if ($id === NULL) {
+		if ($id_enc === NULL) {
 			show_404();
 		}
 
@@ -188,15 +193,19 @@ class Pc extends CI_Controller {
 			'kode_unit' => $this->session->kd_unit
 		);
 
+		$id = $this->encrypt->decode(strtr($id_enc, array('.' => '+', '-' => '=', '~' => '/')));
+
 		$this->pc_model->update_pc(array('id' => $id), $data);
 		echo json_encode(array("status" => TRUE));
 	}
 
-	public function delete_pc($id = NULL)
+	public function delete_pc($id_enc = NULL)
 	{
-		if ($id === NULL) {
+		if ($id_enc === NULL) {
 			show_404();
 		}
+
+		$id = $this->encrypt->decode(strtr($id_enc, array('.' => '+', '-' => '=', '~' => '/')));
 
 		$this->pc_model->delete_pc($id);
 		echo json_encode(array("status" => TRUE));

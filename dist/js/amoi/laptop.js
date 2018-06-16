@@ -203,7 +203,12 @@ $(document).ready(function () {
                         .addClass('compact')
                         .css('font-size', 'inherit');
                     $(win.document.body).find('h1')
-                        .css('text-align','center');
+                      .css({
+                        'text-align':'center',
+                        'font-size':'14pt',
+                        'text-decoration':'underline',
+                        'font-weight':'bold'
+                      });
                     $('body *').removeClass('hide-me'); /* Menghindari bentrok dengan print detail */
                 }
         }

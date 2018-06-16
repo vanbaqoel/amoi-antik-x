@@ -20,17 +20,117 @@
       </div>
 
       <div class="row margin">
-        <div class="col-md-4">
+        <div class="col-md-6">
           <div class="box box-default">
             <div class="box-header with-border">
-              <h3 class="box-title">Join Domain</h3>
+              <h3 class="box-title">Kondisi</h3>
+              <div class="box-tools pull-right">
+                <select class="form-control select2" id="cboKondisi">
+                  <option value="0">Semua</option>
+                  <option value="1">Server</option>
+                  <option value="2">PC</option>
+                  <option value="3">Laptop</option>
+                </select>
+              </div>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
               <div class="row">
                 <div class="col-md-8">
                   <div class="chart-responsive">
-                    <canvas id="pieChart" height="150"></canvas>
+                    <canvas id="pieKondisi" height="150"></canvas>
+                  </div>
+                  <!-- ./chart-responsive -->
+                </div>
+                <!-- /.col -->
+                <div class="col-md-4">
+                  <ul class="chart-legend clearfix">
+                    <li><i class="fa fa-circle-o text-red"></i> Baik</li>
+                    <li><i class="fa fa-circle-o text-yellow"></i> Kurang Baik</li>
+                    <li><i class="fa fa-circle-o text-green"></i> Rusak Ringan</li>
+                    <li><i class="fa fa-circle-o text-blue"></i> Rusak Berat</li>
+                  </ul>
+                </div>
+                <!-- /.col -->
+              </div>
+              <!-- /.row -->
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer no-padding">
+              <ul class="nav nav-pills nav-stacked">
+                <li><a href="#">Server <span class="pull-right text-red" id="kondisi-server"></span></a></li>
+                <li><a href="#">Personal Computer <span class="pull-right text-yellow" id="kondisi-pc"></span></a></li>
+                <li><a href="#">Laptop/Notebook <span class="pull-right text-green" id="kondisi-laptop"></span></a></li>
+              </ul>
+            </div>
+            <!-- /.footer -->
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="box box-default">
+            <div class="box-header with-border">
+              <h3 class="box-title">Standar Spesifikasi</h3>
+              <div class="box-tools pull-right">
+                <select class="form-control select2" id="cboSpek">
+                  <option value="0">Semua</option>
+                  <option value="1">Server</option>
+                  <option value="2">PC</option>
+                  <option value="3">Laptop</option>
+                </select>
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <div class="row">
+                <div class="col-md-8">
+                  <div class="chart-responsive">
+                    <canvas id="pieSpek" height="150"></canvas>
+                  </div>
+                  <!-- ./chart-responsive -->
+                </div>
+                <!-- /.col -->
+                <div class="col-md-4">
+                  <ul class="chart-legend clearfix">
+                    <li><i class="fa fa-circle-o text-green"></i> Standar</li>
+                    <li><i class="fa fa-circle-o text-red"></i> Belum Standar</li>
+                  </ul>
+                </div>
+                <!-- /.col -->
+              </div>
+              <!-- /.row -->
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer no-padding">
+              <ul class="nav nav-pills nav-stacked">
+                <li><a href="#">Server <span class="pull-right text-red" id="spek-server"></span></a></li>
+                <li><a href="#">Personal Computer <span class="pull-right text-green" id="spek-pc"></span></a></li>
+                <li><a href="#">Laptop/Notebook <span class="pull-right text-yellow" id="spek-laptop"></span></a></li>
+              </ul>
+            </div>
+            <!-- /.footer -->
+          </div>
+        </div>
+      </div>
+      <div class="row margin">
+        <div class="col-md-6">
+          <div class="box box-default">
+            <div class="box-header with-border">
+              <h3 class="box-title">Join Domain</h3>
+              <div class="box-tools pull-right">
+                <select class="form-control select2" id="cboJondo">
+                  <option value="0">Semua</option>
+                  <option value="1">Server</option>
+                  <option value="2">PC</option>
+                  <option value="3">Laptop</option>
+                </select>
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <div class="row">
+                <div class="col-md-8">
+                  <div class="chart-responsive">
+                    <canvas id="pieJondo" height="150"></canvas>
                   </div>
                   <!-- ./chart-responsive -->
                 </div>
@@ -46,64 +146,35 @@
               <!-- /.row -->
             </div>
             <!-- /.box-body -->
-            <div class="box-footer no-padding">
-              <ul class="nav nav-pills nav-stacked">
-                <li><a href="#">Server
-                  <span class="pull-right text-red" id="jondo-server"></span></a></li>
-                <li><a href="#">Personal Computer <span class="pull-right text-green" id="jondo-pc"></span></a>
-                </li>
-                <li><a href="#">Laptop/Notebook
-                  <span class="pull-right text-yellow" id="jondo-laptop"></span></a></li>
-              </ul>
-            </div>
-            <!-- /.footer -->
           </div>
         </div>
-
-        <div class="col-md-4">
+        <div class="col-md-6">
           <div class="box box-default">
             <div class="box-header with-border">
-              <h3 class="box-title">Standar Jumlah</h3>
-            </div>
-            <div class="box-body">
-              <div class="chart">
-                <canvas id="barChart" height="150"></canvas>
+              <h3 class="box-title">OS Genuine</h3>
+              <div class="box-tools pull-right">
+                <select class="form-control select2" id="cboOS">
+                  <option value="0">Semua</option>
+                  <option value="1">Server</option>
+                  <option value="2">PC</option>
+                  <option value="3">Laptop</option>
+                </select>
               </div>
-            </div>
-            <!-- /.box-body -->
-            <div class="box-footer no-padding">
-              <ul class="nav nav-pills nav-stacked">
-                <li><a href="#">Server
-                  <span class="pull-right text-red" id="jumlah-server"></span></a></li>
-                <li><a href="#">Personal Computer <span class="pull-right text-green" id="jumlah-pc"></span></a>
-                </li>
-                <li><a href="#">Laptop/Notebook
-                  <span class="pull-right text-yellow" id="jumlah-laptop"></span></a></li>
-              </ul>
-            </div>
-            <!-- /.footer -->
-          </div>
-        </div>
-
-        <div class="col-md-4">
-          <div class="box box-default">
-            <div class="box-header with-border">
-              <h3 class="box-title">Standar Spesifikasi</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
               <div class="row">
                 <div class="col-md-8">
                   <div class="chart-responsive">
-                    <canvas id="pieSpek" height="150"></canvas>
+                    <canvas id="pieOS" height="150"></canvas>
                   </div>
                   <!-- ./chart-responsive -->
                 </div>
                 <!-- /.col -->
                 <div class="col-md-4">
                   <ul class="chart-legend clearfix">
-                    <li><i class="fa fa-circle-o text-red"></i> Belum Standar</li>
-                    <li><i class="fa fa-circle-o text-green"></i> Standar</li>
+                    <li><i class="fa fa-circle-o text-green"></i> Genuine</li>
+                    <li><i class="fa fa-circle-o text-red"></i> Tidak Genuine</li>
                   </ul>
                 </div>
                 <!-- /.col -->
@@ -113,12 +184,9 @@
             <!-- /.box-body -->
             <div class="box-footer no-padding">
               <ul class="nav nav-pills nav-stacked">
-                <li><a href="#">Server
-                  <span class="pull-right text-red" id="spek-server"></span></a></li>
-                <li><a href="#">Personal Computer <span class="pull-right text-green" id="spek-pc"></span></a>
-                </li>
-                <li><a href="#">Laptop/Notebook
-                  <span class="pull-right text-yellow" id="spek-laptop"></span></a></li>
+                <li><a href="#">Server <span class="pull-right text-red" id="os-server"></span></a></li>
+                <li><a href="#">Personal Computer <span class="pull-right text-green" id="os-pc"></span></a></li>
+                <li><a href="#">Laptop/Notebook <span class="pull-right text-yellow" id="os-laptop"></span></a></li>
               </ul>
             </div>
             <!-- /.footer -->
@@ -147,32 +215,16 @@
 <script src=<?= base_url("bower_components/bootstrap/dist/js/bootstrap.min.js");?>></script>
 <!-- Select2 -->
 <script src=<?= base_url("bower_components/select2/dist/js/select2.full.min.js");?>></script>
-<!-- DataTables -->
-<!--<script src=<?= base_url("bower_components/datatables.net/js/jquery.dataTables.min.js");?>></script> -->
-<!-- <script src=<?= base_url("bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js");?>></script> -->
 <!-- Slimscroll -->
 <script src=<?= base_url("bower_components/jquery-slimscroll/jquery.slimscroll.min.js");?>></script>
 <!-- FastClick -->
 <script src=<?= base_url("bower_components/fastclick/lib/fastclick.js");?>></script>
 <!-- AdminLTE App -->
 <script src=<?= base_url("dist/js/adminlte.min.js");?>></script>
-<!-- iCheck -->
-<script src=<?= base_url("plugins/iCheck/icheck.min.js");?>></script>
 <!-- ChartJS -->
 <script src=<?= base_url("bower_components/chart.js/Chart.js"); ?>></script>
 <!-- ChartJS -->
 <!-- <script src=<?= base_url("bower_components/chart.js/ChartNew.js"); ?>></script> -->
-
-<script src="<?= base_url(); ?>bower_components/datatables.net/1.10.13/jquery.dataTables.min.js"></script>
-<script src="<?= base_url(); ?>bower_components/datatables.net-bs/jquery.dataTables.bootstrap.min.js"></script> <!-- Somehow we still need this -->
-<script src="<?= base_url(); ?>bower_components/datatables-buttons-1.2.4/dataTables.buttons.min.js"></script>
-<script src="<?= base_url(); ?>bower_components/datatables-buttons-1.2.4/buttons.flash.min.js"></script>
-<script src="<?= base_url(); ?>bower_components/datatables-buttons-1.2.4/buttons.html5.min.js"></script>
-<script src="<?= base_url(); ?>bower_components/datatables-buttons-1.2.4/buttons.print.min.js"></script>
-<!-- <script src="<?= base_url(); ?>bower_components/datatables-buttons-1.2.4/buttons.colVis.min.js"></script> -->
-<script src="<?= base_url(); ?>bower_components/jszip-2.5.0/jszip.min.js"></script>
-<script src="<?= base_url(); ?>bower_components/pdfmake-0.1.18/pdfmake.min.js"></script>
-<script src="<?= base_url(); ?>bower_components/pdfmake-0.1.18/vfs_fonts.js"></script>
 
 <!-- Page Script -->
 <script src="<?= base_url(); ?>dist/js/amoi/dashboard.js"></script>

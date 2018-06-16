@@ -10,13 +10,16 @@ class Jondo_detail_model extends CI_Model {
     public function jondo($unit, $status, $kategori)
     {
         $from_kategori = "";
+        $kd_kategori = 0;
         switch ($kategori) {
             case 'SERVER':
                 $from_kategori = "t_server";
+                $kd_kategori = 1;
                 break;
 
             case 'PC':
                 $from_kategori = "t_pc";
+                $kd_kategori = 2;
                 break;
 
             case 'LAPTOP':
@@ -26,47 +29,55 @@ class Jondo_detail_model extends CI_Model {
 
         $sql = "
             SELECT "
-            . ($kategori == 'LAPTOP' ? '' : 'kategori,') .
+            . ($kategori == 'LAPTOP' ? '' : 'c.deskripsi katdesc,') .
                "alamat_ip,
                 hostname,
                 nup,
-                lokasi,
+                b.deskripsi lokdesc,
                 keterangan,
                 kode_unit
-            FROM $from_kategori
+            FROM $from_kategori a";
+
+        $sql .= "
+            LEFT JOIN r_ruang b ON a.lokasi = b.kd_ruang ";
+
+        $sql .= ($kd_kategori > 0) ? "
+            LEFT JOIN r_kategori c ON a.kategori = c.kd_kategori AND c.kd_jenis = $kd_kategori" : "";
+
+        $sql .= "
             WHERE kode_unit = '$unit'";
 
         switch ($status) {
             case 'b':
-                $sql .= " AND kondisi != 'RUSAK BERAT'";
+                $sql .= " AND status = 1";
                 break;
 
             case 'c':
-                $sql .= " AND kondisi = 'RUSAK BERAT'";
+                $sql .= " AND status = 1 AND koneksi = 1";
                 break;
 
             case 'd':
-                $sql .= " AND join_domain = 'SUDAH'";
+                $sql .= " AND status = 1 AND koneksi = 1 AND join_domain = 1";
                 break;
 
             case 'e':
-                $sql .= " AND join_domain = 'BELUM'";
+                $sql .= " AND status = 1 AND koneksi = 1 AND join_domain = 0";
                 break;
 
             case 'f':
-                $sql .= " AND os = 'WINDOWS XP'";
+                $sql .= " AND os = 1";
                 break;
 
             case 'g':
-                $sql .= " AND os = 'WINDOWS 7'";
+                $sql .= " AND os = 3";
                 break;
 
             case 'h':
-                $sql .= " AND os = 'WINDOWS 10'";
+                $sql .= " AND os = 6";
                 break;
 
             case 'i':
-                $sql .= " AND os NOT IN('WINDOWS XP', 'WINDOWS 7', 'WINDOWS 10')";
+                $sql .= " AND os NOT IN(1, 3, 6)";
                 break;
         }
 

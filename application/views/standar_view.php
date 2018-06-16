@@ -24,10 +24,9 @@
               <th>JENIS PERANGKAT</th>
               <th>A</th>
               <th>B</th>
-              <th>C</th>
+              <th>C (B - A)</th>
               <th>D</th>
-              <th>E = A - D</th>
-              <th>F = B - D</th>
+              <th>E (D - A)</th>
             </tr>
           </thead>
           <tbody>
@@ -37,12 +36,11 @@
       <hr>
       <dl>
         <dt>Catatan :</dt>
-        <dd>A = Jumlah Perangkat yang Bisa Digunakan Bekerja (Selain PC SPAN)</dd>
-        <dd>B = Jumlah Perangkat yang Memenuhi Standar Spesifikasi</dd>
-        <dd>C = Jumlah Perangkat yang Tidak Memenuhi Standar Spesifikasi</dd>
-        <dd>D = Standar Jumlah</dd>
-        <dd>E = Kelebihan (+)/Kekurangan (-) Perangkat yang Bisa Digunakan Bekerja</dd>
-        <dd>F = Kelebihan (+)/Kekurangan (-) Perangkat Standar</dd>
+        <dd>A : Jumlah standar sesuai dengan rumus pada SE-32/PB/2016</dd>
+        <dd>B : Jumlah saat ini yang dapat digunakan untuk bekerja</dd>
+        <dd>C : Selisih jumlah saat ini dengan jumlah standar; (-) Kekurangan, (+) Kelebihan</dd>
+        <dd>D : Jumlah dari B yang memenuhi spesifikasi minimal sesuai dengan SE-32/PB/2016</dd>
+        <dd>E : Selisih jumlah yang memenuhi spesifikasi minimal dengan jumlah standar; (-) Kekurangan, (+) Kelebihan</dd>
       </dl>
 
       <!-- /.modal -->

@@ -66,7 +66,7 @@ $(document).ready(function () {
 
     /* <-- Datatables button */
     $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group btn-overlap';
-    $.fn.dataTable.Buttons.swfPath = "<?= base_url('dist/swf/flashExport-1.2.4.swf') ?>";
+    $.fn.dataTable.Buttons.swfPath = document.location.protocol + "//" + document.location.host + "/amoi-antik/dist/swf/flashExport-1.2.4.swf";
 
     new $.fn.dataTable.Buttons(pc_table, {
       buttons: [
@@ -85,8 +85,13 @@ $(document).ready(function () {
                         .addClass('compact')
                         .css('font-size', 'inherit');
                     $(win.document.body).find('h1')
-                        .css('text-align','center')
-                        .after('<center><h3>' + nu + '</h3></center><br />');
+                      .css({
+                        'text-align':'center',
+                        'font-size':'14pt',
+                        'text-decoration':'underline',
+                        'font-weight':'bold'
+                      })
+                        .after('<center><h4>' + nu + '</h4></center><br />');
 
                     var body = $('tbody');
                     var exporBody = $(win.document.body).find('tbody');

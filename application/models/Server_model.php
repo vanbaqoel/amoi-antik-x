@@ -11,22 +11,61 @@ class Server_model extends CI_Model {
 
     public function get_all($unit)
     {
+        $sql = "
+            SELECT
+                a.id,
+                b.deskripsi katdesc,
+                a.merek,
+                a.tipe,
+                a.hostname,
+                a.alamat_ip,
+                c.deskripsi lokdesc,
+                a.keterangan
+            FROM t_server a
+            LEFT JOIN r_kategori b ON a.kategori = b.kd_kategori AND b.kd_jenis = 1
+            LEFT JOIN r_ruang c ON a.lokasi = c.kd_ruang";
+            /*
+        $this->db->select('*', 'r_kategori.deskripsi AS katdesc');
         $this->db->from($this->table);
+        $this->db->join('r_kategori', 't_server.kategori = r_kategori.kd_kategori AND r_kategori.kd_jenis = 2');
+        $this->db->join('r_ruang', 't_server.lokasi = r_ruang.kd_ruang');*/
         if ($unit != '000') {
-            $this->db->where('kode_unit', $unit);
+            $sql .= " WHERE a.kode_unit = $unit";
+            // $this->db->where('kode_unit', $unit);
         }
 
-        $query = $this->db->get();
+        $query = $this->db->query($sql);
 
         return $query->result();
     }
 
     public function get_by_id($id)
     {
-        $this->db->from($this->table);
-        $this->db->where('id', $id);
+        $sql = "
+            SELECT
+                a.*,
+                IF(a.orisinalitas_os = 1, 'GENUINE', 'TIDAK GENUINE') AS ori,
+                IF(a.join_domain = 1, 'SUDAH', 'BELUM') AS jondo,
+                b.deskripsi bdesc,
+                c.deskripsi cdesc,
+                d.deskripsi ddesc,
+                e.deskripsi edesc,
+                f.deskripsi fdesc,
+                g.deskripsi gdesc,
+                h.deskripsi hdesc,
+                i.deskripsi idesc
+            FROM t_server a
+                LEFT JOIN r_kategori b ON a.kategori = b.kd_kategori AND b.kd_jenis = 1
+                LEFT JOIN r_os c ON a.os = c.kd_os
+                LEFT JOIN r_osedisi d ON a.edisi_os = d.kd_osedisi
+                LEFT JOIN r_office e ON a.office = e.kd_office
+                LEFT JOIN r_koneksi f ON a.koneksi = f.kd_koneksi
+                LEFT JOIN r_kondisi g ON a.kondisi = g.kd_kondisi
+                LEFT JOIN r_status h ON a.status = h.kd_status
+                LEFT JOIN r_ruang i ON a.lokasi = i.kd_ruang
+            WHERE a.id = $id";
 
-        $query = $this->db->get();
+        $query = $this->db->query($sql);
 
         return $query->row();
     }

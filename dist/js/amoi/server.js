@@ -2,99 +2,58 @@
 var server_table;
 var server_id;
 
-function add_server() {
-  save_method = 'add';
-  $('form')[0].reset();
-  $('.select2').trigger('change');
-  $('.modal').modal('show');
-  $('.modal-title').text('Tambah Data Server');
-}
-
-function edit_server(id)
+function view_server(id)
 {
-  save_method = 'update';
-  $('form')[0].reset();
-  $('.select2').trigger('change');
-
   //Ajax Load data from ajax
   $.ajax({
-    url : "server/edit_server/" + id,
+    url : document.location.protocol + "//" + document.location.host + "/amoi-antik/server/edit_server/" + id,
     type: "GET",
     dataType: "JSON",
     success: function(data)
     {
-      $('[name="cboKategori"]').val(data.kategori).trigger('change');
-      $('[name="txtMerek"]').val(data.merek);
-      $('[name="txtTipe"]').val(data.tipe);
-      $('[name="txtSN"]').val(data.sn);
-      $('[name="txtProcessor"]').val(data.processor);
-      $('[name="txtJumlahProcessor"]').val(data.jumlah_processor);
-      $('[name="txtJumlahCore"]').val(data.jumlah_core);
-      $('[name="txtStorage"]').val(data.storage);
-      $('[name="txtRAM"]').val(data.ram);
-      $('[name="cboNIC"]').val(data.nic).trigger('change');
-      $('[name="cboOptical"]').val(data.optical).trigger('change');
-      $('[name="txtOS"]').val(data.os);
-      $('[name="txtEdisiOS"]').val(data.edisi_os);
-      $('[name="cboOrisinalitasOS"]').val(data.orisinalitas_os).trigger('change');
-      $('[name="txtOffice"]').val(data.office);
-      $('[name="txtAntivirus"]').val(data.antivirus);
-      $('[name="txtAlamatIP"]').val(data.alamat_ip);
-      $('[name="txtHostName"]').val(data.hostname);
-      $('[name="cboJoinDomain"]').val(data.join_domain).trigger('change');
-      $('[name="txtKodeBarang"]').val(data.kode_barang);
-      $('[name="txtNUP"]').val(data.nup);
-      $('[name="txtTahunPerolehan"]').val(data.tahun_perolehan);
-      $('[name="cboKondisi"]').val(data.kondisi).trigger('change');
-      $('[name="txtNIP"]').val(data.nip);
-      $('[name="txtLokasi"]').val(data.lokasi);
-      $('[name="txtKeterangan"]').val(data.keterangan);
+      $('#txtID').text(data.id);
+      $('#txtKategori').text(data.bdesc);
+      $('#txtMerek').text(data.merek);
+      $('#txtTipe').text(data.tipe);
+      $('#txtSN').text(data.sn);
+      $('#txtJmlProcessor').text(data.jml_processor);
+      $('#txtJmlCore').text(data.jml_core);
+      $('#txtStorage').text(data.storage);
+      $('#txtRAM').text(data.ram);
+      $('#txtOS').text(data.cdesc);
+      $('#txtEdisiOS').text(data.ddesc);
+      $('#txtOrisinalitasOS').text(data.ori);
+      $('#txtOffice').text(data.edesc);
+      $('#txtKoneksi').text(data.fdesc);
+      $('#txtHostName').text(data.hostname);
+      $('#txtAlamatIP').text(data.alamat_ip);
+      $('#txtAntivirus').text(data.antivirus);
+      $('#txtJoinDomain').text(data.jondo);
+      $('#txtKodeBarang').text(data.kode_barang);
+      $('#txtNUP').text(data.nup);
+      $('#txtTahunPerolehan').text(data.tahun_perolehan);
+      $('#txtKondisi').text(data.gdesc);
+      $('#txtStatus').text(data.hdesc);
+      $('#txtNIP').text(data.nip);
+      $('#txtLokasi').text(data.idesc);
+      $('#txtKeterangan').text(data.keterangan);
 
 
       $('.modal').modal('show'); // show bootstrap modal when complete loaded
-      $('.modal-title').text('Ubah Data Server'); // Set title to Bootstrap modal title
 
       server_id = id;
-
 
     },
     error: function (jqXHR, textStatus, errorThrown)
     {
-      $.notify({'title':'Ooops!', 'message':'Gagal menarik data...'}, notify_danger);
+        alert('Gagal menarik data...');
     }
   });
 }
 
-function save()
+function edit_server(id)
 {
-  var url;
-  if(save_method == 'add')
-  {
-    url = "server/add_server";
-  }
-  else
-  {
-    url = "server/update_server/" + server_id;
-  }
-
-   // ajax adding data to database
-  $.ajax({
-    url : url,
-    type: "POST",
-    data: $('form').serialize(),
-    dataType: "JSON",
-    success: function(data)
-    {
-      $.notify({'title':'Sukses', 'message':'Data berhasil disimpan...'}, notify_success);
-      //if success close modal and reload ajax table
-      $('.modal').modal('hide');
-      server_table.ajax.reload();// for reload a page
-    },
-    error: function (jqXHR, textStatus, errorThrown)
-    {
-      $.notify({'title':'Ooops!', 'message':'Gagal menyimpan/mengubah data...'}, notify_danger);
-    }
-  });
+  window.location = document.location.protocol + "//" + document.location.host + "/amoi-antik/server/ru/" + id;
 }
 
 function delete_server(id)
@@ -103,20 +62,44 @@ function delete_server(id)
   {
     // ajax delete data from database
     $.ajax({
-      url : "server/delete_server/" + id,
+      url : document.location.protocol + "//" + document.location.host + "/amoi-antik/server/delete_server/" + id,
       type: "POST",
       dataType: "JSON",
       success: function(data)
       {
-        $.notify({'title':'Sukses', 'message':'Data berhasil dihapus...'}, notify_success);
+        alert("Data berhasil dihapus...");
         server_table.ajax.reload();
       },
       error: function (jqXHR, textStatus, errorThrown)
       {
-        $.notify({'title':'Ooops!', 'message':'Gagal menghapus data...'}, notify_danger);
+        alert('Gagal menghapus data...');
       }
     });
   }
+}
+
+function printElement(elem)
+{
+  /*var domClone = elem.cloneNode(true);*/
+  var domClone = elem.cloneNode(true);;
+  $('.profile-info-row').each(function( index ){
+    if (index > 4) {
+      domClone.appendChild(this.cloneNode(true));
+    }
+  });
+
+  var $printSection = document.getElementById("printSection");
+
+  if (!$printSection) {
+      var $printSection = document.createElement("div");
+      $printSection.id = "printSection";
+      document.body.appendChild($printSection);
+  }
+
+
+  $printSection.innerHTML = "<h3>&nbsp;&nbsp;DATA DETAIL SERVER</h3>";
+
+  $printSection.appendChild(domClone);
 }
 
 $(document).ready(function () {
@@ -126,33 +109,28 @@ $(document).ready(function () {
 
   $('.sidebar-menu').tree();
   server_table =
-    $('#dynamic-table')
-    .DataTable({
+    $('#dynamic-table').DataTable({
       serverSide: false,
-        //Load data for the table's content from an Ajax source
+        /* Load data for the table's content from an Ajax source */
         ajax: {
-            url: "server/get_all", //Populate data using a method in controller
+            url: document.location.protocol + "//" + document.location.host + "/amoi-antik/server/get_all", /* Populate data using a method in controller */
             type: "POST"
         },
-      autoWidth: true,
+      autoWidth: false,
       scrollX: true,
       scrollCollapse: true,
       order: [],
       lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
       columnDefs: [
           {
-              targets: [ 1 ],
-              width: "85px",
-              sortable: false,
-              className: "text-center"
-          },
-          {
-            targets: [ 0, 20 ],
+            targets: [ 0, 1 ],
             className: "text-center"
           },
           {
-            targets: [ 7, 8, 9, 10, 16, 22, 23 ],
-            className: "text-right"
+              targets: [ -1 ], /* targeting the last column */
+              width: "125px",
+              sortable: false,
+              className: "text-center"
           }
       ],
       processing: true,
@@ -184,63 +162,75 @@ $(document).ready(function () {
       }
     });
 
-  /* <-- Datatables button */
-  $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group btn-overlap';
-  $.fn.dataTable.Buttons.swfPath = "<?= base_url('dist/swf/flashExport-1.2.4.swf') ?>";
+    /* <-- Datatables button */
+    $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group';
+    $.fn.dataTable.Buttons.swfPath = document.location.protocol + "//" + document.location.host + "/amoi-antik/dist/swf/flashExport-1.2.4.swf";
 
-  new $.fn.dataTable.Buttons(server_table, {
-    buttons: [
-      {
-        text: "<i class='fa fa-plus bigger-110 green'></i> <span>&nbsp;&nbsp;Tambah</span>",
-        className: "btn btn-white btn-default btn-bold",
-        titleAttr: "Tambah data baru",
-        action: function ( e, dt, node, config ) {
-                  add_server();
+    new $.fn.dataTable.Buttons(server_table, {
+      buttons: [
+        {
+          text: "<i class='fa fa-plus bigger-110 green'></i> <span>&nbsp;&nbsp;Tambah</span>",
+          className: "btn btn-default",
+          titleAttr: "Tambah data baru",
+          action: function ( e, dt, node, config ) {
+                    window.location = document.location.protocol + "//" + document.location.host + "/amoi-antik/server/ru/add";
+          }
+        },
+        {
+          extend: "excel",
+          text: "<i class='fa fa-file-excel-o bigger-110 green'></i> <span>&nbsp;&nbsp;Excel</span>",
+          className: "btn btn-white btn-default btn-bold",
+          titleAttr: "Simpan sebagai file Excel",
+          filename: "daftar-server",
+          exportOptions: {
+                    orthogonal: 'sort',
+                    columns: ':visible'
+                }
+        },
+        {
+          extend: "print",
+          text: "<i class='fa fa-print bigger-110 grey'></i> <span>&nbsp;&nbsp;Cetak</span>",
+          className: "btn btn-default",
+          titleAttr: "Cetak",
+          title: 'DAFTAR SERVER',
+          exportOptions: {
+                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+                },
+          customize: function (win) {
+                    $(win.document.body).css('font-size', '10pt');
+                    $(win.document.body).find('table')
+                        .addClass('compact')
+                        .css('font-size', 'inherit');
+                    $(win.document.body).find('h1')
+                      .css({
+                        'text-align':'center',
+                        'font-size':'14pt',
+                        'text-decoration':'underline',
+                        'font-weight':'bold'
+                      });
+                    $('body *').removeClass('hide-me'); /* Menghindari bentrok dengan print detail */
+                }
         }
-      },
-      {
-        extend: "excel",
-        text: "<i class='fa fa-file-excel-o bigger-110 green'></i> <span>&nbsp;&nbsp;Excel</span>",
-        className: "btn btn-white btn-default btn-bold",
-        titleAttr: "Simpan sebagai file Excel",
-        filename: "daftar-server",
-        exportOptions: {
-                  orthogonal: 'sort',
-                  columns: ':visible'
-              }
-      },
-      {
-        extend: "print",
-        text: "<i class='fa fa-print bigger-110 grey'></i> <span>&nbsp;&nbsp;Cetak</span>",
-        className: "btn btn-white btn-default btn-bold",
-        titleAttr: "Cetak",
-        title: 'DAFTAR SERVER',
-        exportOptions: {
-                  columns: ':visible'
-              },
-        customize: function (win) {
-                  $(win.document.body).css('font-size', '10pt');
-                  $(win.document.body).find('table')
-                      .addClass('compact')
-                      .css('font-size', 'inherit');
-                  $(win.document.body).find('h1')
-                      .css('text-align','center')
-                      .after('<center><h3>' + sname + '</h3></center><br />');
-              }
-      }
-    ]
-  });
-
-  server_table.buttons().container().appendTo($('.tableTools-container'));
-
-  setTimeout(function() {
-    $($('.tableTools-container')).find('a.dt-button').each(function() {
-      var div = $(this).find(' > div').first();
-      if(div.length == 1) div.tooltip({container: 'body', title: div.parent().text()});
-      else $(this).tooltip({container: 'body', title: $(this).text()});
+      ]
     });
-  }, 500);
 
-  if (sk == '000') {server_table.button('0').disable();}
+    server_table.buttons().container().appendTo($('.tableTools-container'));
 
+    setTimeout(function() {
+      $($('.tableTools-container')).find('a.dt-button').each(function() {
+        var div = $(this).find(' > div').first();
+        if(div.length == 1) div.tooltip({container: 'body', title: div.parent().text()});
+        else $(this).tooltip({container: 'body', title: $(this).text()});
+      });
+    }, 500);
+
+    /* Disable Tambah button if logged in as Administrator */
+    if (sk == '000') {server_table.button('0').disable();}
+
+    $('#btnPrint').on('click', function () {
+      printElement(document.getElementById("printThis"));
+      $('body *').addClass('hide-me'); /* Menghindari bentrok dengan print datatable */
+
+      window.print();
+    });
 })

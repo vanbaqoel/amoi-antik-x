@@ -32,15 +32,14 @@ $(document).ready(function () {
                 .reduce( function (a, b) {
                     return a + b.replace(/[^\d]/g, '')*1;
                 }, 0);
-            var cSum = aSum - bSum;
+            var cSum = bSum - aSum;
             var dSum = rows
                 .data()
                 .pluck(6)
                 .reduce( function (a, b) {
                     return a + b.replace(/[^\d]/g, '')*1;
                 }, 0);
-            var eSum = aSum - dSum;
-            var fSum = bSum - dSum;
+            var eSum = dSum - aSum;
 
             return $('<tr/>')
                 .append( '<td>JUMLAH</td>' )
@@ -48,13 +47,12 @@ $(document).ready(function () {
                 .append( '<td>' + bSum + '</td>' )
                 .append( '<td>' + cSum + '</td>' )
                 .append( '<td>' + dSum + '</td>' )
-                .append( '<td>' + eSum + '</td>' )
-                .append( '<td>' + fSum + '</td>' );
+                .append( '<td>' + eSum + '</td>' );
         }
       },
       columnDefs: [
         {
-          targets: [ 3, 4, 5, 6, 7, 8 ],
+          targets: [ 3, 4, 5, 6, 7 ],
           className: "text-center"
         },
         {
@@ -62,14 +60,14 @@ $(document).ready(function () {
           visible: false
         }
       ],
-      rowCallback: function( row, data, index ) {
+      /*rowCallback: function( row, data, index ) {
         $('td:eq(3)', row).wrapInner("<a href='#' onClick='a(" + '"' + data[2] + '", "' + data[0] + '", "' + data[1] + '")' + "'></a>");
-      }
+      }*/
   });
 
     /* <-- Datatables button */
     $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group btn-overlap';
-    $.fn.dataTable.Buttons.swfPath = "<?= base_url('dist/swf/flashExport-1.2.4.swf') ?>";
+    $.fn.dataTable.Buttons.swfPath = document.location.protocol + "//" + document.location.host + "/amoi-antik/dist/swf/flashExport-1.2.4.swf";
 
     new $.fn.dataTable.Buttons(standar_table, {
       buttons: [
@@ -99,8 +97,13 @@ $(document).ready(function () {
                         .addClass('compact')
                         .css('font-size', 'inherit');
                     $(win.document.body).find('h1')
-                        .css('text-align','center')
-                        .after('<center><h3>' + sname + '</h3></center><br />');
+                      .css({
+                        'text-align':'center',
+                        'font-size':'14pt',
+                        'text-decoration':'underline',
+                        'font-weight':'bold'
+                      })
+                        .after('<center><h4>' + sname + '</h4></center><br />');
 
                     /* Khusus untuk table yang punya lebih dari 2 row header and footer */
                     var footer = $('tfoot');

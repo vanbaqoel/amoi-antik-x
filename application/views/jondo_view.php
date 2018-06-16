@@ -45,9 +45,9 @@
       <hr>
       <dl>
         <dt>Catatan :</dt>
-        <dd>A = PC/Laptop/Notebook Pada SIMAK BMN/SIPAT</dd>
-        <dd>B = PC/Laptop/Notebook Yang Bisa Digunakan Bekerja</dd>
-        <dd>C = PC/Laptop/Notebook Yang Tidak Bisa Digunakan Bekerja</dd>
+        <dd>A : Jumlah keseluruhan perangkat yang tercatat</dd>
+        <dd>B : Jumlah perangkat yang digunakan untuk bekerja</dd>
+        <dd>C : Jumlah perangkat B yang terhubung dengan jaringan Kemenkeu</dd>
       </dl>
 
 

@@ -24,15 +24,15 @@ class Jondo_detail extends CI_Controller {
 		$status_desc = "";
 		switch ($status) {
 			case 'a':
-				$status_desc = "$kategori TERCATAT PADA SIMAK BMN/SIPAT";
+				$status_desc = "$kategori TERCATAT PADA AMOI-ANTIK";
 				break;
 
 			case 'b':
-				$status_desc = "$kategori YANG BISA DIGUNAKAN BEKERJA";
+				$status_desc = "$kategori YANG DIGUNAKAN BEKERJA";
 				break;
 
 			case 'c':
-				$status_desc = "$kategori YANG TIDAK BISA DIGUNAKAN BEKERJA";
+				$status_desc = "$kategori YANG TERHUBUNG DENGAN JARINGAN KEMENKEU";
 				break;
 
 			case 'd':
@@ -74,11 +74,11 @@ class Jondo_detail extends CI_Controller {
         	$rows = array();
             $no++;
             $rows[] = $no;
-        	$rows[] = ($kategori == 'LAPTOP' ? $kategori : $row->kategori);
+        	$rows[] = ($kategori == 'LAPTOP' ? $kategori : $row->katdesc);
         	$rows[] = $row->alamat_ip;
         	$rows[] = $row->hostname;
         	$rows[] = $row->nup;
-        	$rows[] = $row->lokasi;
+        	$rows[] = $row->lokdesc;
         	$rows[] = $row->keterangan;
 
         	if ($this->session->kd_unit == '000'){

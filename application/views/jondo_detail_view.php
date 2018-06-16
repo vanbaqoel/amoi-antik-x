@@ -22,7 +22,7 @@
               <th>No.</th>
               <th>Kategori</th>
               <th>Alamat IP</th>
-              <th>Nama Komputer</th>
+              <th>Hostname</th>
               <th>NUP</th>
               <th>Lokasi</th>
               <th>Keterangan</th>
