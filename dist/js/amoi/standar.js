@@ -47,7 +47,8 @@ $(document).ready(function () {
                 .append( '<td>' + bSum + '</td>' )
                 .append( '<td>' + cSum + '</td>' )
                 .append( '<td>' + dSum + '</td>' )
-                .append( '<td>' + eSum + '</td>' );
+                .append( '<td>' + eSum + '</td>' )
+                .append( '<td></td>' );
         }
       },
       columnDefs: [
@@ -58,6 +59,12 @@ $(document).ready(function () {
         {
           targets: [ 0, 1 ],
           visible: false
+        },
+        {
+          targets: [ -1 ], /* targeting the last column */
+          width: "125px",
+          sortable: false,
+          className: "text-center"
         }
       ],
       /*rowCallback: function( row, data, index ) {

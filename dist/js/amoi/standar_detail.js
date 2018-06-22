@@ -17,7 +17,7 @@ $(document).ready(function () {
       lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
       columnDefs: [
           {
-              targets: [ 0, 2, 8, 10, 12, 14, 16 ],
+              targets: [ 0, 2, 8, 10, 12, 14 ],
               className: "text-center"
           },
           {
@@ -57,6 +57,7 @@ $(document).ready(function () {
         for (var i = 7; i < (data.length - 1); i += 2) {
           if (data[i] == 0) {
             $('td:eq('+ j +')', row).css('background-color', '#FFB6C1');
+            $('td:eq('+ j +')', row).addClass('not-standard');
           }
 
           j++;
@@ -97,6 +98,11 @@ $(document).ready(function () {
                     var exporBody = $(win.document.body).find('tbody');
                     exporBody.after(body.clone());
                     exporBody.remove();
+
+                    // $(win.document.body).find('.not-standard').css({'color':'#FFB6C1', 'background-color':'white'});
+
+                     /*var medias = win.document.querySelectorAll('[media="screen"]');
+                     for(var i=0; i < medias.length;i++){ medias.item(i).media="all" };*/
                 }
         }
       ]

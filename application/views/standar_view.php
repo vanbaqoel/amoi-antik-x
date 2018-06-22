@@ -27,6 +27,7 @@
               <th>C (B - A)</th>
               <th>D</th>
               <th>E (D - A)</th>
+              <th>BELUM STANDAR</th>
             </tr>
           </thead>
           <tbody>

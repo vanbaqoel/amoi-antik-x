@@ -46,9 +46,9 @@ class Standar_detail extends CI_Controller {
 		        	$rows[] = $row->sn;
 		        	$rows[] = $row->jenis;
 		        	$rows[] = $row->jstd;
-		        	$rows[] = $row->jumlah_processor;
+		        	$rows[] = $row->jml_processor;
 		        	$rows[] = $row->pstd;
-		        	$rows[] = $row->jumlah_core;
+		        	$rows[] = $row->jml_core;
 		        	$rows[] = $row->cstd;
 		        	$rows[] = $row->storage;
 		        	$rows[] = $row->sstd;

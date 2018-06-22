@@ -45,10 +45,10 @@
                 <!-- /.col -->
                 <div class="col-md-4">
                   <ul class="chart-legend clearfix">
-                    <li><i class="fa fa-circle-o text-red"></i> Baik</li>
-                    <li><i class="fa fa-circle-o text-yellow"></i> Kurang Baik</li>
-                    <li><i class="fa fa-circle-o text-green"></i> Rusak Ringan</li>
-                    <li><i class="fa fa-circle-o text-blue"></i> Rusak Berat</li>
+                    <li><i class="fa fa-circle-o" style="color: LightSeaGreen"></i> Baik</li>
+                    <li><i class="fa fa-circle-o" style="color: LightSkyBlue"></i> Kurang Baik</li>
+                    <li><i class="fa fa-circle-o" style="color: Khaki"></i> Rusak Ringan</li>
+                    <li><i class="fa fa-circle-o" style="color: LightCoral"></i> Rusak Berat</li>
                   </ul>
                 </div>
                 <!-- /.col -->
@@ -56,14 +56,6 @@
               <!-- /.row -->
             </div>
             <!-- /.box-body -->
-            <div class="box-footer no-padding">
-              <ul class="nav nav-pills nav-stacked">
-                <li><a href="#">Server <span class="pull-right text-red" id="kondisi-server"></span></a></li>
-                <li><a href="#">Personal Computer <span class="pull-right text-yellow" id="kondisi-pc"></span></a></li>
-                <li><a href="#">Laptop/Notebook <span class="pull-right text-green" id="kondisi-laptop"></span></a></li>
-              </ul>
-            </div>
-            <!-- /.footer -->
           </div>
         </div>
         <div class="col-md-6">
@@ -91,8 +83,8 @@
                 <!-- /.col -->
                 <div class="col-md-4">
                   <ul class="chart-legend clearfix">
-                    <li><i class="fa fa-circle-o text-green"></i> Standar</li>
-                    <li><i class="fa fa-circle-o text-red"></i> Belum Standar</li>
+                    <li><i class="fa fa-circle-o" style="color: LightSeaGreen"></i> Sudah Standar</li>
+                    <li><i class="fa fa-circle-o" style="color: LightCoral"></i> Belum Standar</li>
                   </ul>
                 </div>
                 <!-- /.col -->
@@ -100,14 +92,6 @@
               <!-- /.row -->
             </div>
             <!-- /.box-body -->
-            <div class="box-footer no-padding">
-              <ul class="nav nav-pills nav-stacked">
-                <li><a href="#">Server <span class="pull-right text-red" id="spek-server"></span></a></li>
-                <li><a href="#">Personal Computer <span class="pull-right text-green" id="spek-pc"></span></a></li>
-                <li><a href="#">Laptop/Notebook <span class="pull-right text-yellow" id="spek-laptop"></span></a></li>
-              </ul>
-            </div>
-            <!-- /.footer -->
           </div>
         </div>
       </div>
@@ -137,8 +121,8 @@
                 <!-- /.col -->
                 <div class="col-md-4">
                   <ul class="chart-legend clearfix">
-                    <li><i class="fa fa-circle-o text-green"></i> Sudah</li>
-                    <li><i class="fa fa-circle-o text-red"></i> Belum</li>
+                    <li><i class="fa fa-circle-o" style="color: LightSeaGreen"></i> Sudah Join</li>
+                    <li><i class="fa fa-circle-o" style="color: LightCoral"></i> Belum Join</li>
                   </ul>
                 </div>
                 <!-- /.col -->
@@ -173,8 +157,8 @@
                 <!-- /.col -->
                 <div class="col-md-4">
                   <ul class="chart-legend clearfix">
-                    <li><i class="fa fa-circle-o text-green"></i> Genuine</li>
-                    <li><i class="fa fa-circle-o text-red"></i> Tidak Genuine</li>
+                    <li><i class="fa fa-circle-o" style="color: LightSeaGreen"></i> Genuine</li>
+                    <li><i class="fa fa-circle-o" style="color: LightCoral"></i> Tidak Genuine</li>
                   </ul>
                 </div>
                 <!-- /.col -->
@@ -182,14 +166,6 @@
               <!-- /.row -->
             </div>
             <!-- /.box-body -->
-            <div class="box-footer no-padding">
-              <ul class="nav nav-pills nav-stacked">
-                <li><a href="#">Server <span class="pull-right text-red" id="os-server"></span></a></li>
-                <li><a href="#">Personal Computer <span class="pull-right text-green" id="os-pc"></span></a></li>
-                <li><a href="#">Laptop/Notebook <span class="pull-right text-yellow" id="os-laptop"></span></a></li>
-              </ul>
-            </div>
-            <!-- /.footer -->
           </div>
         </div>
       </div>

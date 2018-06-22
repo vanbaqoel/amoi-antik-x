@@ -19,17 +19,17 @@ class Standar_detail_model extends CI_Model {
                         a.merek,
                         a.tipe,
                         a.sn,
-                        a.kategori jenis,
+                        (SELECT deskripsi FROM r_kategori WHERE kd_jenis = 1 AND kd_kategori = a.kategori) jenis,
                         b.kategori jstd,
-                        a.jumlah_processor,
+                        a.jml_processor,
                         b.jumlah_processor pstd,
-                        a.jumlah_core,
+                        a.jml_core,
                         b.jumlah_core cstd,
                         a.storage,
                         b.storage sstd,
                         a.ram,
                         b.ram rstd,
-                        a.lokasi,
+                        (SELECT deskripsi FROM r_ruang WHERE kd_ruang = a.lokasi) lokasi,
                         a.kode_unit
                     FROM t_server a, t_server_std b
                     WHERE
@@ -41,22 +41,22 @@ class Standar_detail_model extends CI_Model {
             case 'PC':
                 $sql = "
                     SELECT
-                        a.kategori,
+                        (SELECT deskripsi FROM r_kategori WHERE kd_jenis = 2 AND kd_kategori = a.kategori) kategori,
                         a.nup,
                         a.merek,
                         a.tipe,
                         a.sn,
-                        a.processor,
+                        (SELECT deskripsi FROM r_processor WHERE kd_processor = a.processor) processor,
                         b.processor pstd,
                         a.storage,
                         b.storage sstd,
                         a.ram,
                         b.ram rstd,
-                        a.nic,
+                        (SELECT deskripsi FROM r_nic WHERE kd_nic = a.nic) nic,
                         b.nic nstd,
-                        a.optical,
+                        (SELECT deskripsi FROM r_optical WHERE kd_optical = a.optical) optical,
                         b.optical ostd,
-                        a.lokasi,
+                        (SELECT deskripsi FROM r_ruang WHERE kd_ruang = a.lokasi) lokasi,
                         a.kode_unit
                     FROM t_pc a, t_pc_std b
                     WHERE
@@ -73,17 +73,17 @@ class Standar_detail_model extends CI_Model {
                         a.merek,
                         a.tipe,
                         a.sn,
-                        a.processor,
+                        (SELECT deskripsi FROM r_processor WHERE kd_processor = a.processor) processor,
                         b.processor pstd,
                         a.storage,
                         b.storage sstd,
                         a.ram,
                         b.ram rstd,
-                        a.nic,
+                        (SELECT deskripsi FROM r_nic WHERE kd_nic = a.nic) nic,
                         b.nic nstd,
-                        a.wifi,
+                        (SELECT deskripsi FROM r_wifi WHERE kd_wifi = a.wifi) wifi,
                         b.wifi wstd,
-                        a.lokasi,
+                        (SELECT deskripsi FROM r_ruang WHERE kd_ruang = a.lokasi) lokasi,
                         a.kode_unit
                     FROM t_laptop a, t_laptop_std b
                     WHERE
