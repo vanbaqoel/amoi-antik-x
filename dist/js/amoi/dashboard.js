@@ -26,18 +26,22 @@ var pieOptions     = {
   //String - A legend template
   legendTemplate       : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<segments.length; i++){%><li><span style="background-color:<%=segments[i].fillColor%>"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>'
 }
-//Create pie or douhnut chart
-// You can switch between pie and douhnut using the method below.
 
-function kondisi_chart(perangkat) {
+var kondisiChart;
+var spekChart;
+var jondoChart;
+var osChart;
+
+function kondisi_chart(perangkat, mode) {
+  var pieChartCanvas = $('#pieKondisi').get(0).getContext('2d');
+  var pieChart       = new Chart(pieChartCanvas);
+
   $.ajax({
     url: "dashboard/get_kondisi_chart/" + perangkat,
     dataType: 'json',
     success: function(result){
       var data = result.data
-      var pieChartCanvas = $('#pieKondisi').get(0).getContext('2d')
-      var pieChart       = new Chart(pieChartCanvas)
-      var PieData        = [
+      var pieData        = [
         {
           value    : data[0][0],
           color    : 'LightSeaGreen',
@@ -64,20 +68,26 @@ function kondisi_chart(perangkat) {
         }
       ]
 
-      pieChart.Doughnut(PieData, pieOptions);
+      if (mode == 0) {
+        kondisiChart = pieChart.Doughnut(pieData, pieOptions);
+      } else {
+        kondisiChart.destroy();
+        kondisiChart = pieChart.Doughnut(pieData, pieOptions);
+      }
     }
   });
 }
 
-function spek_chart(perangkat) {
+function spek_chart(perangkat, mode) {
+  var pieChartCanvas = $('#pieSpek').get(0).getContext('2d');
+  var pieChart       = new Chart(pieChartCanvas);
+
   $.ajax({
     url: "dashboard/get_spek_chart/" + perangkat,
     dataType: 'json',
     success: function(result){
       var data = result.data
-      var pieChartCanvas = $('#pieSpek').get(0).getContext('2d')
-      var pieChart       = new Chart(pieChartCanvas)
-      var PieData        = [
+      var pieData        = [
         {
           value    : data[0][0],
           color    : 'LightSeaGreen',
@@ -92,20 +102,26 @@ function spek_chart(perangkat) {
         }
       ]
 
-      pieChart.Doughnut(PieData, pieOptions);
+      if (mode == 0) {
+        spekChart = pieChart.Doughnut(pieData, pieOptions);
+      } else {
+        spekChart.destroy();
+        spekChart = pieChart.Doughnut(pieData, pieOptions);
+      }
     }
   });
 }
 
-function jondo_chart(perangkat) {
+function jondo_chart(perangkat, mode) {
+  var pieChartCanvas = $('#pieJondo').get(0).getContext('2d');
+  var pieChart       = new Chart(pieChartCanvas);
+
   $.ajax({
     url: "dashboard/get_jondo_chart/" + perangkat,
     dataType: 'json',
     success: function(result){
       var data = result.data
-      var pieChartCanvas = $('#pieJondo').get(0).getContext('2d')
-      var pieChart       = new Chart(pieChartCanvas)
-      var PieData        = [
+      var pieData        = [
         {
           value    : data[0][0],
           color    : 'LightSeaGreen',
@@ -120,20 +136,26 @@ function jondo_chart(perangkat) {
         }
       ]
 
-      pieChart.Doughnut(PieData, pieOptions);
+      if (mode == 0) {
+        jondoChart = pieChart.Doughnut(pieData, pieOptions);
+      } else {
+        jondoChart.destroy();
+        jondoChart = pieChart.Doughnut(pieData, pieOptions);
+      }
     }
   });
 }
 
-function os_chart(perangkat) {
+function os_chart(perangkat, mode) {
+  var pieChartCanvas = $('#pieOS').get(0).getContext('2d');
+  var pieChart       = new Chart(pieChartCanvas);
+
    $.ajax({
     url: "dashboard/get_os_chart/" + perangkat,
     dataType: 'json',
     success: function(result){
       var data = result.data
-      var pieChartCanvas = $('#pieOS').get(0).getContext('2d')
-      var pieChart       = new Chart(pieChartCanvas)
-      var PieData        = [
+      var pieData        = [
         {
           value    : data[0][0],
           color    : 'LightSeaGreen',
@@ -148,7 +170,12 @@ function os_chart(perangkat) {
         }
       ]
 
-      pieChart.Doughnut(PieData, pieOptions);
+      if (mode == 0) {
+        osChart = pieChart.Doughnut(pieData, pieOptions);
+      } else {
+        osChart.destroy();
+        osChart = pieChart.Doughnut(pieData, pieOptions);
+      }
     }
   });
 }
@@ -163,24 +190,28 @@ $(document).ready(function () {
 
   $('.box-header > .box-tools').css('top','3px');
 
-  jondo_chart(0);
-  kondisi_chart(0);
-  spek_chart(0);
-  os_chart(0);
+  kondisi_chart(0, 0);
+
+  jondo_chart(0, 0);
+
+  spek_chart(0, 0);
+
+
+  os_chart(0, 0);
 
   $('#cboKondisi').on('change', function (){
-    kondisi_chart($('#cboKondisi').val());
+    kondisi_chart($('#cboKondisi').val(), 1);
   });
 
   $('#cboSpek').on('change', function (){
-    spek_chart($('#cboSpek').val());
+    spek_chart($('#cboSpek').val(), 1);
   });
 
   $('#cboJondo').on('change', function (){
-    jondo_chart($('#cboJondo').val());
+    jondo_chart($('#cboJondo').val(), 1);
   });
 
   $('#cboOS').on('change', function (){
-    os_chart($('#cboOS').val());
+    os_chart($('#cboOS').val(), 1);
   });
 })

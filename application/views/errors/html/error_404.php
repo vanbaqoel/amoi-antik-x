@@ -1,64 +1,70 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
-<title>404 Page Not Found</title>
-<style type="text/css">
+    <meta charset="UTF-8">
+    <!--IE Compatibility modes-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--Mobile first-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Error 404</title>
 
-::selection { background-color: #E13300; color: white; }
-::-moz-selection { background-color: #E13300; color: white; }
+    <meta name="description" content="Error">
+    <meta name="author" content="">
 
-body {
-	background-color: #fff;
-	margin: 40px;
-	font: 13px/20px normal Helvetica, Arial, sans-serif;
-	color: #4F5155;
-}
+    <meta name="msapplication-TileColor" content="#5bc0de" />
+    <!-- <meta name="msapplication-TileImage" content="assets/img/metis-tile.png" /> -->
+    <!-- Faveicon -->
+  	<link rel="icon" type="image/png" href="images/logo.png">
 
-a {
-	color: #003399;
-	background-color: transparent;
-	font-weight: normal;
-}
+	<!-- Bootstrap 3.3.7 -->
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
 
-h1 {
-	color: #444;
-	background-color: transparent;
-	border-bottom: 1px solid #D0D0D0;
-	font-size: 19px;
-	font-weight: normal;
-	margin: 0 0 14px 0;
-	padding: 14px 15px 10px 15px;
-}
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
 
-code {
-	font-family: Consolas, Monaco, Courier New, Courier, monospace;
-	font-size: 12px;
-	background-color: #f9f9f9;
-	border: 1px solid #D0D0D0;
-	color: #002166;
-	display: block;
-	margin: 14px 0 14px 0;
-	padding: 12px 10px 12px 10px;
-}
 
-#container {
-	margin: 10px;
-	border: 1px solid #D0D0D0;
-	box-shadow: 0 0 8px #D0D0D0;
-}
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style type="text/css">
+    	html, body {
+		    height: 100%;
+		    background-color: LightCoral;
+		    font-family: "Lucida Console", Monaco, monospace;
+		    color: white;
+		}
+		.container {
+		    height: 100%;
+		    width: 100%;
+		    display: table;
+		}
+		.wrapper {
+		    display: table-cell;
+		    height: 100%;
+		    vertical-align: middle;
+		}
+    </style>
 
-p {
-	margin: 12px 15px 12px 15px;
-}
-</style>
 </head>
+
 <body>
-	<div id="container">
-		<h1><?php echo $heading; ?></h1>
-		<?php echo $message; ?>
-	</div>
+    <div class="container">
+    	<div class="wrapper">
+	        <div class="col-lg-8 col-lg-offset-2 text-center">
+	            <div class="logo">
+	                <h1><i class="fa fa-frown-o fa-4x"></i></h1>
+	            </div>
+	            <h1>HALAMAN YANG DIMINTA TIDAK DITEMUKAN</h1>
+	            <h3>... pastikan anda telah memasukkkan alamat yang benar ...</h3>
+	        </div>
+	        <!-- /.col-lg-8 col-offset-2 -->
+	    </div>
+    </div>
 </body>
+
 </html>

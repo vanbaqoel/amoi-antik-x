@@ -39,8 +39,7 @@ class Dashboard_model extends CI_Model {
                 FROM all_view "
             .(($unit != '000') ? "WHERE kode_unit = '$unit'" : "").
             ") e "
-            .(($perangkat != 0) ? "WHERE perangkat = '$where_perangkat' " : " ").
-            "GROUP BY kode_unit";
+            .(($perangkat != 0) ? "WHERE perangkat = '$where_perangkat' " : " ");
 
         $query = $this->db->query($sql);
 
@@ -89,10 +88,9 @@ class Dashboard_model extends CI_Model {
                     SUM(CASE WHEN nilai = 5 THEN 1 ELSE 0 END) a,
                     SUM(CASE WHEN nilai < 5 THEN 1 ELSE 0 END) b
                 FROM t_laptop_std
-                GROUP BY kode_unit) e "
-            .(($unit != '000') ? "WHERE kode_unit = '$unit' AND " : "1 AND ")
-            .(($perangkat != 0) ? "perangkat = '$where_perangkat' " : "1 ").
-            "GROUP BY kode_unit";
+                GROUP BY kode_unit) e WHERE "
+            .(($unit != '000') ? "kode_unit = '$unit' AND " : "1 AND ")
+            .(($perangkat != 0) ? "perangkat = '$where_perangkat' " : "1 ");
 
         $query = $this->db->query($sql);
 
@@ -127,8 +125,7 @@ class Dashboard_model extends CI_Model {
                 FROM all_view "
             .(($unit != '000') ? "WHERE kode_unit = '$unit'" : "").
             ") z "
-            .(($perangkat != 0) ? "WHERE perangkat = '$where_perangkat' " : " ").
-            "GROUP BY kode_unit";
+            .(($perangkat != 0) ? "WHERE perangkat = '$where_perangkat' " : " ");
 
         $query = $this->db->query($sql);
 
@@ -163,8 +160,7 @@ class Dashboard_model extends CI_Model {
                 FROM all_view "
             .(($unit != '000') ? "WHERE kode_unit = '$unit'" : "").
             ") z "
-            .(($perangkat != 0) ? "WHERE perangkat = '$where_perangkat' " : " ").
-            "GROUP BY kode_unit";
+            .(($perangkat != 0) ? "WHERE perangkat = '$where_perangkat' " : " ");
 
         $query = $this->db->query($sql);
 
