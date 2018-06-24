@@ -1,3 +1,5 @@
+
+
 //-------------
 //- PIE CHART -
 //-------------
@@ -68,11 +70,17 @@ function kondisi_chart(perangkat, mode) {
         }
       ]
 
-      if (mode == 0) {
-        kondisiChart = pieChart.Doughnut(pieData, pieOptions);
+      if (data[0][0] == null) {
+        $('.kondisi-area').append("<div class='nodata'><i class='fa fa-exclamation-triangle'>&nbsp;&nbsp;Tidak ada data</div>");
       } else {
-        kondisiChart.destroy();
-        kondisiChart = pieChart.Doughnut(pieData, pieOptions);
+        $('.kondisi-area > .nodata').remove();
+
+        if (mode == 0) {
+          kondisiChart = pieChart.Doughnut(pieData, pieOptions);
+        } else {
+          kondisiChart.destroy();
+          kondisiChart = pieChart.Doughnut(pieData, pieOptions);
+        }
       }
     }
   });
@@ -102,11 +110,17 @@ function spek_chart(perangkat, mode) {
         }
       ]
 
-      if (mode == 0) {
-        spekChart = pieChart.Doughnut(pieData, pieOptions);
+      if (data[0][0] == null) {
+        $('.spek-area').append("<div class='nodata'><i class='fa fa-exclamation-triangle'>&nbsp;&nbsp;Tidak ada data</div>");
       } else {
-        spekChart.destroy();
-        spekChart = pieChart.Doughnut(pieData, pieOptions);
+        $('.spek-area > .nodata').remove();
+
+        if (mode == 0) {
+          spekChart = pieChart.Doughnut(pieData, pieOptions);
+        } else {
+          spekChart.destroy();
+          spekChart = pieChart.Doughnut(pieData, pieOptions);
+        }
       }
     }
   });
@@ -136,11 +150,17 @@ function jondo_chart(perangkat, mode) {
         }
       ]
 
-      if (mode == 0) {
-        jondoChart = pieChart.Doughnut(pieData, pieOptions);
+      if (data[0][0] == null) {
+        $('.jondo-area').append("<div class='nodata'><i class='fa fa-exclamation-triangle'>&nbsp;&nbsp;Tidak ada data</div>");
       } else {
-        jondoChart.destroy();
-        jondoChart = pieChart.Doughnut(pieData, pieOptions);
+        $('.jondo-area > .nodata').remove();
+
+        if (mode == 0) {
+          jondoChart = pieChart.Doughnut(pieData, pieOptions);
+        } else {
+          jondoChart.destroy();
+          jondoChart = pieChart.Doughnut(pieData, pieOptions);
+        }
       }
     }
   });
@@ -170,11 +190,17 @@ function os_chart(perangkat, mode) {
         }
       ]
 
-      if (mode == 0) {
-        osChart = pieChart.Doughnut(pieData, pieOptions);
+      if (data[0][0] == null) {
+        $('.os-area').append("<div class='nodata'><i class='fa fa-exclamation-triangle'>&nbsp;&nbsp;Tidak ada data</div>");
       } else {
-        osChart.destroy();
-        osChart = pieChart.Doughnut(pieData, pieOptions);
+        $('.os-area > .nodata').remove();
+
+        if (mode == 0) {
+          osChart = pieChart.Doughnut(pieData, pieOptions);
+        } else {
+          osChart.destroy();
+          osChart = pieChart.Doughnut(pieData, pieOptions);
+        }
       }
     }
   });

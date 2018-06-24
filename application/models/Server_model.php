@@ -30,7 +30,7 @@ class Server_model extends CI_Model {
         $this->db->join('r_kategori', 't_server.kategori = r_kategori.kd_kategori AND r_kategori.kd_jenis = 2');
         $this->db->join('r_ruang', 't_server.lokasi = r_ruang.kd_ruang');*/
         if ($unit != '000') {
-            $sql .= " WHERE a.kode_unit = $unit";
+            $sql .= " WHERE a.kode_unit = '$unit'";
             // $this->db->where('kode_unit', $unit);
         }
 

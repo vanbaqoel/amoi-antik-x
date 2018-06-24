@@ -162,3 +162,15 @@ form group or input group */
   display: table;
   table-layout: fixed;
 }
+
+/* Dashboard no data label */
+.nodata {
+  top: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: LightCoral;
+}

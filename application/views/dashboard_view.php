@@ -36,7 +36,7 @@
             <!-- /.box-header -->
             <div class="box-body">
               <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-8 kondisi-area">
                   <div class="chart-responsive">
                     <canvas id="pieKondisi" height="150"></canvas>
                   </div>
@@ -74,7 +74,7 @@
             <!-- /.box-header -->
             <div class="box-body">
               <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-8 spek-area">
                   <div class="chart-responsive">
                     <canvas id="pieSpek" height="150"></canvas>
                   </div>
@@ -112,9 +112,10 @@
             <!-- /.box-header -->
             <div class="box-body">
               <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-8 jondo-area">
                   <div class="chart-responsive">
-                    <canvas id="pieJondo" height="150"></canvas>
+                    <canvas id="pieJondo" height="150">
+                    </canvas>
                   </div>
                   <!-- ./chart-responsive -->
                 </div>
@@ -148,7 +149,7 @@
             <!-- /.box-header -->
             <div class="box-body">
               <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-8 os-area">
                   <div class="chart-responsive">
                     <canvas id="pieOS" height="150"></canvas>
                   </div>
