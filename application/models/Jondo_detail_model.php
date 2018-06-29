@@ -49,35 +49,35 @@ class Jondo_detail_model extends CI_Model {
 
         switch ($status) {
             case 'b':
-                $sql .= " AND status = 1";
+                $sql .= " AND kondisi != 4 AND status = 1";
                 break;
 
             case 'c':
-                $sql .= " AND status = 1 AND koneksi = 1";
+                $sql .= " AND kondisi != 4 AND status = 1 AND koneksi = 1";
                 break;
 
             case 'd':
-                $sql .= " AND status = 1 AND koneksi = 1 AND join_domain = 1";
+                $sql .= " AND kondisi != 4 AND status = 1 AND koneksi = 1 AND join_domain = 1";
                 break;
 
             case 'e':
-                $sql .= " AND status = 1 AND koneksi = 1 AND join_domain = 0";
+                $sql .= " AND kondisi != 4 AND status = 1 AND koneksi = 1 AND join_domain = 0";
                 break;
 
             case 'f':
-                $sql .= " AND os = 1";
+                $sql .= " AND kondisi != 4 AND status = 1 AND os = 1";
                 break;
 
             case 'g':
-                $sql .= " AND os = 3";
+                $sql .= " AND kondisi != 4 AND status = 1 AND os = 3";
                 break;
 
             case 'h':
-                $sql .= " AND os = 6";
+                $sql .= " AND kondisi != 4 AND status = 1 AND os = 6";
                 break;
 
             case 'i':
-                $sql .= " AND os NOT IN(1, 3, 6)";
+                $sql .= " AND kondisi != 4 AND status = 1 AND os NOT IN(1, 3, 6)";
                 break;
         }
 

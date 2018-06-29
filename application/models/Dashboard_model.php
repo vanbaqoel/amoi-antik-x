@@ -120,8 +120,8 @@ class Dashboard_model extends CI_Model {
                 SELECT
                     kode_unit,
                     perangkat,
-                    CASE WHEN koneksi = 1 AND join_domain = 1 THEN jml END AS a,
-                    CASE WHEN koneksi = 1 AND join_domain = 0 THEN jml END AS b
+                    CASE WHEN kondisi != 4 AND status = 1 AND koneksi = 1 AND join_domain = 1 THEN jml END AS a,
+                    CASE WHEN kondisi != 4 AND status = 1 AND koneksi = 1 AND join_domain = 0 THEN jml END AS b
                 FROM all_view "
             .(($unit != '000') ? "WHERE kode_unit = '$unit'" : "").
             ") z "
@@ -155,8 +155,8 @@ class Dashboard_model extends CI_Model {
                 SELECT
                     kode_unit,
                     perangkat,
-                    CASE WHEN orisinalitas_os = 1 THEN jml END AS a,
-                    CASE WHEN orisinalitas_os = 0 THEN jml END AS b
+                    CASE WHEN kondisi != 4 AND status = 1 AND orisinalitas_os = 1 THEN jml END AS a,
+                    CASE WHEN kondisi != 4 AND status = 1 AND orisinalitas_os = 0 THEN jml END AS b
                 FROM all_view "
             .(($unit != '000') ? "WHERE kode_unit = '$unit'" : "").
             ") z "

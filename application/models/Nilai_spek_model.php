@@ -9,8 +9,10 @@ class Nilai_spek_model extends CI_Model {
 
     public function nilai_server($unit)
     {
+        $this->db->delete('t_server_std', array('kode_unit' => $unit));
+
         $sql = "
-            REPLACE INTO t_server_std (id, kategori, jumlah_processor, jumlah_core, storage, ram, kode_unit, nilai)
+            INSERT INTO t_server_std (id, kategori, jumlah_processor, jumlah_core, storage, ram, kode_unit, nilai)
             SELECT a.*, (kategori + jumlah_processor + jumlah_core + storage + ram) nilai
             FROM (
                 SELECT
@@ -22,7 +24,7 @@ class Nilai_spek_model extends CI_Model {
                     IF(ram < 8, 0, 1) ram,
                     kode_unit
                 FROM t_server
-                WHERE kondisi != 4" . (($unit != '000') ? " AND kode_unit = '$unit'" : "") . "
+                WHERE (kondisi != 4 OR status = 1)" . (($unit != '000') ? " AND kode_unit = '$unit'" : "") . "
             ) a";
 
         $query = $this->db->query($sql);
@@ -32,8 +34,10 @@ class Nilai_spek_model extends CI_Model {
 
     public function nilai_pc($unit)
     {
+        $this->db->delete('t_pc_std', array('kode_unit' => $unit));
+
         $sql = "
-            REPLACE INTO t_pc_std (id, processor, storage, ram, nic, optical, kode_unit, nilai)
+            INSERT INTO t_pc_std (id, processor, storage, ram, nic, optical, kode_unit, nilai)
             SELECT a.*, (processor + storage + ram + nic + optical) nilai
             FROM (
                 SELECT
@@ -45,7 +49,7 @@ class Nilai_spek_model extends CI_Model {
                     IF(optical < 4 OR optical = 9, 0, 1) optical,
                     kode_unit
                 FROM t_pc
-                WHERE kondisi != 4" . (($unit != '000') ? " AND kode_unit = '$unit'" : "") . "
+                WHERE (kondisi != 4 OR status = 1)" . (($unit != '000') ? " AND kode_unit = '$unit'" : "") . "
             ) a";
 
         $query = $this->db->query($sql);
@@ -55,8 +59,10 @@ class Nilai_spek_model extends CI_Model {
 
     public function nilai_laptop($unit)
     {
+        $this->db->delete('t_laptop_std', array('kode_unit' => $unit));
+
         $sql = "
-            REPLACE INTO t_laptop_std (id, processor, storage, ram, nic, wifi, kode_unit, nilai)
+            INSERT INTO t_laptop_std (id, processor, storage, ram, nic, wifi, kode_unit, nilai)
             SELECT a.*, (processor + storage + ram + nic + wifi) nilai
             FROM (
                 SELECT
@@ -68,7 +74,7 @@ class Nilai_spek_model extends CI_Model {
                     IF(wifi < 2 OR wifi = 9, 0, 1) wifi,
                     kode_unit
                 FROM t_laptop
-                WHERE kondisi != 4" . (($unit != '000') ? " AND kode_unit = '$unit'" : "") . "
+                WHERE (kondisi != 4 OR status = 1)" . (($unit != '000') ? " AND kode_unit = '$unit'" : "") . "
             ) a";
 
         $query = $this->db->query($sql);
