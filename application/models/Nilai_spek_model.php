@@ -16,7 +16,7 @@ class Nilai_spek_model extends CI_Model {
         }
 
         $sql = "
-            INSERT INTO t_server_std (id, kategori, jumlah_processor, jumlah_core, storage, ram, kode_unit, nilai)
+            REPLACE INTO t_server_std (id, kategori, jumlah_processor, jumlah_core, storage, ram, kode_unit, nilai)
             SELECT a.*, (kategori + jumlah_processor + jumlah_core + storage + ram) nilai
             FROM (
                 SELECT
@@ -39,13 +39,13 @@ class Nilai_spek_model extends CI_Model {
     public function nilai_pc($unit)
     {
         if ($unit != '000') {
-            $this->db->delete('t_server_std', array('kode_unit' => $unit));
+            $this->db->delete('t_pc_std', array('kode_unit' => $unit));
         } else {
-            $this->db->delete('t_server_std');
+            $this->db->delete('t_pc_std');
         }
 
         $sql = "
-            INSERT INTO t_pc_std (id, processor, storage, ram, nic, optical, kode_unit, nilai)
+            REPLACE INTO t_pc_std (id, processor, storage, ram, nic, optical, kode_unit, nilai)
             SELECT a.*, (processor + storage + ram + nic + optical) nilai
             FROM (
                 SELECT
@@ -68,13 +68,13 @@ class Nilai_spek_model extends CI_Model {
     public function nilai_laptop($unit)
     {
         if ($unit != '000') {
-            $this->db->delete('t_server_std', array('kode_unit' => $unit));
+            $this->db->delete('t_laptop_std', array('kode_unit' => $unit));
         } else {
-            $this->db->delete('t_server_std');
+            $this->db->delete('t_laptop_std');
         }
 
         $sql = "
-            INSERT INTO t_laptop_std (id, processor, storage, ram, nic, wifi, kode_unit, nilai)
+            REPLACE INTO t_laptop_std (id, processor, storage, ram, nic, wifi, kode_unit, nilai)
             SELECT a.*, (processor + storage + ram + nic + wifi) nilai
             FROM (
                 SELECT

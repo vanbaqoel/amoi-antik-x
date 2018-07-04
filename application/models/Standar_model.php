@@ -24,34 +24,34 @@ class Standar_model extends CI_Model {
                 SELECT
                     x.*,
                     (CASE
-                        WHEN x.perangkat = 'SERVER' THEN (SELECT jml_server FROM r_std_jumlah WHERE kd_unit = x.kode_unit)
-                        WHEN x.perangkat = 'PC' THEN (SELECT jml_pc FROM r_std_jumlah WHERE kd_unit = x.kode_unit)
-                        WHEN x.perangkat = 'LAPTOP' THEN (SELECT jml_laptop FROM r_std_jumlah WHERE kd_unit = x.kode_unit)
+                        WHEN x.perangkat = 'SERVER' THEN (SELECT jml_server FROM std_jumlah_view WHERE kode_unit = x.kode_unit)
+                        WHEN x.perangkat = 'PC' THEN (SELECT jml_pc FROM std_jumlah_view WHERE kode_unit = x.kode_unit)
+                        WHEN x.perangkat = 'LAPTOP' THEN (SELECT jml_laptop FROM std_jumlah_view WHERE kode_unit = x.kode_unit)
                     END) a
                 FROM (
                     SELECT
-                        kode_unit,
+                        n.kode_unit,
                         'SERVER' perangkat,
-                        COUNT(*) b,
-                        SUM(CASE WHEN nilai = 5 THEN 1 ELSE 0 END) d
-                    FROM t_server_std
-                    GROUP BY kode_unit
+                        COUNT(m.id) b,
+                        SUM(CASE WHEN m.nilai = 5 THEN 1 ELSE 0 END) d
+                    FROM t_server_std m RIGHT JOIN t_server n on m.id = n.id
+                    GROUP BY n.kode_unit
                     UNION
                     SELECT
-                        kode_unit,
+                        p.kode_unit,
                         'PC' perangkat,
-                        COUNT(*) b,
-                        SUM(CASE WHEN nilai = 5 THEN 1 ELSE 0 END) d
-                    FROM t_pc_std
-                    GROUP BY kode_unit
+                        COUNT(o.id) b,
+                        SUM(CASE WHEN o.nilai = 5 THEN 1 ELSE 0 END) d
+                    FROM t_pc_std o RIGHT JOIN t_pc p on o.id = p.id
+                    GROUP BY p.kode_unit
                     UNION
                     SELECT
-                        kode_unit,
+                        r.kode_unit,
                         'LAPTOP' perangkat,
-                        COUNT(*) b,
-                        SUM(CASE WHEN nilai = 5 THEN 1 ELSE 0 END) d
-                    FROM t_laptop_std
-                    GROUP BY kode_unit
+                        COUNT(q.id) b,
+                        SUM(CASE WHEN q.nilai = 5 THEN 1 ELSE 0 END) d
+                    FROM t_laptop_std q RIGHT JOIN t_laptop r on q.id = r.id
+                    GROUP BY r.kode_unit
                 ) x
             ) y LEFT JOIN r_unit z ON y.kode_unit = z.kd_unit"
             .(($unit != '000') ? " WHERE kode_unit = '$unit'" : "").
