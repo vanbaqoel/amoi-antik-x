@@ -20,7 +20,8 @@ class Pc_model extends CI_Model {
                 a.hostname,
                 a.alamat_ip,
                 c.deskripsi lokdesc,
-                a.keterangan
+                a.keterangan,
+                a.kode_unit
             FROM t_pc a
             LEFT JOIN r_kategori b ON a.kategori = b.kd_kategori AND b.kd_jenis = 2
             LEFT JOIN r_ruang c ON a.lokasi = c.kd_ruang";

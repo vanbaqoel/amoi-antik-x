@@ -135,6 +135,12 @@
           </a>
         </li>
 
+        <li>
+          <a href="<?= base_url("printer") ?>">
+            <i class="fa fa-print"></i> <span>Printer</span>
+          </a>
+        </li>
+
         <li class="header">SUMMARY</li>
         <li>
           <a href="<?= base_url("join_domain") ?>">

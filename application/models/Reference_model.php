@@ -114,5 +114,33 @@ class Reference_model extends CI_Model {
 
         return $query->result_array();
     }
+
+    public function get_print_method()
+    {
+        $query = $this->db->get('r_print_method');
+
+        return $query->result_array();
+    }
+
+    public function get_con_method()
+    {
+        $query = $this->db->get('r_con_method');
+
+        return $query->result_array();
+    }
+
+    public function get_resolusi()
+    {
+        $query = $this->db->get('r_resolusi');
+
+        return $query->result_array();
+    }
+
+    public function get_aspect_ratio()
+    {
+        $query = $this->db->get('r_aspect_ratio');
+
+        return $query->result_array();
+    }
 }
 ?>
