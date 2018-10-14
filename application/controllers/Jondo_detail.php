@@ -19,47 +19,50 @@ class Jondo_detail extends CI_Controller {
         }
 	}
 
-	public function jondo_view($status, $kategori, $unit, $nm_unit)
+	// public function jondo_view($status, $kategori, $unit, $nm_unit)
+	public function jondo_view($status, $id_enc)
 	{
+		$id_dec = $this->encrypt->decode(strtr($id_enc, array('.' => '+', '-' => '=', '~' => '/')));
+		$param = explode(',', $id_dec);
 		$status_desc = "";
 		switch ($status) {
 			case 'a':
-				$status_desc = "$kategori TERCATAT PADA AMOI-ANTIK";
+				$status_desc = "$param[0] TERCATAT PADA AMOI-ANTIK";
 				break;
 
 			case 'b':
-				$status_desc = "$kategori YANG DIGUNAKAN BEKERJA";
+				$status_desc = "$param[0] YANG DIGUNAKAN BEKERJA";
 				break;
 
 			case 'c':
-				$status_desc = "$kategori YANG TERHUBUNG DENGAN JARINGAN KEMENKEU";
+				$status_desc = "$param[0] YANG TERHUBUNG DENGAN JARINGAN KEMENKEU";
 				break;
 
 			case 'd':
-				$status_desc = "$kategori SUDAH JOIN DOMAIN";
+				$status_desc = "$param[0] SUDAH JOIN DOMAIN";
 				break;
 
 			case 'e':
-				$status_desc = "$kategori BELUM JOIN DOMAIN";
+				$status_desc = "$param[0] BELUM JOIN DOMAIN";
 				break;
 
 			case 'f':
-				$status_desc = "$kategori BERSISTEM OPERASI WINDOWS XP";
+				$status_desc = "$param[0] BERSISTEM OPERASI WINDOWS XP";
 				break;
 
 			case 'g':
-				$status_desc = "$kategori BERSISTEM OPERASI WINDOWS 7";
+				$status_desc = "$param[0] BERSISTEM OPERASI WINDOWS 7";
 				break;
 
 			case 'h':
-				$status_desc = "$kategori BERSISTEM OPERASI WINDOWS 10";
+				$status_desc = "$param[0] BERSISTEM OPERASI WINDOWS 10";
 				break;
 
 			case 'i':
-				$status_desc = "$kategori BERSISTEM OPERASI LAINNYA";
+				$status_desc = "$param[0] BERSISTEM OPERASI LAINNYA";
 				break;
 		}
-		$data = array('status' => $status, 'status_desc' => $status_desc, 'kategori' => $kategori, 'kd_unit' => $unit, 'nm_unit' => $nm_unit );
+		$data = array('status' => $status, 'status_desc' => $status_desc, 'kategori' => $param[0], 'kd_unit' => $param[1], 'nm_unit' => $param[2] );
 		$this->load->view('jondo_detail_view', $data);
 	}
 
@@ -74,10 +77,10 @@ class Jondo_detail extends CI_Controller {
         	$rows = array();
             $no++;
             $rows[] = $no;
+        	$rows[] = $row->nup;
         	$rows[] = ($kategori == 'LAPTOP' ? $kategori : $row->katdesc);
         	$rows[] = $row->alamat_ip;
         	$rows[] = $row->hostname;
-        	$rows[] = $row->nup;
         	$rows[] = $row->lokdesc;
         	$rows[] = $row->keterangan;
 

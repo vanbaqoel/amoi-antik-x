@@ -1,5 +1,8 @@
-function a(kategori, unit, nm_unit) {
-    window.open('standar_detail/standar_view/' + kategori + '/' + unit + '/' + nm_unit, '_blank');
+/*function a(kategori, nm_kategori, unit, nm_unit) {
+    window.open('standar_detail/standar_view/' + kategori + '/' + nm_kategori + '/' + unit + '/' + nm_unit, '_blank');
+}*/
+function a(id_enc) {
+    window.open('standar_detail/standar_view/' + id_enc, '_blank');
 }
 
 $(document).ready(function () {

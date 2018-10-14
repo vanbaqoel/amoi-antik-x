@@ -142,5 +142,19 @@ class Reference_model extends CI_Model {
 
         return $query->result_array();
     }
+
+    public function get_recog()
+    {
+        $query = $this->db->get('r_recog');
+
+        return $query->result_array();
+    }
+
+    public function get_usb()
+    {
+        $query = $this->db->get('r_usb');
+
+        return $query->result_array();
+    }
 }
 ?>

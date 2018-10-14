@@ -18,8 +18,8 @@ function view_server(id)
       $('#txtSN').text(data.sn);
       $('#txtJmlProcessor').text(data.jml_processor);
       $('#txtJmlCore').text(data.jml_core);
-      $('#txtStorage').text(data.storage);
-      $('#txtRAM').text(data.ram);
+      $('#txtStorage').text(data.storage + ' GB');
+      $('#txtRAM').text(data.ram + ' GB');
       $('#txtOS').text(data.cdesc);
       $('#txtEdisiOS').text(data.ddesc);
       $('#txtOrisinalitasOS').text(data.ori);
@@ -123,7 +123,7 @@ $(document).ready(function () {
       lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
       columnDefs: [
           {
-            targets: [ 0, 1 ],
+            targets: [ 0, 1, 2, 3, 7 ],
             className: "text-center"
           },
           {
@@ -184,7 +184,7 @@ $(document).ready(function () {
           filename: "daftar-server",
           exportOptions: {
                     orthogonal: 'sort',
-                    columns: ':visible'
+                    columns: ':not(:last-child)'
                 }
         },
         {
@@ -194,20 +194,21 @@ $(document).ready(function () {
           titleAttr: "Cetak",
           title: 'DAFTAR SERVER',
           exportOptions: {
-                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+                    columns: ':not(:last-child)'
                 },
           customize: function (win) {
-                    $(win.document.body).css('font-size', '10pt');
+                    $(win.document.body).css('font-size', '8pt');
                     $(win.document.body).find('table')
                         .addClass('compact')
                         .css('font-size', 'inherit');
                     $(win.document.body).find('h1')
                       .css({
                         'text-align':'center',
-                        'font-size':'14pt',
+                        'font-size':'12pt',
                         'text-decoration':'underline',
                         'font-weight':'bold'
-                      });
+                      })
+                        .after('<center><h4>' + sname + '</h4></center><br />');
                     $('body *').removeClass('hide-me'); /* Menghindari bentrok dengan print detail */
                 }
         }

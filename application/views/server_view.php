@@ -21,11 +21,12 @@
             <tr>
               <th>No.</th>
               <th>ID</th>
+              <th>NUP</th>
               <th>Kategori</th>
-              <th>Merek</th>
-              <th>Tipe</th>
+              <th>Merek/Tipe</th>
               <th>Hostname</th>
               <th>Alamat IP</th>
+              <th>Kondisi</th>
               <th>Lokasi</th>
               <th>Keterangan</th>
               <?php
@@ -99,11 +100,11 @@
                           <div class="profile-info-value"><span id="txtJmlCore"></span></div>
                         </div>
                         <div class="profile-info-row">
-                          <div class="profile-info-name"> Storage (GB)</div>
+                          <div class="profile-info-name"> Storage </div>
                           <div class="profile-info-value"><span id="txtStorage"></span></div>
                         </div>
                         <div class="profile-info-row">
-                          <div class="profile-info-name"> RAM (GB)</div>
+                          <div class="profile-info-name"> RAM </div>
                           <div class="profile-info-value"><span id="txtRAM"></span></div>
                         </div>
                       </div>
@@ -126,7 +127,7 @@
                           <div class="profile-info-value"><span id="txtEdisiOS"></span></div>
                         </div>
                         <div class="profile-info-row">
-                          <div class="profile-info-name"> Orisinalitas OS</div>
+                          <div class="profile-info-name"> Orisinalitas OS </div>
                           <div class="profile-info-value"><span id="txtOrisinalitasOS"></span></div>
                         </div>
                         <div class="profile-info-row">
@@ -249,7 +250,10 @@
 <?php $this->load->view('footer_view.php'); ?>
 
 <!-- Page Script -->
-<script type="text/javascript"> var sk = '<?= $this->session->kd_unit; ?>';</script>
+<script type="text/javascript">
+  var sk = '<?= $this->session->kd_unit; ?>';
+  var sname = '<?= strtoupper($this->session->name); ?>';
+</script>
 <script src="<?= base_url(); ?>dist/js/amoi/server.js"></script>
 
 </body>

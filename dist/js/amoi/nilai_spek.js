@@ -8,9 +8,18 @@ function nilai_spek()
   $.getJSON("nilai_spek/nilai_all/" + data_unit[0].id, function(result){
       $.each(result, function(i, field){
         $('#info_text').append('<dd>Pemeriksaan terhadap ' + field[0][0] + ' perangkat telah selesai...</dd>');
-        $('#info_text').append('<dd>' + field[0][1] + ' Server telah memenuhi spesifikasi.</dd>');
-        $('#info_text').append('<dd>' + field[0][2] + ' PC telah memenuhi spesifikasi.</dd>');
-        $('#info_text').append('<dd>' + field[0][3] + ' Laptop telah memenuhi spesifikasi.</dd>');
+        $('#info_text').append('<dd>' + field[0][1] + ' PC telah memenuhi spesifikasi.</dd>');
+        $('#info_text').append('<dd>' + field[0][2] + ' Laptop telah memenuhi spesifikasi.</dd>');
+        $('#info_text').append('<dd>' + field[0][3] + ' LCD Projector telah memenuhi spesifikasi.</dd>');
+        $('#info_text').append('<dd>' + field[0][4] + ' Scanner telah memenuhi spesifikasi.</dd>');
+        $('#info_text').append('<dd>' + field[0][5] + ' UPS telah memenuhi spesifikasi.</dd>');
+        $('#info_text').append('<dd>' + field[0][6] + ' Printer telah memenuhi spesifikasi.</dd>');
+        $('#info_text').append('<dd>' + field[0][7] + ' Komputer Server telah memenuhi spesifikasi.</dd>');
+        $('#info_text').append('<dd>' + field[0][8] + ' CCTV telah memenuhi spesifikasi.</dd>');
+        $('#info_text').append('<dd>' + field[0][9] + ' Mesin Absensi telah memenuhi spesifikasi.</dd>');
+        $('#info_text').append('<dd>' + field[0][10] + ' Mesin Antrian telah memenuhi spesifikasi.</dd>');
+        $('#info_text').append('<dd>' + field[0][11] + ' Facsimile telah memenuhi spesifikasi.</dd>');
+        $('#info_text').append('<dd>' + field[0][12] + ' TV telah memenuhi spesifikasi.</dd>');
       });
   });
 }

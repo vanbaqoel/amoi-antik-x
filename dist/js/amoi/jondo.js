@@ -1,4 +1,4 @@
-function a1(kategori, unit, nm_unit) {
+/*function a1(kategori, unit, nm_unit) {
     window.open('jondo_detail/jondo_view/a/' + kategori + '/' + unit + '/' + nm_unit, '_blank');
 }
 
@@ -32,6 +32,42 @@ function a8(kategori, unit, nm_unit) {
 
 function a9(kategori, unit, nm_unit) {
     window.open('jondo_detail/jondo_view/i/' + kategori + '/' + unit + '/' + nm_unit, '_blank');
+}*/
+
+function a1(id_enc) {
+    window.open('jondo_detail/jondo_view/a/' + id_enc, '_blank');
+}
+
+function a2(id_enc) {
+    window.open('jondo_detail/jondo_view/b/' + id_enc, '_blank');
+}
+
+function a3(id_enc) {
+    window.open('jondo_detail/jondo_view/c/' + id_enc, '_blank');
+}
+
+function a4(id_enc) {
+    window.open('jondo_detail/jondo_view/d/' + id_enc, '_blank');
+}
+
+function a5(id_enc) {
+    window.open('jondo_detail/jondo_view/e/' + id_enc, '_blank');
+}
+
+function a6(id_enc) {
+    window.open('jondo_detail/jondo_view/f/' + id_enc, '_blank');
+}
+
+function a7(id_enc) {
+    window.open('jondo_detail/jondo_view/g/' + id_enc, '_blank');
+}
+
+function a8(id_enc) {
+    window.open('jondo_detail/jondo_view/h/' + id_enc, '_blank');
+}
+
+function a9(id_enc) {
+    window.open('jondo_detail/jondo_view/i/' + id_enc, '_blank');
 }
 
 $(document).ready(function () {
@@ -127,14 +163,15 @@ $(document).ready(function () {
           className: "text-center"
         },
         {
-          targets: [ 0, 1 ],
+          targets: [ 0, 1, 12 ],
           visible: false
         }
       ],
       rowCallback: function( row, data, index ) {
         var j = 1;
         for (var i = 2; i < (data.length - 1); i++) {
-          $('td:eq('+ j +')', row).wrapInner("<a href='#' onClick='a" + j + '("' + data[2] + '", "' + data[0] + '", "' + data[1] + '")' + "'></a>");
+          // $('td:eq('+ j +')', row).wrapInner("<a href='#' onClick='a" + j + '("' + data[2] + '", "' + data[0] + '", "' + data[1] + '")' + "'></a>");
+          $('td:eq('+ j +')', row).wrapInner("<a href='#' onClick='a" + j + '("' + data[12] + '")' + "'></a>");
           j++;
         }
       }
@@ -142,7 +179,7 @@ $(document).ready(function () {
 
   /* <-- Datatables button */
   $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group btn-overlap';
-    $.fn.dataTable.Buttons.swfPath = document.location.protocol + "//" + document.location.host + "/amoi-antik/dist/swf/flashExport-1.2.4.swf";
+  $.fn.dataTable.Buttons.swfPath = document.location.protocol + "//" + document.location.host + "/amoi-antik/dist/swf/flashExport-1.2.4.swf";
 
   new $.fn.dataTable.Buttons(jondo_table, {
     buttons: [

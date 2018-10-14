@@ -15,7 +15,7 @@ $(document).ready(function () {
       scrollCollapse: true,
       order: [],
       lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
-      columnDefs: [
+      /*columnDefs: [
           {
               targets: [ 0, 2, 8, 10, 12, 14 ],
               className: "text-center"
@@ -24,7 +24,7 @@ $(document).ready(function () {
             targets: [ 7, 9, 11, 13, 15 ],
             visible: false
           }
-      ],
+      ],*/
       processing: true,
       //Custom texts
       language:
@@ -53,17 +53,18 @@ $(document).ready(function () {
         }
       },
       rowCallback: function( row, data, index ) {
-        var j = 6;
-        for (var i = 7; i < (data.length - 1); i += 2) {
-          if (data[i] == 0) {
-            $('td:eq('+ j +')', row).css('background-color', '#FFB6C1');
-            $('td:eq('+ j +')', row).addClass('not-standard');
+        $.each(colhid, function (index, value) {
+          var j = value
+          if (data[value] == 0) {
+            $('td:eq('+ ((value / 2) + 1) +')', row).css('background-color', '#FFB6C1');
+            $('td:eq('+ ((value / 2) + 1) +')', row).addClass('not-standard');
           }
-
-          j++;
-        }
+        })
       }
     });
+
+    var colhid = pc_table.columns('.hidecol').indexes();
+    console.log(colhid);
 
     /* <-- Datatables button */
     $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group btn-overlap';
@@ -117,4 +118,7 @@ $(document).ready(function () {
         else $(this).tooltip({container: 'body', title: $(this).text()});
       });
     }, 500);
-})
+
+    pc_table.columns( '.hidecol' ).visible( false );
+
+});

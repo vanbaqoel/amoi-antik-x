@@ -12,10 +12,10 @@ class Jondo_detail_model extends CI_Model {
         $from_kategori = "";
         $kd_kategori = 0;
         switch ($kategori) {
-            case 'SERVER':
+            /*case 'SERVER':
                 $from_kategori = "t_server";
                 $kd_kategori = 1;
-                break;
+                break;*/
 
             case 'PC':
                 $from_kategori = "t_pc";

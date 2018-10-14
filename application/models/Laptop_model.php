@@ -11,14 +11,26 @@ class Laptop_model extends CI_Model {
 
     public function get_all($unit)
     {
-        $this->db->select('*');
-        $this->db->from($this->table);
-        $this->db->join('r_ruang', 't_laptop.lokasi = r_ruang.kd_ruang');
+        $sql = "
+            SELECT
+                a.id,
+                a.nup,
+                a.merek,
+                a.tipe,
+                a.hostname,
+                a.alamat_ip,
+                b.deskripsi kondesc,
+                c.deskripsi lokdesc,
+                a.keterangan,
+                a.kode_unit
+            FROM t_laptop a
+            LEFT JOIN r_kondisi b ON a.kondisi = b.kd_kondisi
+            LEFT JOIN r_ruang c ON a.lokasi = c.kd_ruang";
         if ($unit != '000') {
-            $this->db->where('kode_unit', $unit);
+            $sql .= " WHERE a.kode_unit = '$unit'";
         }
 
-        $query = $this->db->get();
+        $query = $this->db->query($sql);
 
         return $query->result();
     }

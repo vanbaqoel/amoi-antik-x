@@ -33,13 +33,15 @@ class Standar extends CI_Controller {
             $rows = array();
             $rows[] = $row->kode_unit;
             $rows[] = $row->nm_unit;
-            $rows[] = $row->perangkat;
-            $rows[] = $row->a;
-            $rows[] = $row->b;
-            $rows[] = $row->c;
-            $rows[] = $row->d;
-            $rows[] = $row->e;
-            $rows[] = '<button type="button" class="btn btn-sm btn-default" title="Lihat" onclick="a('."'$row->perangkat', '$row->kode_unit', '$row->nm_unit'".')"><i class="fa fa-eye"></i></button>';
+            $rows[] = $row->nm_perangkat;
+            $rows[] = $row->jml_standar;
+            $rows[] = $row->jml_dinilai;
+            $rows[] = $row->selisih_jml;
+            $rows[] = $row->jml_on_spek;
+            $rows[] = $row->selisih_on_spek;
+            $id_enc = strtr($this->encrypt->encode("$row->kd_perangkat,$row->nm_perangkat,$row->kode_unit,$row->nm_unit"), array('+' => '.', '=' => '-', '/' => '~'));
+            $rows[] = '<button type="button" class="btn btn-sm btn-default" title="Lihat" onclick="a('."'$id_enc'".')"><i class="fa fa-eye"></i></button>';
+            // $rows[] = '<button type="button" class="btn btn-sm btn-default" title="Lihat" onclick="a('."'$row->kd_perangkat', '$row->nm_perangkat', '$row->kode_unit', '$row->nm_unit'".')"><i class="fa fa-eye"></i></button>';
 
             $data[] = $rows;
         }

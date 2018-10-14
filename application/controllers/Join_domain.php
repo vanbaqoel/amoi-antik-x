@@ -42,7 +42,9 @@ class Join_domain extends CI_Controller {
         	$rows[] = $row->f;
         	$rows[] = $row->g;
         	$rows[] = $row->h;
-        	$rows[] = $row->i;
+            $rows[] = $row->i;
+            $id_enc = strtr($this->encrypt->encode("$row->perangkat,$row->kode_unit,$row->nm_unit"), array('+' => '.', '=' => '-', '/' => '~'));
+        	$rows[] = $id_enc;
 
         	$data[] = $rows;
         }

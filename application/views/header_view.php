@@ -107,11 +107,6 @@
         </li>
         <li class="header">DAFTAR</li>
         <li>
-          <a href="<?= base_url("server") ?>">
-            <i class="fa fa-server"></i> <span>Server</span>
-          </a>
-        </li>
-        <li>
           <a href="<?= base_url("pc") ?>">
             <i class="fa fa-desktop"></i> <span>PC</span>
           </a>
@@ -136,8 +131,62 @@
         </li>
 
         <li>
+          <a href="<?= base_url("projector") ?>">
+            <i class="fa fa-video-camera"></i> <span>LCD Projector</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="<?= base_url("scanner") ?>">
+            <i class="fa fa-picture-o"></i> <span>Scanner</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="<?= base_url("ups") ?>">
+            <i class="fa fa-battery-half"></i> <span>UPS</span>
+          </a>
+        </li>
+
+        <li>
           <a href="<?= base_url("printer") ?>">
             <i class="fa fa-print"></i> <span>Printer</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="<?= base_url("server") ?>">
+            <i class="fa fa-server"></i> <span>Server</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="<?= base_url("cctv") ?>">
+            <i class="fa fa-eye"></i> <span>CCTV</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="<?= base_url("absensi") ?>">
+            <i class="fa fa-hand-paper-o"></i> <span>Mesin Absensi</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="<?= base_url("antrian") ?>">
+            <i class="fa fa-users"></i> <span>Mesin Antrian</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="<?= base_url("fax") ?>">
+            <i class="fa fa-phone"></i> <span>Facsimile</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="<?= base_url("tv") ?>">
+            <i class="fa fa-television"></i> <span>Televisi</span>
           </a>
         </li>
 

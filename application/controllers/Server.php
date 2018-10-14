@@ -36,11 +36,12 @@ class Server extends CI_Controller {
             $no++;
             $rows[] = $no;
         	$rows[] = $row->id;
+        	$rows[] = $row->nup;
         	$rows[] = $row->katdesc;
-        	$rows[] = $row->merek;
-        	$rows[] = $row->tipe;
+        	$rows[] = "$row->merek $row->tipe";
         	$rows[] = $row->hostname;
         	$rows[] = $row->alamat_ip;
+        	$rows[] = $row->kondesc;
         	$rows[] = $row->lokdesc;
         	$rows[] = $row->keterangan;
 
@@ -114,8 +115,6 @@ class Server extends CI_Controller {
 			'jml_core' => $this->input->post('txtJmlCore'),
 			'storage' => $this->input->post('txtStorage'),
 			'ram' => $this->input->post('txtRAM'),
-			// 'nic' => $this->input->post('cboNIC'),
-			// 'optical' => $this->input->post('cboOptical'),
 			'os' => $this->input->post('cboOS'),
 			'edisi_os' => $this->input->post('cboEdisiOS'),
 			'orisinalitas_os' => $this->input->post('cboOrisinalitasOS'),
@@ -171,8 +170,6 @@ class Server extends CI_Controller {
 			'jml_core' => $this->input->post('txtJmlCore'),
 			'storage' => $this->input->post('txtStorage'),
 			'ram' => $this->input->post('txtRAM'),
-			// 'nic' => $this->input->post('cboNIC'),
-			// 'optical' => $this->input->post('cboOptical'),
 			'os' => $this->input->post('cboOS'),
 			'edisi_os' => $this->input->post('cboEdisiOS'),
 			'orisinalitas_os' => $this->input->post('cboOrisinalitasOS'),
@@ -190,7 +187,6 @@ class Server extends CI_Controller {
 			'lokasi' => $this->input->post('cboLokasi'),
 			'nip' => $this->input->post('txtNIP'),
 			'keterangan' => strtoupper($this->input->post('txtKeterangan')),
-			'created_by' => $this->session->username,
 			'modified_by' => $this->session->username,
 			'kode_unit' => $this->session->kd_unit
 		);

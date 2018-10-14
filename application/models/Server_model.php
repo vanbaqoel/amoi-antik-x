@@ -14,16 +14,19 @@ class Server_model extends CI_Model {
         $sql = "
             SELECT
                 a.id,
+                a.nup,
                 b.deskripsi katdesc,
                 a.merek,
                 a.tipe,
                 a.hostname,
                 a.alamat_ip,
-                c.deskripsi lokdesc,
+                c.deskripsi kondesc,
+                d.deskripsi lokdesc,
                 a.keterangan
             FROM t_server a
             LEFT JOIN r_kategori b ON a.kategori = b.kd_kategori AND b.kd_jenis = 1
-            LEFT JOIN r_ruang c ON a.lokasi = c.kd_ruang";
+            LEFT JOIN r_kondisi c ON a.kondisi = c.kd_kondisi
+            LEFT JOIN r_ruang d ON a.lokasi = d.kd_ruang";
             /*
         $this->db->select('*', 'r_kategori.deskripsi AS katdesc');
         $this->db->from($this->table);

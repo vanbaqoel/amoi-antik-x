@@ -12,50 +12,41 @@ class Standar_model extends CI_Model {
         $this->db->query("SET sql_mode = 'NO_UNSIGNED_SUBTRACTION';");
         $sql = "
             SELECT
-                kode_unit,
-                nm_unit,
-                perangkat,
-                a,
-                b,
-                (b - a) c,
-                d,
-                (d - a) e
+                z.kode_unit,
+                aa.nm_unit,
+                ab.kd_perangkat,
+                ab.deskripsi nm_perangkat,
+                z.jml_standar,
+                z.jml_dinilai,
+                (z.jml_dinilai - z.jml_standar) selisih_jml,
+                z.jml_on_spek,
+                (z.jml_on_spek - z.jml_standar) selisih_on_spek
             FROM (
                 SELECT
-                    x.*,
+                    y.kode_unit,
+                    y.perangkat,
+                    y.jml_dinilai,
+                    y.jml_on_spek,
                     (CASE
-                        WHEN x.perangkat = 'SERVER' THEN (SELECT jml_server FROM std_jumlah_view WHERE kode_unit = x.kode_unit)
-                        WHEN x.perangkat = 'PC' THEN (SELECT jml_pc FROM std_jumlah_view WHERE kode_unit = x.kode_unit)
-                        WHEN x.perangkat = 'LAPTOP' THEN (SELECT jml_laptop FROM std_jumlah_view WHERE kode_unit = x.kode_unit)
-                    END) a
-                FROM (
-                    SELECT
-                        n.kode_unit,
-                        'SERVER' perangkat,
-                        COUNT(m.id) b,
-                        SUM(CASE WHEN m.nilai = 5 THEN 1 ELSE 0 END) d
-                    FROM t_server_std m RIGHT JOIN t_server n on m.id = n.id
-                    GROUP BY n.kode_unit
-                    UNION
-                    SELECT
-                        p.kode_unit,
-                        'PC' perangkat,
-                        COUNT(o.id) b,
-                        SUM(CASE WHEN o.nilai = 5 THEN 1 ELSE 0 END) d
-                    FROM t_pc_std o RIGHT JOIN t_pc p on o.id = p.id
-                    GROUP BY p.kode_unit
-                    UNION
-                    SELECT
-                        r.kode_unit,
-                        'LAPTOP' perangkat,
-                        COUNT(q.id) b,
-                        SUM(CASE WHEN q.nilai = 5 THEN 1 ELSE 0 END) d
-                    FROM t_laptop_std q RIGHT JOIN t_laptop r on q.id = r.id
-                    GROUP BY r.kode_unit
-                ) x
-            ) y LEFT JOIN r_unit z ON y.kode_unit = z.kd_unit"
-            .(($unit != '000') ? " WHERE kode_unit = '$unit'" : "").
-            " ORDER BY z.no_urut ASC, y.perangkat DESC";
+                        WHEN y.perangkat = 1 THEN (SELECT jml_pc FROM view_std_jumlah WHERE kd_unit = y.kode_unit)
+                        WHEN y.perangkat = 2 THEN (SELECT jml_laptop FROM view_std_jumlah WHERE kd_unit = y.kode_unit)
+                        WHEN y.perangkat = 3 THEN (SELECT jml_projector FROM view_std_jumlah WHERE kd_unit = y.kode_unit)
+                        WHEN y.perangkat = 4 THEN (SELECT jml_scanner FROM view_std_jumlah WHERE kd_unit = y.kode_unit)
+                        WHEN y.perangkat = 5 THEN (SELECT jml_ups FROM view_std_jumlah WHERE kd_unit = y.kode_unit)
+                        WHEN y.perangkat = 6 THEN (SELECT jml_printer FROM view_std_jumlah WHERE kd_unit = y.kode_unit)
+                        WHEN y.perangkat = 7 THEN (SELECT jml_server FROM view_std_jumlah WHERE kd_unit = y.kode_unit)
+                        WHEN y.perangkat = 8 THEN (SELECT jml_cctv FROM view_std_jumlah WHERE kd_unit = y.kode_unit)
+                        WHEN y.perangkat = 9 THEN (SELECT jml_absensi FROM view_std_jumlah WHERE kd_unit = y.kode_unit)
+                        WHEN y.perangkat = 10 THEN (SELECT jml_antrian FROM view_std_jumlah WHERE kd_unit = y.kode_unit)
+                        WHEN y.perangkat = 11 THEN (SELECT jml_fax FROM view_std_jumlah WHERE kd_unit = y.kode_unit)
+                        WHEN y.perangkat = 12 THEN (SELECT jml_tv FROM view_std_jumlah WHERE kd_unit = y.kode_unit)
+                    END) jml_standar
+                FROM view_hasil_penilaian y
+            ) z
+            LEFT JOIN r_unit aa ON z.kode_unit = aa.kd_unit
+            LEFT JOIN r_perangkat ab ON z.perangkat = ab.kd_perangkat"
+            .(($unit != '000') ? " WHERE z.kode_unit = '$unit'" : "").
+            " ORDER BY aa.no_urut ASC, z.perangkat ASC";
 
         $query = $this->db->query($sql);
 

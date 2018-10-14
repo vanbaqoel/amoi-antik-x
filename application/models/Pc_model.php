@@ -14,25 +14,22 @@ class Pc_model extends CI_Model {
         $sql = "
             SELECT
                 a.id,
+                a.nup,
                 b.deskripsi katdesc,
                 a.merek,
                 a.tipe,
                 a.hostname,
                 a.alamat_ip,
-                c.deskripsi lokdesc,
+                c.deskripsi kondesc,
+                d.deskripsi lokdesc,
                 a.keterangan,
                 a.kode_unit
             FROM t_pc a
             LEFT JOIN r_kategori b ON a.kategori = b.kd_kategori AND b.kd_jenis = 2
-            LEFT JOIN r_ruang c ON a.lokasi = c.kd_ruang";
-            /*
-        $this->db->select('*', 'r_kategori.deskripsi AS katdesc');
-        $this->db->from($this->table);
-        $this->db->join('r_kategori', 't_pc.kategori = r_kategori.kd_kategori AND r_kategori.kd_jenis = 2');
-        $this->db->join('r_ruang', 't_pc.lokasi = r_ruang.kd_ruang');*/
+            LEFT JOIN r_kondisi c ON a.kondisi = c.kd_kondisi
+            LEFT JOIN r_ruang d ON a.lokasi = d.kd_ruang";
         if ($unit != '000') {
             $sql .= " WHERE a.kode_unit = '$unit'";
-            // $this->db->where('kode_unit', $unit);
         }
 
         $query = $this->db->query($sql);

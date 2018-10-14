@@ -124,7 +124,7 @@ $(document).ready(function () {
       lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
       columnDefs: [
           {
-            targets: [ 0, 1 ],
+            targets: [ 0, 1, 2 ],
             className: "text-center"
           },
           {
@@ -185,7 +185,7 @@ $(document).ready(function () {
           filename: "daftar-pc",
           exportOptions: {
                     orthogonal: 'sort',
-                    columns: ':visible'
+                    columns: ':not(:last-child)'
                 }
         },
         {
@@ -195,20 +195,21 @@ $(document).ready(function () {
           titleAttr: "Cetak",
           title: 'DAFTAR PC',
           exportOptions: {
-                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+                    columns: ':not(:last-child)'
                 },
           customize: function (win) {
-                    $(win.document.body).css('font-size', '10pt');
+                    $(win.document.body).css('font-size', '8pt');
                     $(win.document.body).find('table')
                         .addClass('compact')
                         .css('font-size', 'inherit');
                     $(win.document.body).find('h1')
                       .css({
                         'text-align':'center',
-                        'font-size':'14pt',
+                        'font-size':'12pt',
                         'text-decoration':'underline',
                         'font-weight':'bold'
-                      });
+                      })
+                        .after('<center><h4>' + sname + '</h4></center><br />');
                     $('body *').removeClass('hide-me'); /* Menghindari bentrok dengan print detail */
                 }
         }

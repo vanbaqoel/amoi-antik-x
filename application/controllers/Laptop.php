@@ -36,11 +36,12 @@ class Laptop extends CI_Controller {
             $no++;
             $rows[] = $no;
         	$rows[] = $row->id;
-        	$rows[] = $row->merek;
-        	$rows[] = $row->tipe;
+        	$rows[] = $row->nup;
+        	$rows[] = "$row->merek $row->tipe";
         	$rows[] = $row->hostname;
         	$rows[] = $row->alamat_ip;
-        	$rows[] = $row->deskripsi;
+        	$rows[] = $row->kondesc;
+        	$rows[] = $row->lokdesc;
         	$rows[] = $row->keterangan;
 
         	if ($this->session->kd_unit == '000'){
@@ -187,7 +188,6 @@ class Laptop extends CI_Controller {
 			'lokasi' => $this->input->post('cboLokasi'),
 			'nip' => $this->input->post('txtNIP'),
 			'keterangan' => strtoupper($this->input->post('txtKeterangan')),
-			'created_by' => $this->session->username,
 			'modified_by' => $this->session->username,
 			'kode_unit' => $this->session->kd_unit
 		);

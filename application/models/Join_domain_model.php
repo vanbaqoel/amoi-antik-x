@@ -38,7 +38,8 @@ class Join_domain_model extends CI_Model {
                     CASE WHEN kondisi != 4 AND status = 1 AND os NOT IN(1, 3, 6) THEN jml END AS i
                 FROM all_view) x
                 JOIN r_unit y ON x.kode_unit = y.kd_unit
-            ".(($unit != '000') ? "WHERE kode_unit = '$unit'" : "")."
+                WHERE perangkat != 'SERVER'
+            ".(($unit != '000') ? " AND kode_unit = '$unit'" : "")."
             GROUP BY x.kode_unit, x.perangkat
             ORDER BY y.no_urut ASC, x.perangkat DESC";
 
