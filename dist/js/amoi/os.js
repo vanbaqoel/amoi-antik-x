@@ -1,30 +1,42 @@
 function a1(id_enc) {
-    window.open('jondo_detail/jondo_view/a/' + id_enc, '_blank');
+    window.open('os_detail/os_view/a/' + id_enc, '_blank');
 }
 
 function a2(id_enc) {
-    window.open('jondo_detail/jondo_view/b/' + id_enc, '_blank');
+    window.open('os_detail/os_view/b/' + id_enc, '_blank');
 }
 
 function a3(id_enc) {
-    window.open('jondo_detail/jondo_view/c/' + id_enc, '_blank');
+    window.open('os_detail/os_view/c/' + id_enc, '_blank');
 }
 
 function a4(id_enc) {
-    window.open('jondo_detail/jondo_view/d/' + id_enc, '_blank');
+    window.open('os_detail/os_view/d/' + id_enc, '_blank');
 }
 
 function a5(id_enc) {
-    window.open('jondo_detail/jondo_view/e/' + id_enc, '_blank');
+    window.open('os_detail/os_view/e/' + id_enc, '_blank');
+}
+
+function a6(id_enc) {
+    window.open('os_detail/os_view/f/' + id_enc, '_blank');
+}
+
+function a7(id_enc) {
+    window.open('os_detail/os_view/g/' + id_enc, '_blank');
+}
+
+function a8(id_enc) {
+    window.open('os_detail/os_view/h/' + id_enc, '_blank');
 }
 
 $(document).ready(function () {
-  jondo_table =
-  $('#jondo-table').DataTable({
+  os_table =
+  $('#os-table').DataTable({
       serverSide: false,
       //Load data for the table's content from an Ajax source
       ajax: {
-            url: "join_domain/get_jondo", //Populate data using a method in controller
+            url: "os/get_os", //Populate data using a method in controller
             type: "POST"
       },
       paging:   false,
@@ -67,6 +79,24 @@ $(document).ready(function () {
                 .reduce( function (a, b) {
                     return a + b.replace(/[^\d]/g, '')*1;
                 }, 0);
+            var fSum = rows
+                .data()
+                .pluck(8)
+                .reduce( function (a, b) {
+                    return a + b.replace(/[^\d]/g, '')*1;
+                }, 0);
+            var gSum = rows
+                .data()
+                .pluck(9)
+                .reduce( function (a, b) {
+                    return a + b.replace(/[^\d]/g, '')*1;
+                }, 0);
+            var hSum = rows
+                .data()
+                .pluck(9)
+                .reduce( function (a, b) {
+                    return a + b.replace(/[^\d]/g, '')*1;
+                }, 0);
 
             return $('<tr/>')
                 .append( '<td>JUMLAH</td>' )
@@ -74,23 +104,26 @@ $(document).ready(function () {
                 .append( '<td>' + bSum + '</td>' )
                 .append( '<td>' + cSum + '</td>' )
                 .append( '<td>' + dSum + '</td>' )
-                .append( '<td>' + eSum + '</td>' );
+                .append( '<td>' + eSum + '</td>' )
+                .append( '<td>' + fSum + '</td>' )
+                .append( '<td>' + gSum + '</td>' )
+                .append( '<td>' + hSum + '</td>' );
         }
       },
       columnDefs: [
         {
-          targets: [ 3, 4, 5, 6, 7 ],
+          targets: [ 3, 4, 5, 6, 7, 8, 9, 10 ],
           className: "text-center"
         },
         {
-          targets: [ 0, 1, 8 ],
+          targets: [ 0, 1, 11 ],
           visible: false
         }
       ],
       rowCallback: function( row, data, index ) {
         var j = 1;
         for (var i = 2; i < (data.length - 1); i++) {
-          $('td:eq('+ j +')', row).wrapInner("<a href='#' onClick='a" + j + '("' + data[8] + '")' + "'></a>");
+          $('td:eq('+ j +')', row).wrapInner("<a href='#' onClick='a" + j + '("' + data[11] + '")' + "'></a>");
           j++;
         }
       }
@@ -100,14 +133,14 @@ $(document).ready(function () {
   $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group btn-overlap';
   $.fn.dataTable.Buttons.swfPath = document.location.protocol + "//" + document.location.host + "/amoi-antik/dist/swf/flashExport-1.2.4.swf";
 
-  new $.fn.dataTable.Buttons(jondo_table, {
+  new $.fn.dataTable.Buttons(os_table, {
     buttons: [
       {
         extend: "excel",
         text: "<i class='fa fa-file-excel-o bigger-110 green'></i> <span>&nbsp;&nbsp;Excel</span>",
         className: "btn btn-white btn-default btn-bold",
         titleAttr: "Simpan sebagai file Excel",
-        filename: "laporan-join-domain",
+        filename: "laporan-penggunaan-os",
         exportOptions: {
                   orthogonal: 'sort',
                   columns: ':visible'
@@ -118,7 +151,7 @@ $(document).ready(function () {
         text: "<i class='fa fa-print bigger-110 grey'></i> <span>&nbsp;&nbsp;Cetak</span>",
         className: "btn btn-white btn-default btn-bold",
         titleAttr: "Cetak",
-        title: 'LAPORAN JOIN DOMAIN',
+        title: 'LAPORAN PENGGUNAAN OS',
         exportOptions: {
                   columns: ':visible'
               },
@@ -167,7 +200,7 @@ $(document).ready(function () {
     ]
   });
 
-  jondo_table.buttons().container().appendTo($('.tableTools-container'));
+  os_table.buttons().container().appendTo($('.tableTools-container'));
 
   setTimeout(function() {
     $($('.tableTools-container')).find('a.dt-button').each(function() {

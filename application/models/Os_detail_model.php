@@ -1,17 +1,22 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Jondo_detail_model extends CI_Model {
+class Os_detail_model extends CI_Model {
 
     public function __construct() {
         parent::__construct();
     }
 
-    public function jondo($unit, $status, $kategori)
+    public function os($unit, $status, $kategori)
     {
         $from_kategori = "";
         $kd_kategori = 0;
         switch ($kategori) {
+            case 'SERVER':
+                $from_kategori = "t_server";
+                $kd_kategori = 1;
+                break;
+
             case 'PC':
                 $from_kategori = "t_pc";
                 $kd_kategori = 2;
@@ -27,10 +32,12 @@ class Jondo_detail_model extends CI_Model {
             . ($kategori == 'LAPTOP' ? '' : 'c.deskripsi katdesc,') .
                "merek,
                 tipe,
-                alamat_ip,
-                hostname,
+                edisi_os,
+                os,
                 nup,
                 b.deskripsi lokdesc,
+                d.deskripsi osdesc,
+                e.deskripsi osedesc,
                 keterangan,
                 kode_unit
             FROM $from_kategori a";
@@ -42,6 +49,12 @@ class Jondo_detail_model extends CI_Model {
             LEFT JOIN r_kategori c ON a.kategori = c.kd_kategori AND c.kd_jenis = $kd_kategori" : "";
 
         $sql .= "
+            LEFT JOIN r_os d ON a.os = d.kd_os ";
+
+        $sql .= "
+            LEFT JOIN r_osedisi e ON a.os = e.kd_osedisi ";
+
+        $sql .= "
             WHERE kode_unit = '$unit'";
 
         switch ($status) {
@@ -50,31 +63,27 @@ class Jondo_detail_model extends CI_Model {
                 break;
 
             case 'c':
-                $sql .= " AND kondisi != 4 AND status = 1 AND koneksi = 1";
-                break;
-
-            case 'd':
-                $sql .= " AND kondisi != 4 AND status = 1 AND koneksi = 1 AND join_domain = 1";
-                break;
-
-            case 'e':
-                $sql .= " AND kondisi != 4 AND status = 1 AND koneksi = 1 AND join_domain = 0";
-                break;
-
-            case 'f':
                 $sql .= " AND kondisi != 4 AND status = 1 AND os = 1";
                 break;
 
-            case 'g':
+            case 'd':
                 $sql .= " AND kondisi != 4 AND status = 1 AND os = 3";
                 break;
 
-            case 'h':
+            case 'e':
                 $sql .= " AND kondisi != 4 AND status = 1 AND os = 6";
                 break;
 
-            case 'i':
+            case 'f':
                 $sql .= " AND kondisi != 4 AND status = 1 AND os NOT IN(1, 3, 6)";
+                break;
+
+            case 'g':
+                $sql .= " AND kondisi != 4 AND status = 1 AND orisinalitas_os = 1";
+                break;
+
+            case 'h':
+                $sql .= " AND kondisi != 4 AND status = 1 AND orisinalitas_os = 0";
                 break;
         }
 

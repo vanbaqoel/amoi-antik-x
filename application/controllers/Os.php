@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Join_domain extends CI_Controller {
+class Os extends CI_Controller {
 
 	/**
 	 * Class constructor
@@ -13,7 +13,7 @@ class Join_domain extends CI_Controller {
 		if ($this->session->loggedin)
         {
 	        /* Load database model */
-	        $this->load->model('join_domain_model');
+	        $this->load->model('os_model');
         } else {
             redirect(base_url('autentikasi'), 'refresh');
         }
@@ -21,12 +21,12 @@ class Join_domain extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('jondo_view');
+		$this->load->view('os_view');
 	}
 
-	public function get_jondo()
+	public function get_os()
 	{
-		$list = $this->join_domain_model->get_all($this->session->kd_unit);
+		$list = $this->os_model->get_all($this->session->kd_unit);
 
         $data = array();
         foreach($list as $row){
@@ -39,6 +39,9 @@ class Join_domain extends CI_Controller {
         	$rows[] = $row->c;
         	$rows[] = $row->d;
         	$rows[] = $row->e;
+            $rows[] = $row->f;
+        	$rows[] = $row->g;
+        	$rows[] = $row->h;
             $id_enc = strtr($this->encrypt->encode("$row->perangkat,$row->kode_unit,$row->nm_unit"), array('+' => '.', '=' => '-', '/' => '~'));
         	$rows[] = $id_enc;
 
@@ -53,9 +56,9 @@ class Join_domain extends CI_Controller {
         echo json_encode($output);
 	}
 
-	public function get_jondo_chart()
+	public function get_os_chart()
 	{
-		$list = $this->join_domain_model->get_all_chart($this->session->kd_unit);
+		$list = $this->os_model->get_all_chart($this->session->kd_unit);
 
         $data = array();
         foreach($list as $row){

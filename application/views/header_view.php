@@ -197,6 +197,11 @@
           </a>
         </li>
         <li>
+          <a href="<?= base_url("os") ?>">
+            <i class="fa fa-windows"></i> <span>Penggunaan OS</span>
+          </a>
+        </li>
+        <li>
           <a href="<?= base_url("standar") ?>">
             <i class="fa fa-check-square-o"></i> <span>Pemenuhan Standar</span>
           </a>

@@ -5,7 +5,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        <i class="fa fa-list"></i> - <?= urldecode($nm_unit) . " - $status_desc"; ?>
+        <i class="fa fa-windows"></i> - <?= urldecode($nm_unit) . " - $status_desc"; ?>
       </h1>
     </section>
 
@@ -23,8 +23,7 @@
               <th>NUP</th>
               <th>Kategori</th>
               <th>Merek/Tipe</th>
-              <th>Alamat IP</th>
-              <th>Hostname</th>
+              <th>Sistem Operasi</th>
               <th>Lokasi</th>
               <th>Keterangan</th>
               <?php
@@ -54,7 +53,7 @@
   var ku = '<?= $kd_unit; ?>';
   var nu = '<?= urldecode($nm_unit); ?>';
 </script>
-<script src="<?= base_url(); ?>dist/js/amoi/jondo_detail.js"></script>
+<script src="<?= base_url(); ?>dist/js/amoi/os_detail.js"></script>
 
 </body>
 </html>

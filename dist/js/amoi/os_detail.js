@@ -1,13 +1,13 @@
 
-var jondo_table;
+var os_table;
 $(document).ready(function () {
-  jondo_table =
+  os_table =
     $('#dynamic-table')
     .DataTable({
       serverSide: false,
         //Load data for the table's content from an Ajax source
       ajax: {
-            url: document.location.protocol + "//" + document.location.host + "/amoi-antik/jondo_detail/jondo/" + st + "/" + kat + "/" + ku, //Populate data using a method in controller
+            url: document.location.protocol + "//" + document.location.host + "/amoi-antik/os_detail/os/" + st + "/" + kat + "/" + ku, //Populate data using a method in controller
             type: "POST"
       },
       autoWidth: false,
@@ -54,7 +54,7 @@ $(document).ready(function () {
     $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group btn-overlap';
     $.fn.dataTable.Buttons.swfPath = document.location.protocol + "//" + document.location.host + "/amoi-antik/dist/swf/flashExport-1.2.4.swf";
 
-    new $.fn.dataTable.Buttons(jondo_table, {
+    new $.fn.dataTable.Buttons(os_table, {
       buttons: [
         {
           extend: "print",
@@ -83,7 +83,7 @@ $(document).ready(function () {
       ]
     });
 
-    jondo_table.buttons().container().appendTo($('.tableTools-container'));
+    os_table.buttons().container().appendTo($('.tableTools-container'));
 
     setTimeout(function() {
       $($('.tableTools-container')).find('a.dt-button').each(function() {

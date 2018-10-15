@@ -142,6 +142,7 @@
                   <th class="hidecol">astd</th>
                   <th>Jumlah Channel</th>
                   <th class="hidecol">bstd</th>
+                  <th>Jumlah Kamera</th>
                   <th>Harddisk</th>
                   <th class="hidecol">cstd</th>
                   <th>Lokasi</th>

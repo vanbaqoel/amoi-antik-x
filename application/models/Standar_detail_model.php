@@ -183,6 +183,7 @@ class Standar_detail_model extends CI_Model {
                         b.frame_rate astd,
                         a.channel,
                         b.channel bstd,
+                        a.jml_kamera,
                         a.harddisk,
                         b.harddisk cstd,
                         (SELECT deskripsi FROM r_ruang WHERE kd_ruang = a.lokasi) lokasi
@@ -203,7 +204,7 @@ class Standar_detail_model extends CI_Model {
                         b.user_cap acstd,
                         a.record_cap,
                         b.record_cap bcstd,
-                        a.recog,
+                        (SELECT deskripsi FROM r_recog WHERE kd_recog = a.recog) recog,
                         b.recog cstd,
                         (SELECT deskripsi FROM r_ruang WHERE kd_ruang = a.lokasi) lokasi
                     FROM t_absensi a, t_absensi_std b

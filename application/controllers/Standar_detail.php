@@ -120,7 +120,7 @@ class Standar_detail extends CI_Controller {
 		        	$rows[] = "$row->merek $row->tipe";
 		        	$rows[] = "$row->scan_speed MS/LINE";
 		        	$rows[] = $row->astd;
-		        	$rows[] = $row->bit_depth;
+		        	$rows[] = "$row->bit_depth BIT";
 		        	$rows[] = $row->bstd;
 		        	$rows[] = ($row->doc_size == 1) ? "HINGGA F4" : "DI BAWAH F4";
 		        	$rows[] = $row->cstd;
@@ -188,9 +188,9 @@ class Standar_detail extends CI_Controller {
 		        	$rows[] = $row->bstd;
 		        	$rows[] = $row->jml_core;
 		        	$rows[] = $row->cstd;
-		        	$rows[] = $row->storage;
+		        	$rows[] = "$row->storage GB";
 		        	$rows[] = $row->dstd;
-		        	$rows[] = $row->ram;
+		        	$rows[] = "$row->ram GB";
 		        	$rows[] = $row->estd;
 		        	$rows[] = $row->lokasi;
 
@@ -209,6 +209,7 @@ class Standar_detail extends CI_Controller {
 		        	$rows[] = $row->astd;
 		        	$rows[] = $row->channel;
 		        	$rows[] = $row->bstd;
+		        	$rows[] = $row->jml_kamera;
 		        	$rows[] = "$row->harddisk GB";
 		        	$rows[] = $row->cstd;
 		        	$rows[] = $row->lokasi;
@@ -260,10 +261,8 @@ class Standar_detail extends CI_Controller {
 		            $rows[] = $no;
 		        	$rows[] = $row->nup;
 		        	$rows[] = "$row->merek $row->tipe";
-		        	$rows[] = "$row->merek $row->tipe";
-		        	$rows[] = $row->astd;
 		        	$rows[] = "$row->speed S/P";
-		        	$rows[] = $row->bstd;
+		        	$rows[] = $row->astd;
 		        	$rows[] = $row->lokasi;
 
 		        	$data[] = $rows;

@@ -5,7 +5,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        <i class="fa fa-plug"></i> - Join Domain
+        <i class="fa fa-windows"></i> - PENGGUNAAN SISTEM OPERASI
       </h1>
     </section>
 
@@ -16,21 +16,25 @@
         <div class="pull-right tableTools-container"></div>
       </div>
       <div>
-        <table id="jondo-table" class="table table-striped table-bordered table-hover">
+        <table id="os-table" class="table table-striped table-bordered table-hover">
           <thead>
             <tr>
               <th rowspan="2" class="">Kode Unit</th>
               <th rowspan="2" class="">Nama Unit</th>
               <th rowspan="2" class="">Jenis Perangkat</th>
-              <th colspan="3" class="text-center">Jumlah Perangkat</th>
-              <th colspan="2" class="text-center">Perangkat Join Domain</th>
+              <th colspan="2" class="text-center">Jumlah Perangkat</th>
+              <th colspan="4" class="text-center">Sistem Operasi</th>
+              <th colspan="2" class="text-center">Orisinalitas</th>
             </tr>
             <tr>
               <th>A</th>
               <th>B</th>
-              <th>C</th>
-              <th>Sudah</th>
-              <th>Belum</th>
+              <th>Win XP</th>
+              <th>Win 7</th>
+              <th>Win 10</th>
+              <th>Lainnya</th>
+              <th>Genuine</th>
+              <th>Not Genuine</th>
             </tr>
           </thead>
           <tbody>
@@ -42,7 +46,6 @@
         <dt>Catatan :</dt>
         <dd>A : Jumlah keseluruhan perangkat yang tercatat</dd>
         <dd>B : Jumlah perangkat yang digunakan untuk bekerja</dd>
-        <dd>C : Jumlah perangkat B yang terhubung dengan jaringan Kemenkeu</dd>
       </dl>
 
 
@@ -58,7 +61,7 @@
 
 <!-- Page Script -->
 <script type="text/javascript"> var sname = '<?= $this->session->name; ?>';</script>
-<script src="<?= base_url(); ?>dist/js/amoi/jondo.js"></script>
+<script src="<?= base_url(); ?>dist/js/amoi/os.js"></script>
 
 </body>
 </html>
