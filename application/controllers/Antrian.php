@@ -40,6 +40,7 @@ class Antrian extends CI_Controller {
         	$rows[] = "$row->merek $row->tipe";
         	$rows[] = $row->counter;
         	$rows[] = $row->ticket;
+        	$rows[] = $row->alamat_ip;
         	$rows[] = $row->kondesc;
         	$rows[] = $row->lokdesc;
         	$rows[] = $row->keterangan;
@@ -103,6 +104,7 @@ class Antrian extends CI_Controller {
 			'sn' => strtoupper($this->input->post('txtSN')),
 			'counter' => $this->input->post('txtCounter'),
 			'ticket' => $this->input->post('txtTicket'),
+			'alamat_ip' => strtoupper($this->input->post('txtAlamatIP')),
 			'kode_barang' => strtoupper($this->input->post('txtKodeBarang')),
 			'nup' => $this->input->post('txtNUP'),
 			'tahun_perolehan' => $this->input->post('txtTahunPerolehan'),
@@ -145,6 +147,7 @@ class Antrian extends CI_Controller {
 			'sn' => $this->input->post('txtSN'),
 			'counter' => $this->input->post('txtCounter'),
 			'ticket' => $this->input->post('txtTicket'),
+			'alamat_ip' => strtoupper($this->input->post('txtAlamatIP')),
 			'kode_barang' => $this->input->post('txtKodeBarang'),
 			'nup' => $this->input->post('txtNUP'),
 			'tahun_perolehan' => $this->input->post('txtTahunPerolehan'),

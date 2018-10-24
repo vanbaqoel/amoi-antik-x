@@ -14,6 +14,7 @@ class Os_model extends CI_Model {
                 x.kode_unit,
                 y.nm_unit,
                 x.perangkat,
+                z.deskripsi nm_perangkat,
                 COALESCE(SUM(x.jml), 0) a,
                 COALESCE(SUM(x.b), 0) b,
                 COALESCE(SUM(x.c), 0) c,
@@ -34,11 +35,13 @@ class Os_model extends CI_Model {
                     CASE WHEN kondisi != 4 AND status = 1 AND os NOT IN(1, 3, 6) THEN jml END AS f,
                     CASE WHEN kondisi != 4 AND status = 1 AND orisinalitas_os = 1 THEN jml END AS g,
                     CASE WHEN kondisi != 4 AND status = 1 AND orisinalitas_os = 0 THEN jml END AS h
-                FROM all_view) x
+                FROM view_all
+                WHERE perangkat IN (1, 2, 7)) x
                 JOIN r_unit y ON x.kode_unit = y.kd_unit
+                JOIN r_perangkat z ON x.perangkat = z.kd_perangkat
             ".(($unit != '000') ? "WHERE kode_unit = '$unit'" : "")."
             GROUP BY x.kode_unit, x.perangkat
-            ORDER BY y.no_urut ASC, x.perangkat DESC";
+            ORDER BY y.no_urut, x.perangkat";
 
         $query = $this->db->query($sql);
 

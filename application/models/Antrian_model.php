@@ -19,6 +19,7 @@ class Antrian_model extends CI_Model {
                 a.tipe,
                 a.counter,
                 a.ticket,
+                a.alamat_ip,
                 c.deskripsi kondesc,
                 b.deskripsi lokdesc,
                 a.keterangan,

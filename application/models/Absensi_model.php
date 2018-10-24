@@ -19,6 +19,7 @@ class Absensi_model extends CI_Model {
                 a.tipe,
                 a.user_cap,
                 a.record_cap,
+                a.alamat_ip,
                 b.deskripsi recogdesc,
                 c.deskripsi lokdesc,
                 d.deskripsi kondesc,

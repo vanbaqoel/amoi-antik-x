@@ -22,6 +22,7 @@ function edit_absensi(id)
       $('[name="txtUserCap"]').val(data.user_cap);
       $('[name="txtRecordCap"]').val(data.record_cap);
       $('[name="cboRecog"]').val(data.recog).trigger('change');
+      $('[name="txtAlamatIP"]').val(data.alamat_ip);
       $('[name="txtKodeBarang"]').val(data.kode_barang);
       $('[name="txtNUP"]').val(data.nup);
       $('[name="txtTahunPerolehan"]').val(data.tahun_perolehan);

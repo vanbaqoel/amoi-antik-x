@@ -93,7 +93,7 @@ $(document).ready(function () {
                 }, 0);
             var hSum = rows
                 .data()
-                .pluck(9)
+                .pluck(10)
                 .reduce( function (a, b) {
                     return a + b.replace(/[^\d]/g, '')*1;
                 }, 0);

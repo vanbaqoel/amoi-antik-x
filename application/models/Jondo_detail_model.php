@@ -7,25 +7,22 @@ class Jondo_detail_model extends CI_Model {
         parent::__construct();
     }
 
-    public function jondo($unit, $status, $kategori)
+    public function jondo($unit, $status, $perangkat)
     {
         $from_kategori = "";
-        $kd_kategori = 0;
-        switch ($kategori) {
-            case 'PC':
+        switch ($perangkat) {
+            case 1:
                 $from_kategori = "t_pc";
-                $kd_kategori = 2;
                 break;
 
-            case 'LAPTOP':
+            case 2:
                 $from_kategori = "t_laptop";
                 break;
         }
 
         $sql = "
-            SELECT "
-            . ($kategori == 'LAPTOP' ? '' : 'c.deskripsi katdesc,') .
-               "merek,
+            SELECT
+                merek,
                 tipe,
                 alamat_ip,
                 hostname,
@@ -33,15 +30,8 @@ class Jondo_detail_model extends CI_Model {
                 b.deskripsi lokdesc,
                 keterangan,
                 kode_unit
-            FROM $from_kategori a";
-
-        $sql .= "
-            LEFT JOIN r_ruang b ON a.lokasi = b.kd_ruang ";
-
-        $sql .= ($kd_kategori > 0) ? "
-            LEFT JOIN r_kategori c ON a.kategori = c.kd_kategori AND c.kd_jenis = $kd_kategori" : "";
-
-        $sql .= "
+            FROM $from_kategori a
+            LEFT JOIN r_ruang b ON a.lokasi = b.kd_ruang
             WHERE kode_unit = '$unit'";
 
         switch ($status) {

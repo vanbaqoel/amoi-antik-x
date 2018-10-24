@@ -7,30 +7,26 @@ class Os_detail_model extends CI_Model {
         parent::__construct();
     }
 
-    public function os($unit, $status, $kategori)
+    public function os($unit, $status, $perangkat)
     {
         $from_kategori = "";
-        $kd_kategori = 0;
-        switch ($kategori) {
-            case 'SERVER':
-                $from_kategori = "t_server";
-                $kd_kategori = 1;
-                break;
-
-            case 'PC':
+        switch ($perangkat) {
+            case 1:
                 $from_kategori = "t_pc";
-                $kd_kategori = 2;
                 break;
 
-            case 'LAPTOP':
+            case 2:
                 $from_kategori = "t_laptop";
+                break;
+
+            case 7:
+                $from_kategori = "t_server";
                 break;
         }
 
         $sql = "
-            SELECT "
-            . ($kategori == 'LAPTOP' ? '' : 'c.deskripsi katdesc,') .
-               "merek,
+            SELECT
+                merek,
                 tipe,
                 edisi_os,
                 os,
@@ -40,21 +36,10 @@ class Os_detail_model extends CI_Model {
                 e.deskripsi osedesc,
                 keterangan,
                 kode_unit
-            FROM $from_kategori a";
-
-        $sql .= "
-            LEFT JOIN r_ruang b ON a.lokasi = b.kd_ruang ";
-
-        $sql .= ($kd_kategori > 0) ? "
-            LEFT JOIN r_kategori c ON a.kategori = c.kd_kategori AND c.kd_jenis = $kd_kategori" : "";
-
-        $sql .= "
-            LEFT JOIN r_os d ON a.os = d.kd_os ";
-
-        $sql .= "
-            LEFT JOIN r_osedisi e ON a.os = e.kd_osedisi ";
-
-        $sql .= "
+            FROM $from_kategori a
+            LEFT JOIN r_ruang b ON a.lokasi = b.kd_ruang
+            LEFT JOIN r_os d ON a.os = d.kd_os
+            LEFT JOIN r_osedisi e ON a.os = e.kd_osedisi
             WHERE kode_unit = '$unit'";
 
         switch ($status) {

@@ -14,6 +14,7 @@ class Join_domain_model extends CI_Model {
                 x.kode_unit,
                 y.nm_unit,
                 x.perangkat,
+                z.deskripsi nm_perangkat,
                 COALESCE(SUM(x.jml), 0) a,
                 COALESCE(SUM(x.b), 0) b,
                 COALESCE(SUM(x.c), 0) c,
@@ -28,12 +29,13 @@ class Join_domain_model extends CI_Model {
                     CASE WHEN kondisi != 4 AND status = 1 AND koneksi = 1 THEN jml END AS c,
                     CASE WHEN kondisi != 4 AND status = 1 AND koneksi = 1 AND join_domain = 1 THEN jml END AS d,
                     CASE WHEN kondisi != 4 AND status = 1 AND koneksi = 1 AND join_domain = 0 THEN jml END AS e
-                FROM all_view) x
+                FROM view_all
+                WHERE perangkat IN (1, 2)) x
                 JOIN r_unit y ON x.kode_unit = y.kd_unit
-                WHERE perangkat != 'SERVER'
-            ".(($unit != '000') ? " AND kode_unit = '$unit'" : "")."
+                JOIN r_perangkat z ON x.perangkat = z.kd_perangkat
+            ".(($unit != '000') ? "WHERE kode_unit = '$unit'" : "")."
             GROUP BY x.kode_unit, x.perangkat
-            ORDER BY y.no_urut ASC, x.perangkat DESC";
+            ORDER BY y.no_urut, x.perangkat";
 
         $query = $this->db->query($sql);
 

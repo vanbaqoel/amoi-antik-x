@@ -17,6 +17,7 @@ function view_antrian(id)
       $('#txtSN').text(data.sn);
       $('#txtCounter').text(data.counter);
       $('#txtTicket').text(data.ticket);
+      $('#txtAlamatIP').text(data.alamat_ip);
       $('#txtKodeBarang').text(data.kode_barang);
       $('#txtNUP').text(data.nup);
       $('#txtTahunPerolehan').text(data.tahun_perolehan);
@@ -110,7 +111,7 @@ $(document).ready(function () {
       lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
       columnDefs: [
           {
-            targets: [ 0, 1, 2, 4, 5, 6 ],
+            targets: [ 0, 1, 2, 4, 5, 7 ],
             className: "text-center"
           },
           {

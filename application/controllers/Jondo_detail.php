@@ -27,33 +27,33 @@ class Jondo_detail extends CI_Controller {
 		$status_desc = "";
 		switch ($status) {
 			case 'a':
-				$status_desc = "$param[0] TERCATAT PADA AMOI-ANTIK";
+				$status_desc = "$param[1] TERCATAT PADA AMOI-ANTIK";
 				break;
 
 			case 'b':
-				$status_desc = "$param[0] YANG DIGUNAKAN BEKERJA";
+				$status_desc = "$param[1] YANG DIGUNAKAN BEKERJA";
 				break;
 
 			case 'c':
-				$status_desc = "$param[0] YANG TERHUBUNG DENGAN JARINGAN KEMENKEU";
+				$status_desc = "$param[1] YANG TERHUBUNG DENGAN JARINGAN KEMENKEU";
 				break;
 
 			case 'd':
-				$status_desc = "$param[0] SUDAH JOIN DOMAIN";
+				$status_desc = "$param[1] SUDAH JOIN DOMAIN";
 				break;
 
 			case 'e':
-				$status_desc = "$param[0] BELUM JOIN DOMAIN";
+				$status_desc = "$param[1] BELUM JOIN DOMAIN";
 				break;
 		}
-		$data = array('status' => $status, 'status_desc' => $status_desc, 'kategori' => $param[0], 'kd_unit' => $param[1], 'nm_unit' => $param[2] );
+		$data = array('status' => $status, 'status_desc' => $status_desc, 'perangkat' => $param[0], 'kd_unit' => $param[2], 'nm_unit' => $param[3] );
 		$this->load->view('jondo_detail_view', $data);
 	}
 
-	public function jondo($status, $kategori, $unit)
+	public function jondo($status, $perangkat, $unit)
 	{
 
-		$list = $this->jondo_detail_model->jondo($unit, $status, $kategori);
+		$list = $this->jondo_detail_model->jondo($unit, $status, $perangkat);
 
         $data = array();
         $no = 0;
@@ -62,7 +62,6 @@ class Jondo_detail extends CI_Controller {
             $no++;
             $rows[] = $no;
         	$rows[] = $row->nup;
-        	$rows[] = ($kategori == 'LAPTOP' ? $kategori : $row->katdesc);
         	$rows[] = "$row->merek $row->tipe";
         	$rows[] = $row->alamat_ip;
         	$rows[] = $row->hostname;

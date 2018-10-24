@@ -33,13 +33,13 @@ class Join_domain extends CI_Controller {
         	$rows = array();
             $rows[] = $row->kode_unit;
         	$rows[] = $row->nm_unit;
-        	$rows[] = $row->perangkat;
+        	$rows[] = $row->nm_perangkat;
         	$rows[] = $row->a;
         	$rows[] = $row->b;
         	$rows[] = $row->c;
         	$rows[] = $row->d;
         	$rows[] = $row->e;
-            $id_enc = strtr($this->encrypt->encode("$row->perangkat,$row->kode_unit,$row->nm_unit"), array('+' => '.', '=' => '-', '/' => '~'));
+            $id_enc = strtr($this->encrypt->encode("$row->perangkat,$row->nm_perangkat,$row->kode_unit,$row->nm_unit"), array('+' => '.', '=' => '-', '/' => '~'));
         	$rows[] = $id_enc;
 
         	$data[] = $rows;

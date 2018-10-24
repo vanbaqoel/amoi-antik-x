@@ -26,45 +26,45 @@ class Os_detail extends CI_Controller {
 		$status_desc = "";
 		switch ($status) {
 			case 'a':
-				$status_desc = "$param[0] TERCATAT PADA AMOI-ANTIK";
+				$status_desc = "$param[1] TERCATAT PADA AMOI-ANTIK";
 				break;
 
 			case 'b':
-				$status_desc = "$param[0] YANG DIGUNAKAN BEKERJA";
+				$status_desc = "$param[1] YANG DIGUNAKAN BEKERJA";
 				break;
 
 			case 'c':
-				$status_desc = "$param[0] BERSISTEM OPERASI WINDOWS XP";
+				$status_desc = "$param[1] BERSISTEM OPERASI WINDOWS XP";
 				break;
 
 			case 'd':
-				$status_desc = "$param[0] BERSISTEM OPERASI WINDOWS 7";
+				$status_desc = "$param[1] BERSISTEM OPERASI WINDOWS 7";
 				break;
 
 			case 'e':
-				$status_desc = "$param[0] BERSISTEM OPERASI WINDOWS 10";
+				$status_desc = "$param[1] BERSISTEM OPERASI WINDOWS 10";
 				break;
 
 			case 'f':
-				$status_desc = "$param[0] BERSISTEM OPERASI LAINNYA";
+				$status_desc = "$param[1] BERSISTEM OPERASI LAINNYA";
 				break;
 
 			case 'g':
-				$status_desc = "$param[0] BERSISTEM OPERASI GENUINE";
+				$status_desc = "$param[1] BERSISTEM OPERASI GENUINE";
 				break;
 
 			case 'h':
-				$status_desc = "$param[0] BERSISTEM OPERASI NOT GENUINE";
+				$status_desc = "$param[1] BERSISTEM OPERASI NOT GENUINE";
 				break;
 		}
-		$data = array('status' => $status, 'status_desc' => $status_desc, 'kategori' => $param[0], 'kd_unit' => $param[1], 'nm_unit' => $param[2] );
+		$data = array('status' => $status, 'status_desc' => $status_desc, 'perangkat' => $param[0], 'kd_unit' => $param[2], 'nm_unit' => $param[3] );
 		$this->load->view('os_detail_view', $data);
 	}
 
-	public function os($status, $kategori, $unit)
+	public function os($status, $perangkat, $unit)
 	{
 
-		$list = $this->os_detail_model->os($unit, $status, $kategori);
+		$list = $this->os_detail_model->os($unit, $status, $perangkat);
 
         $data = array();
         $no = 0;
@@ -73,7 +73,6 @@ class Os_detail extends CI_Controller {
             $no++;
             $rows[] = $no;
         	$rows[] = $row->nup;
-        	$rows[] = ($kategori == 'LAPTOP' ? $kategori : $row->katdesc);
         	$rows[] = "$row->merek $row->tipe";
         	$rows[] = "$row->osdesc $row->osedesc";
         	$rows[] = $row->lokdesc;

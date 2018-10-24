@@ -21,7 +21,6 @@
             <tr>
               <th>No.</th>
               <th>NUP</th>
-              <th>Kategori</th>
               <th>Merek/Tipe</th>
               <th>Sistem Operasi</th>
               <th>Lokasi</th>
@@ -48,7 +47,7 @@
 <script type="text/javascript">
   var sname = '<?= $this->session->name; ?>';
   var st = '<?= $status; ?>';
-  var kat = '<?= $kategori; ?>';
+  var pkt = '<?= $perangkat; ?>';
   var sd = '<?= $status_desc; ?>';
   var ku = '<?= $kd_unit; ?>';
   var nu = '<?= urldecode($nm_unit); ?>';

@@ -41,7 +41,7 @@
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body class="hold-transition skin-blue sidebar-collapse">
+<body class="hold-transition skin-blue fixed sidebar-collapse">
 <!-- Site wrapper -->
 <div class="wrapper">
 
@@ -106,91 +106,119 @@
           </a>
         </li>
         <li class="header">DAFTAR</li>
-        <li>
-          <a href="<?= base_url("pc") ?>">
-            <i class="fa fa-desktop"></i> <span>PC</span>
-          </a>
-        </li>
-        <!-- <li class="treeview">
+        <li class="treeview">
           <a href="#">
-            <i class="fa fa-desktop"></i>
-            <span>PC</span>
+            <i class="fa fa-pencil"></i>
+            <span>BMN TIK</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?= base_url("pcss") ?>"><i class="fa fa-circle-o"></i> SPAN/SAKTI</a></li>
-            <li><a href="<?= base_url("pcnss") ?>"><i class="fa fa-circle-o"></i> Non SPAN/SAKTI</a></li>
+            <li>
+              <a href="<?= base_url("pc") ?>">
+                <i class="fa fa-desktop"></i> <span>PC</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="<?= base_url("laptop") ?>">
+                <i class="fa fa-laptop"></i> <span>Laptop</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="<?= base_url("projector") ?>">
+                <i class="fa fa-video-camera"></i> <span>LCD Projector</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="<?= base_url("scanner") ?>">
+                <i class="fa fa-picture-o"></i> <span>Scanner</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="<?= base_url("ups") ?>">
+                <i class="fa fa-battery-half"></i> <span>UPS</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="<?= base_url("printer") ?>">
+                <i class="fa fa-print"></i> <span>Printer</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="<?= base_url("server") ?>">
+                <i class="fa fa-server"></i> <span>Server</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="<?= base_url("cctv") ?>">
+                <i class="fa fa-eye"></i> <span>CCTV</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="<?= base_url("absensi") ?>">
+                <i class="fa fa-hand-paper-o"></i> <span>Mesin Absensi</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="<?= base_url("antrian") ?>">
+                <i class="fa fa-users"></i> <span>Mesin Antrian</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="<?= base_url("fax") ?>">
+                <i class="fa fa-phone"></i> <span>Facsimile</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="<?= base_url("tv") ?>">
+                <i class="fa fa-television"></i> <span>Televisi</span>
+              </a>
+            </li>
           </ul>
+        </li>
+
+        <!-- <li>
+          <a href="<?= base_url("#") ?>">
+            <i class="fa fa-lock"></i> <span>Perangkat Jaringan</span>
+          </a>
+
+        <li>
+          <a href="<?= base_url("#") ?>">
+            <i class="fa fa-wifi"></i> <span>Wifi</span>
+          </a>
+        </li>
+        </li>
+
+        <li>
+          <a href="<?= base_url("#") ?>">
+            <i class="fa fa-lightbulb-o"></i> <span>Inovasi</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="<?= base_url("#") ?>">
+            <i class="fa fa-commenting"></i> <span>GKM</span>
+          </a>
         </li> -->
-        <li>
-          <a href="<?= base_url("laptop") ?>">
-            <i class="fa fa-laptop"></i> <span>Laptop</span>
-          </a>
-        </li>
-
-        <li>
-          <a href="<?= base_url("projector") ?>">
-            <i class="fa fa-video-camera"></i> <span>LCD Projector</span>
-          </a>
-        </li>
-
-        <li>
-          <a href="<?= base_url("scanner") ?>">
-            <i class="fa fa-picture-o"></i> <span>Scanner</span>
-          </a>
-        </li>
-
-        <li>
-          <a href="<?= base_url("ups") ?>">
-            <i class="fa fa-battery-half"></i> <span>UPS</span>
-          </a>
-        </li>
-
-        <li>
-          <a href="<?= base_url("printer") ?>">
-            <i class="fa fa-print"></i> <span>Printer</span>
-          </a>
-        </li>
-
-        <li>
-          <a href="<?= base_url("server") ?>">
-            <i class="fa fa-server"></i> <span>Server</span>
-          </a>
-        </li>
-
-        <li>
-          <a href="<?= base_url("cctv") ?>">
-            <i class="fa fa-eye"></i> <span>CCTV</span>
-          </a>
-        </li>
-
-        <li>
-          <a href="<?= base_url("absensi") ?>">
-            <i class="fa fa-hand-paper-o"></i> <span>Mesin Absensi</span>
-          </a>
-        </li>
-
-        <li>
-          <a href="<?= base_url("antrian") ?>">
-            <i class="fa fa-users"></i> <span>Mesin Antrian</span>
-          </a>
-        </li>
-
-        <li>
-          <a href="<?= base_url("fax") ?>">
-            <i class="fa fa-phone"></i> <span>Facsimile</span>
-          </a>
-        </li>
-
-        <li>
-          <a href="<?= base_url("tv") ?>">
-            <i class="fa fa-television"></i> <span>Televisi</span>
-          </a>
-        </li>
 
         <li class="header">SUMMARY</li>
+        <!-- <li>
+          <a href="<?= base_url("#") ?>">
+            <i class="fa fa-question"></i> <span>Kondisi BMN TIK</span>
+          </a>
+        </li> -->
         <li>
           <a href="<?= base_url("join_domain") ?>">
             <i class="fa fa-plug"></i> <span>Join Domain</span>
@@ -206,6 +234,11 @@
             <i class="fa fa-check-square-o"></i> <span>Pemenuhan Standar</span>
           </a>
         </li>
+       <!--  <li>
+          <a href="<?= base_url("#") ?>">
+            <i class="fa fa-lock"></i> <span>Keamanan Perangkat</span>
+          </a>
+        </li> -->
         <li class="header">UTILITAS</li>
         <li>
           <a href="<?= base_url("nilai_spek") ?>">
@@ -215,6 +248,30 @@
         <!-- <li>
           <a href="<?= base_url("ubah_pass") ?>">
             <i class="fa fa-lock"></i> <span>Ubah Kata Sandi</span>
+          </a>
+        </li> -->
+
+        <!-- <li class="header">SUPERVISI</li>
+        <li>
+          <a href="<?= base_url("#") ?>">
+            <i class="fa fa-exclamation"></i> <span>Daftar Masalah</span>
+          </a>
+        </li>
+        <li>
+          <a href="<?= base_url("#") ?>">
+            <i class="fa fa-star"></i> <span>Nilai</span>
+          </a>
+        </li>
+
+        <li class="header">EXTRA</li>
+        <li>
+          <a href="<?= base_url("#") ?>">
+            <i class="fa fa-exclamation"></i> <span>Piloting SAKTI</span>
+          </a>
+        </li>
+        <li>
+          <a href="<?= base_url("#") ?>">
+            <i class="fa fa-star"></i> <span>Migrasi Domain SPAN</span>
           </a>
         </li> -->
     <?php

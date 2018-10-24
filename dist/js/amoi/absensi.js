@@ -18,6 +18,7 @@ function view_absensi(id)
       $('#txtUserCap').text(data.user_cap);
       $('#txtRecordCap').text(data.record_cap);
       $('#txtRecog').text(data.bdesc);
+      $('#txtAlamatIP').text(data.alamat_ip);
       $('#txtKodeBarang').text(data.kode_barang);
       $('#txtNUP').text(data.nup);
       $('#txtTahunPerolehan').text(data.tahun_perolehan);
@@ -111,7 +112,7 @@ $(document).ready(function () {
       lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
       columnDefs: [
           {
-            targets: [ 0, 1, 2, 6, 7 ],
+            targets: [ 0, 1, 2, 6, 8 ],
             className: "text-center"
           },
           {

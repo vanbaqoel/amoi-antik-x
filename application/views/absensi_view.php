@@ -26,6 +26,7 @@
               <th>User Capacity</th>
               <th>Record Capacity</th>
               <th>Recognition Identification</th>
+              <th>Alamat IP</th>
               <th>Kondisi</th>
               <th>Lokasi</th>
               <th>Keterangan</th>
@@ -104,6 +105,23 @@
                   </div>
                 </div>
                 <div class="col-xs-12 col-sm-6">
+                  <div class="box box-warning box-solid">
+                    <div class="box-header with-border">
+                      <h3 class="box-title"> Jaringan </h3>
+                    </div>
+                    <div class="box-body">
+                      <div class="profile-user-info profile-user-info-striped">
+                        <div class="profile-info-row">
+                          <div class="profile-info-name"> Alamat IP</div>
+                          <div class="profile-info-value"><span id="txtAlamatIP"></span></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12">
                   <div class="box box-danger box-solid">
                     <div class="box-header with-border">
                       <h3 class="box-title"> BMN </h3>

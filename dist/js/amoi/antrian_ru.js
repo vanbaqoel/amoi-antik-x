@@ -21,6 +21,7 @@ function edit_antrian(id)
       $('[name="txtSN"]').val(data.sn);
       $('[name="txtCounter"]').val(data.counter);
       $('[name="txtTicket"]').val(data.ticket);
+      $('[name="txtAlamatIP"]').val(data.alamat_ip);
       $('[name="txtKodeBarang"]').val(data.kode_barang);
       $('[name="txtNUP"]').val(data.nup);
       $('[name="txtTahunPerolehan"]').val(data.tahun_perolehan);

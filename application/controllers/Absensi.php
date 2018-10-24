@@ -41,6 +41,7 @@ class Absensi extends CI_Controller {
         	$rows[] = $row->user_cap;
         	$rows[] = $row->record_cap;
         	$rows[] = $row->recogdesc;
+        	$rows[] = $row->alamat_ip;
         	$rows[] = $row->kondesc;
         	$rows[] = $row->lokdesc;
         	$rows[] = $row->keterangan;
@@ -106,6 +107,7 @@ class Absensi extends CI_Controller {
 			'user_cap' => $this->input->post('txtUserCap'),
 			'record_cap' => $this->input->post('txtRecordCap'),
 			'recog' => $this->input->post('cboRecog'),
+			'alamat_ip' => strtoupper($this->input->post('txtAlamatIP')),
 			'kode_barang' => strtoupper($this->input->post('txtKodeBarang')),
 			'nup' => $this->input->post('txtNUP'),
 			'tahun_perolehan' => $this->input->post('txtTahunPerolehan'),
@@ -149,6 +151,7 @@ class Absensi extends CI_Controller {
 			'user_cap' => $this->input->post('txtUserCap'),
 			'record_cap' => $this->input->post('txtRecordCap'),
 			'recog' => $this->input->post('cboRecog'),
+			'alamat_ip' => strtoupper($this->input->post('txtAlamatIP')),
 			'kode_barang' => $this->input->post('txtKodeBarang'),
 			'nup' => $this->input->post('txtNUP'),
 			'tahun_perolehan' => $this->input->post('txtTahunPerolehan'),

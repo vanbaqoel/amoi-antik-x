@@ -48,6 +48,12 @@
             </div>
             <div class="col-sm-6 col-md-3">
               <div class="form-group input-group">
+                <span class="input-group-addon input-label">Alamat IP</span>
+                <input type="text" class="form-control text-uppercase" id="txtAlamatIP" name="txtAlamatIP">
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+              <div class="form-group input-group">
                 <span class="input-group-addon input-label">Kode Barang</span>
                 <input type="text" class="form-control text-uppercase" id="txtKodeBarang" name="txtKodeBarang">
               </div>
@@ -58,14 +64,14 @@
                 <input type="number" class="form-control text-uppercase" id="txtNUP" name="txtNUP">
               </div>
             </div>
+          </div>
+          <div class="row">
             <div class="col-sm-6 col-md-3">
               <div class="form-group input-group">
                 <span class="input-group-addon input-label">Thn Perolehan</span>
                 <input type="number" class="form-control text-uppercase" id="txtTahunPerolehan" name="txtTahunPerolehan">
               </div>
             </div>
-          </div>
-          <div class="row">
             <div class="col-sm-6 col-md-3">
               <div class="form-group input-group">
                 <span class="input-group-addon input-label">Kondisi</span>
@@ -107,8 +113,9 @@
                   ?>
                 </select>
               </div>
-            </div>
-            <div class="col-sm-6 col-md-3">
+            </div></div>
+          <div class="row">
+            <div class="col-sm-12">
               <div class="form-group input-group">
                 <span class="input-group-addon input-label">Keterangan</span>
                 <input type="text" class="form-control text-uppercase" id="txtKeterangan" name="txtKeterangan">

@@ -27,9 +27,18 @@
               <div class="box-tools pull-right">
                 <select class="form-control select2" id="cboKondisi">
                   <option value="0">Semua</option>
-                  <option value="1">Server</option>
-                  <option value="2">PC</option>
-                  <option value="3">Laptop</option>
+                  <option value="1">PC</option>
+                  <option value="2">Laptop</option>
+                  <option value="3">LCD Projector</option>
+                  <option value="4">Scanner</option>
+                  <option value="5">UPS</option>
+                  <option value="6">Printer</option>
+                  <option value="7">Server</option>
+                  <option value="8">CCTV</option>
+                  <option value="9">Mesin Absensi</option>
+                  <option value="10">Mesin Antrian</option>
+                  <option value="11">Facsimile</option>
+                  <option value="12">Televisi</option>
                 </select>
               </div>
             </div>
@@ -65,9 +74,18 @@
               <div class="box-tools pull-right">
                 <select class="form-control select2" id="cboSpek">
                   <option value="0">Semua</option>
-                  <option value="1">Server</option>
-                  <option value="2">PC</option>
-                  <option value="3">Laptop</option>
+                  <option value="1">PC</option>
+                  <option value="2">Laptop</option>
+                  <option value="3">LCD Projector</option>
+                  <option value="4">Scanner</option>
+                  <option value="5">UPS</option>
+                  <option value="6">Printer</option>
+                  <option value="7">Server</option>
+                  <option value="8">CCTV</option>
+                  <option value="9">Mesin Absensi</option>
+                  <option value="10">Mesin Antrian</option>
+                  <option value="11">Facsimile</option>
+                  <option value="12">Televisi</option>
                 </select>
               </div>
             </div>
@@ -103,9 +121,8 @@
               <div class="box-tools pull-right">
                 <select class="form-control select2" id="cboJondo">
                   <option value="0">Semua</option>
-                  <option value="1">Server</option>
-                  <option value="2">PC</option>
-                  <option value="3">Laptop</option>
+                  <option value="1">PC</option>
+                  <option value="2">Laptop</option>
                 </select>
               </div>
             </div>
@@ -140,9 +157,9 @@
               <div class="box-tools pull-right">
                 <select class="form-control select2" id="cboOS">
                   <option value="0">Semua</option>
-                  <option value="1">Server</option>
-                  <option value="2">PC</option>
-                  <option value="3">Laptop</option>
+                  <option value="1">PC</option>
+                  <option value="2">Laptop</option>
+                  <option value="3">Server</option>
                 </select>
               </div>
             </div>

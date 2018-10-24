@@ -7,7 +7,7 @@ $(document).ready(function () {
       serverSide: false,
         //Load data for the table's content from an Ajax source
       ajax: {
-            url: document.location.protocol + "//" + document.location.host + "/amoi-antik/jondo_detail/jondo/" + st + "/" + kat + "/" + ku, //Populate data using a method in controller
+            url: document.location.protocol + "//" + document.location.host + "/amoi-antik/jondo_detail/jondo/" + st + "/" + pkt + "/" + ku, //Populate data using a method in controller
             type: "POST"
       },
       autoWidth: false,

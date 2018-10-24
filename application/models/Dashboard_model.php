@@ -9,19 +9,6 @@ class Dashboard_model extends CI_Model {
 
     public function get_kondisi_data($unit, $perangkat)
     {
-        $where_perangkat = "";
-        switch ($perangkat) {
-            case 1:
-                $where_perangkat = "SERVER";
-                break;
-            case 2:
-                $where_perangkat = "PC";
-                break;
-            case 3:
-                $where_perangkat = "LAPTOP";
-                break;
-        }
-
         $sql = "
             SELECT
                 SUM(COALESCE(a, 0)) w,
@@ -36,10 +23,10 @@ class Dashboard_model extends CI_Model {
                     CASE WHEN kondisi = 2 THEN jml END AS b,
                     CASE WHEN kondisi = 3 THEN jml END AS c,
                     CASE WHEN kondisi = 4 THEN jml END AS d
-                FROM all_view "
+                FROM view_all "
             .(($unit != '000') ? "WHERE kode_unit = '$unit'" : "").
             ") e "
-            .(($perangkat != 0) ? "WHERE perangkat = '$where_perangkat' " : " ");
+            .(($perangkat != 0) ? "WHERE perangkat = $perangkat " : " ");
 
         $query = $this->db->query($sql);
 
@@ -48,19 +35,6 @@ class Dashboard_model extends CI_Model {
 
     public function get_spek_data($unit, $perangkat)
     {
-        $where_perangkat = "";
-        switch ($perangkat) {
-            case 1:
-                $where_perangkat = "SERVER";
-                break;
-            case 2:
-                $where_perangkat = "PC";
-                break;
-            case 3:
-                $where_perangkat = "LAPTOP";
-                break;
-        }
-
         $sql = "
             SELECT
                 SUM(COALESCE(a, 0)) w,
@@ -68,29 +42,14 @@ class Dashboard_model extends CI_Model {
             FROM (
                 SELECT
                     kode_unit,
-                    'SERVER' perangkat,
-                    SUM(CASE WHEN nilai = 5 THEN 1 ELSE 0 END) a,
-                    SUM(CASE WHEN nilai < 5 THEN 1 ELSE 0 END) b
-                FROM t_server_std
-                GROUP BY kode_unit
-                UNION
-                SELECT
-                    kode_unit,
-                    'PC' perangkat,
-                    SUM(CASE WHEN nilai = 5 THEN 1 ELSE 0 END) a,
-                    SUM(CASE WHEN nilai < 5 THEN 1 ELSE 0 END) b
-                FROM t_pc_std
-                GROUP BY kode_unit
-                UNION
-                SELECT
-                    kode_unit,
-                    'LAPTOP' perangkat,
-                    SUM(CASE WHEN nilai = 5 THEN 1 ELSE 0 END) a,
-                    SUM(CASE WHEN nilai < 5 THEN 1 ELSE 0 END) b
-                FROM t_laptop_std
-                GROUP BY kode_unit) e WHERE "
-            .(($unit != '000') ? "kode_unit = '$unit' AND " : "1 AND ")
-            .(($perangkat != 0) ? "perangkat = '$where_perangkat' " : "1 ");
+                    perangkat,
+                    SUM(jml_on_spek) a,
+                    SUM(jml_dinilai - jml_on_spek) b
+                FROM view_hasil_penilaian "
+                .(($perangkat != 0) ? "WHERE perangkat = $perangkat " : "").
+                "GROUP BY kode_unit
+            ) e "
+            .(($unit != '000') ? "WHERE kode_unit = '$unit'" : "");
 
         $query = $this->db->query($sql);
 
@@ -99,19 +58,6 @@ class Dashboard_model extends CI_Model {
 
     public function get_jondo_data($unit, $perangkat)
     {
-        $where_perangkat = "";
-        switch ($perangkat) {
-            case 1:
-                $where_perangkat = "SERVER";
-                break;
-            case 2:
-                $where_perangkat = "PC";
-                break;
-            case 3:
-                $where_perangkat = "LAPTOP";
-                break;
-        }
-
         $sql = "
             SELECT
                 SUM(COALESCE(a, 0)) x,
@@ -122,10 +68,11 @@ class Dashboard_model extends CI_Model {
                     perangkat,
                     CASE WHEN kondisi != 4 AND status = 1 AND koneksi = 1 AND join_domain = 1 THEN jml END AS a,
                     CASE WHEN kondisi != 4 AND status = 1 AND koneksi = 1 AND join_domain = 0 THEN jml END AS b
-                FROM all_view "
-            .(($unit != '000') ? "WHERE kode_unit = '$unit'" : "").
-            ") z "
-            .(($perangkat != 0) ? "WHERE perangkat = '$where_perangkat' " : " ");
+                FROM view_all
+                WHERE "
+                .(($perangkat != 0) ? "perangkat = $perangkat " : "perangkat IN (1, 2, 7)")
+                .(($unit != '000') ? " AND kode_unit = '$unit' " : "").
+            ") z ";
 
         $query = $this->db->query($sql);
 
@@ -134,19 +81,6 @@ class Dashboard_model extends CI_Model {
 
     public function get_os_data($unit, $perangkat)
     {
-        $where_perangkat = "";
-        switch ($perangkat) {
-            case 1:
-                $where_perangkat = "SERVER";
-                break;
-            case 2:
-                $where_perangkat = "PC";
-                break;
-            case 3:
-                $where_perangkat = "LAPTOP";
-                break;
-        }
-
         $sql = "
             SELECT
                 SUM(COALESCE(a, 0)) x,
@@ -157,10 +91,11 @@ class Dashboard_model extends CI_Model {
                     perangkat,
                     CASE WHEN kondisi != 4 AND status = 1 AND orisinalitas_os = 1 THEN jml END AS a,
                     CASE WHEN kondisi != 4 AND status = 1 AND orisinalitas_os = 0 THEN jml END AS b
-                FROM all_view "
-            .(($unit != '000') ? "WHERE kode_unit = '$unit'" : "").
-            ") z "
-            .(($perangkat != 0) ? "WHERE perangkat = '$where_perangkat' " : " ");
+                FROM view_all
+                WHERE "
+                .(($perangkat != 0) ? "perangkat = $perangkat " : "perangkat IN (1, 2, 7)")
+                .(($unit != '000') ? " AND kode_unit = '$unit' " : "").
+            ") z ";
 
         $query = $this->db->query($sql);
 

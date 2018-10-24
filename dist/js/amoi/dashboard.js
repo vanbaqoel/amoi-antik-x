@@ -150,7 +150,7 @@ function jondo_chart(perangkat, mode) {
         }
       ]
 
-      if (data[0][0] == null) {
+      if (data[0][0] == null || data[0][0] == 0) {
         $('.jondo-area').append("<div class='nodata'><i class='fa fa-exclamation-triangle'>&nbsp;&nbsp;Tidak ada data</div>");
       } else {
         $('.jondo-area > .nodata').remove();
