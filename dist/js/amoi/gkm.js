@@ -1,61 +1,26 @@
 
-var tv_table;
-var tv_id;
+var gkm_table;
+var gkm_id;
 
-function view_tv(id)
+
+function edit_gkm(id)
 {
-  //Ajax Load data from ajax
-  $.ajax({
-    url : document.location.protocol + "//" + document.location.host + "/amoi-antik/tv/edit_tv/" + id,
-    type: "GET",
-    dataType: "JSON",
-    success: function(data)
-    {
-      $('#txtID').text(data.id);
-      $('#txtMerek').text(data.merek);
-      $('#txtTipe').text(data.tipe);
-      $('#txtSN').text(data.sn);
-      $('#txtKategori').text(data.bdesc);
-      $('#txtUkuran').text(data.ukuran + ' INCH');
-      $('#txtKodeBarang').text(data.kode_barang);
-      $('#txtNUP').text(data.nup);
-      $('#txtTahunPerolehan').text(data.tahun_perolehan);
-      $('#txtKondisi').text(data.cdesc);
-      $('#txtStatus').text(data.ddesc);
-      $('#txtLokasi').text(data.edesc);
-      $('#txtKeterangan').text(data.keterangan);
-
-
-      $('.modal').modal('show'); // show bootstrap modal when complete loaded
-
-      tv_id = id;
-
-    },
-    error: function (jqXHR, textStatus, errorThrown)
-    {
-        alert('Gagal menarik data...');
-    }
-  });
+  window.location = document.location.protocol + "//" + document.location.host + "/amoi-antik/gkm/ru/" + id;
 }
 
-function edit_tv(id)
-{
-  window.location = document.location.protocol + "//" + document.location.host + "/amoi-antik/tv/ru/" + id;
-}
-
-function delete_tv(id)
+function delete_gkm(id)
 {
   if(confirm('Apakah Anda yakin mau menghapus data ini?'))
   {
     // ajax delete data from database
     $.ajax({
-      url : document.location.protocol + "//" + document.location.host + "/amoi-antik/tv/delete_tv/" + id,
+      url : document.location.protocol + "//" + document.location.host + "/amoi-antik/gkm/delete_gkm/" + id,
       type: "POST",
       dataType: "JSON",
       success: function(data)
       {
         alert("Data berhasil dihapus...");
-        tv_table.ajax.reload();
+        gkm_table.ajax.reload();
       },
       error: function (jqXHR, textStatus, errorThrown)
       {
@@ -95,12 +60,12 @@ $(document).ready(function () {
   $('.select2').select2();
 
   $('.sidebar-menu').tree();
-  tv_table =
+  gkm_table =
     $('#dynamic-table').DataTable({
       serverSide: false,
         /* Load data for the table's content from an Ajax source */
         ajax: {
-            url: document.location.protocol + "//" + document.location.host + "/amoi-antik/tv/get_all", /* Populate data using a method in controller */
+            url: document.location.protocol + "//" + document.location.host + "/amoi-antik/gkm/get_all", /* Populate data using a method in controller */
             type: "POST"
         },
       autoWidth: false,
@@ -110,15 +75,11 @@ $(document).ready(function () {
       lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
       columnDefs: [
           {
-            targets: [ 0, 1, 2, 4, 6 ],
+            targets: [ 0, 1, 3 ],
             className: "text-center"
           },
           {
-            targets: [ 5 ],
-            className: "text-right"
-          },
-          {
-              targets: [ -1 ], /* targeting the last column */
+              targets: [ 4, -1 ], /* targeting the last column */
               width: "125px",
               sortable: false,
               className: "text-center"
@@ -157,14 +118,14 @@ $(document).ready(function () {
     $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group';
     $.fn.dataTable.Buttons.swfPath = document.location.protocol + "//" + document.location.host + "/amoi-antik/dist/swf/flashExport-1.2.4.swf";
 
-    new $.fn.dataTable.Buttons(tv_table, {
+    new $.fn.dataTable.Buttons(gkm_table, {
       buttons: [
         {
           text: "<i class='fa fa-plus bigger-110 green'></i> <span>&nbsp;&nbsp;Tambah</span>",
           className: "btn btn-default",
           titleAttr: "Tambah data baru",
           action: function ( e, dt, node, config ) {
-                    window.location = document.location.protocol + "//" + document.location.host + "/amoi-antik/tv/ru/add";
+                    window.location = document.location.protocol + "//" + document.location.host + "/amoi-antik/gkm/ru/add";
           }
         },
         {
@@ -172,7 +133,7 @@ $(document).ready(function () {
           text: "<i class='fa fa-file-excel-o bigger-110 green'></i> <span>&nbsp;&nbsp;Excel</span>",
           className: "btn btn-white btn-default btn-bold",
           titleAttr: "Simpan sebagai file Excel",
-          filename: "daftar-tv",
+          filename: "daftar-gkm",
           exportOptions: {
                     orthogonal: 'sort',
                     columns: ':not(:last-child)'
@@ -183,7 +144,7 @@ $(document).ready(function () {
           text: "<i class='fa fa-print bigger-110 grey'></i> <span>&nbsp;&nbsp;Cetak</span>",
           className: "btn btn-default",
           titleAttr: "Cetak",
-          title: 'DAFTAR TELEVISI',
+          title: 'DAFTAR GKM',
           exportOptions: {
                     columns: ':not(:last-child)'
                 },
@@ -206,7 +167,7 @@ $(document).ready(function () {
       ]
     });
 
-    tv_table.buttons().container().appendTo($('.tableTools-container'));
+    gkm_table.buttons().container().appendTo($('.tableTools-container'));
 
     setTimeout(function() {
       $($('.tableTools-container')).find('a.dt-button').each(function() {
@@ -217,7 +178,7 @@ $(document).ready(function () {
     }, 500);
 
     /* Disable Tambah button if logged in as Administrator */
-    if (sk == '000') {tv_table.button('0').disable();}
+    if (sk == '000') {gkm_table.button('0').disable();}
 
     $('#btnPrint').on('click', function () {
       printElement(document.getElementById("printThis"));

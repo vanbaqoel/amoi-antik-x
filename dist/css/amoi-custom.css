@@ -16,9 +16,9 @@
   color: #2679B5;
 }
 
-th, td {
+/*th, td {
   white-space: nowrap;
-}
+}*/
 
 table.dataTable tbody td {
   vertical-align: middle;
@@ -173,4 +173,23 @@ form group or input group */
   align-items: center;
   justify-content: center;
   color: LightCoral;
+}
+
+.modal-vcenter {
+  text-align: center;
+  padding: 0!important;
+}
+
+.modal-vcenter:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -4px;
+}
+
+.modal-dialog-vcenter {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
 }

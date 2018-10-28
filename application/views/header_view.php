@@ -189,6 +189,18 @@
           </ul>
         </li>
 
+        <li>
+          <a href="<?= base_url("gkm") ?>">
+            <i class="fa fa-book"></i> <span>GKM TIK</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="<?= base_url("inovasi") ?>">
+            <i class="fa fa-lightbulb-o"></i> <span>Inovasi TIK</span>
+          </a>
+        </li>
+
         <!-- <li>
           <a href="<?= base_url("#") ?>">
             <i class="fa fa-lock"></i> <span>Perangkat Jaringan</span>
@@ -199,18 +211,6 @@
             <i class="fa fa-wifi"></i> <span>Wifi</span>
           </a>
         </li>
-        </li>
-
-        <li>
-          <a href="<?= base_url("#") ?>">
-            <i class="fa fa-lightbulb-o"></i> <span>Inovasi</span>
-          </a>
-        </li>
-
-        <li>
-          <a href="<?= base_url("#") ?>">
-            <i class="fa fa-commenting"></i> <span>GKM</span>
-          </a>
         </li> -->
 
         <li class="header">SUMMARY</li>
