@@ -119,9 +119,9 @@ class Cctv extends CI_Controller {
 			'kode_unit' => $this->session->kd_unit
 		);
 
-		$insert = $this->cctv_model->add_cctv($data);
+		$insert_result = $this->cctv_model->add_cctv($data);
 
-		echo json_encode(array("status" => TRUE));
+		echo json_encode(array("status" => $insert_result));
 	}
 
 	public function edit_cctv($id_enc = NULL)
@@ -164,8 +164,8 @@ class Cctv extends CI_Controller {
 
 		$id = $this->encrypt->decode(strtr($id_enc, array('.' => '+', '-' => '=', '~' => '/')));
 
-		$this->cctv_model->update_cctv(array('id' => $id), $data);
-		echo json_encode(array("status" => TRUE));
+		$update_result = $this->cctv_model->update_cctv(array('id' => $id), $data);
+		echo json_encode(array("status" => $update_result));
 	}
 
 	public function delete_cctv($id_enc = NULL)
@@ -176,7 +176,7 @@ class Cctv extends CI_Controller {
 
 		$id = $this->encrypt->decode(strtr($id_enc, array('.' => '+', '-' => '=', '~' => '/')));
 
-		$this->cctv_model->delete_cctv($id);
-		echo json_encode(array("status" => TRUE));
+		$delete_result = $this->cctv_model->delete_cctv($id);
+		echo json_encode(array("status" => $delete_result));
 	}
 }

@@ -5,7 +5,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        <i class="fa fa-book"></i> <span id="page-title"> <?= $title ?> INOVASI TIK</span>
+        <i class="fa fa-lightbulb-o"></i> <span id="page-title"> <?= $title ?> INOVASI TIK</span>
       </h1>
     </section>
 
@@ -63,52 +63,6 @@
           </div>
         </form>
       </div>
-
-      <div class="modal modal-vcenter fade" id="modal-sukses">
-          <div class="modal-dialog modal-dialog-vcenter">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Sukses</h4>
-              </div>
-              <div class="modal-body">
-                <div class="row">
-                  <div class="col-xs-12" style="display: flex;align-items: center;" ><i class="fa fa-check-circle fa-4x text-green"></i>&nbsp;&nbsp;&nbsp;Data berhasil disimpan&hellip;</div>
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default pull-right" data-dismiss="modal" id="btnSukses">Close</button><span>
-              </div>
-            </div>
-            <!-- /.modal-content -->
-          </div>
-          <!-- /.modal-dialog -->
-      </div>
-      <!-- /.modal -->
-
-      <div class="modal modal-vcenter fade" id="modal-gagal">
-          <div class="modal-dialog modal-dialog-vcenter">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Gagal</h4>
-              </div>
-              <div class="modal-body">
-                <div class="row">
-                  <div class="col-xs-12" style="display: flex;align-items: center;" ><i class="fa  fa-times-circle fa-4x text-red"></i>&nbsp;&nbsp;&nbsp;Gagal menyimpan/mengubah data&hellip;</div>
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
-              </div>
-            </div>
-            <!-- /.modal-content -->
-          </div>
-          <!-- /.modal-dialog -->
-      </div>
-      <!-- /.modal -->
     </section>
     <!-- /.content -->
   </div>

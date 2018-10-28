@@ -5,7 +5,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        <i class="fa fa-book"></i> - INOVASI TIK
+        <i class="fa fa-lightbulb-o"></i> - INOVASI TIK
       </h1>
     </section>
 

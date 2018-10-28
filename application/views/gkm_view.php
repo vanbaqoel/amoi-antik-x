@@ -23,13 +23,13 @@
               <th>ID</th>
               <th>Topik/Judul</th>
               <th>Tgl. Pelaksanaan</th>
-              <th>Laporan/Dokumentasi</th>
+              <th class="no-export">Laporan/Dokumentasi</th>
               <th>Keterangan</th>
               <?php
                 if($this->session->kd_unit == '000')
                     echo "<th>Kode Unit</th>";
               ?>
-              <th>Aksi</th>
+              <th class="no-export">Aksi</th>
             </tr>
           </thead>
           <tbody>

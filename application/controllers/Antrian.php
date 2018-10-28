@@ -117,9 +117,9 @@ class Antrian extends CI_Controller {
 			'kode_unit' => $this->session->kd_unit
 		);
 
-		$insert = $this->antrian_model->add_antrian($data);
+		$insert_result = $this->antrian_model->add_antrian($data);
 
-		echo json_encode(array("status" => TRUE));
+		echo json_encode(array("status" => $insert_result));
 	}
 
 	public function edit_antrian($id_enc = NULL)
@@ -161,8 +161,8 @@ class Antrian extends CI_Controller {
 
 		$id = $this->encrypt->decode(strtr($id_enc, array('.' => '+', '-' => '=', '~' => '/')));
 
-		$this->antrian_model->update_antrian(array('id' => $id), $data);
-		echo json_encode(array("status" => TRUE));
+		$update_result = $this->antrian_model->update_antrian(array('id' => $id), $data);
+		echo json_encode(array("status" => $update_result));
 	}
 
 	public function delete_antrian($id_enc = NULL)
@@ -173,7 +173,7 @@ class Antrian extends CI_Controller {
 
 		$id = $this->encrypt->decode(strtr($id_enc, array('.' => '+', '-' => '=', '~' => '/')));
 
-		$this->antrian_model->delete_antrian($id);
-		echo json_encode(array("status" => TRUE));
+		$delete_result = $this->antrian_model->delete_antrian($id);
+		echo json_encode(array("status" => $delete_result));
 	}
 }

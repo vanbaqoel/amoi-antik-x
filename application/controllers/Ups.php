@@ -117,9 +117,9 @@ class Ups extends CI_Controller {
 			'kode_unit' => $this->session->kd_unit
 		);
 
-		$insert = $this->ups_model->add_ups($data);
+		$insert_result = $this->ups_model->add_ups($data);
 
-		echo json_encode(array("status" => TRUE));
+		echo json_encode(array("status" => $insert_result));
 	}
 
 	public function edit_ups($id_enc = NULL)
@@ -161,8 +161,8 @@ class Ups extends CI_Controller {
 
 		$id = $this->encrypt->decode(strtr($id_enc, array('.' => '+', '-' => '=', '~' => '/')));
 
-		$this->ups_model->update_ups(array('id' => $id), $data);
-		echo json_encode(array("status" => TRUE));
+		$update_result = $this->ups_model->update_ups(array('id' => $id), $data);
+		echo json_encode(array("status" => $update_result));
 	}
 
 	public function delete_ups($id_enc = NULL)
@@ -173,7 +173,7 @@ class Ups extends CI_Controller {
 
 		$id = $this->encrypt->decode(strtr($id_enc, array('.' => '+', '-' => '=', '~' => '/')));
 
-		$this->ups_model->delete_ups($id);
-		echo json_encode(array("status" => TRUE));
+		$delete_result = $this->ups_model->delete_ups($id);
+		echo json_encode(array("status" => $delete_result));
 	}
 }

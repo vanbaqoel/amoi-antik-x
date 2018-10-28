@@ -41,6 +41,8 @@
 <script src="<?= base_url(); ?>bower_components/pdfmake-0.1.18/pdfmake.min.js"></script>
 <script src="<?= base_url(); ?>bower_components/pdfmake-0.1.18/vfs_fonts.js"></script>
 
+<script src="<?= base_url(); ?>bower_components/bootbox/bootbox.min.js"></script>
+
 <script type="text/javascript">
 
 var notify_success = {

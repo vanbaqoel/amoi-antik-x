@@ -17,7 +17,7 @@
             <div class="col-xs-12">
               <div class="form-group input-group">
                 <span class="input-group-addon input-label">Judul</span>
-                <textarea type="text" class="form-control" id="txtJudul" name="txtJudul" style="resize: none; height: 55px;"></textarea>
+                <input type="text" class="form-control" id="txtJudul" name="txtJudul">
               </div>
             </div>
             <div class="col-xs-12 col-sm-4">
@@ -28,14 +28,14 @@
             </div>
             <div class="col-xs-12">
               <div class="form-group input-group">
-                <span class="input-group-addon input-label">Keterangan</span>
-                <textarea type="text" class="form-control" id="txtKeterangan" name="txtKeterangan" style="resize: none; height: 100px;"></textarea>
+                <span class="input-group-addon input-label">Laporan/Dok</span>
+                <input type="file" accept=".pdf" class="form-control" id="txtFile" name="txtFile">
               </div>
             </div>
             <div class="col-xs-12">
               <div class="form-group input-group">
-                <span class="input-group-addon input-label">Laporan/Dok</span>
-                <input type="file" accept=".pdf" class="form-control" id="txtFile" name="txtFile">
+                <span class="input-group-addon input-label">Keterangan</span>
+                <textarea type="text" class="form-control" id="txtKeterangan" name="txtKeterangan" style="resize: none; height: 100px;"></textarea>
               </div>
             </div>
           <div class="row">

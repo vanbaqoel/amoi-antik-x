@@ -116,9 +116,9 @@ class Tv extends CI_Controller {
 			'kode_unit' => $this->session->kd_unit
 		);
 
-		$insert = $this->tv_model->add_tv($data);
+		$insert_result = $this->tv_model->add_tv($data);
 
-		echo json_encode(array("status" => TRUE));
+		echo json_encode(array("status" => $insert_result));
 	}
 
 	public function edit_tv($id_enc = NULL)
@@ -159,8 +159,8 @@ class Tv extends CI_Controller {
 
 		$id = $this->encrypt->decode(strtr($id_enc, array('.' => '+', '-' => '=', '~' => '/')));
 
-		$this->tv_model->update_tv(array('id' => $id), $data);
-		echo json_encode(array("status" => TRUE));
+		$update_result = $this->tv_model->update_tv(array('id' => $id), $data);
+		echo json_encode(array("status" => $update_result));
 	}
 
 	public function delete_tv($id_enc = NULL)
@@ -171,7 +171,7 @@ class Tv extends CI_Controller {
 
 		$id = $this->encrypt->decode(strtr($id_enc, array('.' => '+', '-' => '=', '~' => '/')));
 
-		$this->tv_model->delete_tv($id);
-		echo json_encode(array("status" => TRUE));
+		$delete_result = $this->tv_model->delete_tv($id);
+		echo json_encode(array("status" => $delete_result));
 	}
 }

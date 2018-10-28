@@ -113,9 +113,9 @@ class Fax extends CI_Controller {
 			'kode_unit' => $this->session->kd_unit
 		);
 
-		$insert = $this->fax_model->add_fax($data);
+		$insert_result = $this->fax_model->add_fax($data);
 
-		echo json_encode(array("status" => TRUE));
+		echo json_encode(array("status" => $insert_result));
 	}
 
 	public function edit_fax($id_enc = NULL)
@@ -155,8 +155,8 @@ class Fax extends CI_Controller {
 
 		$id = $this->encrypt->decode(strtr($id_enc, array('.' => '+', '-' => '=', '~' => '/')));
 
-		$this->fax_model->update_fax(array('id' => $id), $data);
-		echo json_encode(array("status" => TRUE));
+		$update_result = $this->fax_model->update_fax(array('id' => $id), $data);
+		echo json_encode(array("status" => $update_result));
 	}
 
 	public function delete_fax($id_enc = NULL)
@@ -167,7 +167,7 @@ class Fax extends CI_Controller {
 
 		$id = $this->encrypt->decode(strtr($id_enc, array('.' => '+', '-' => '=', '~' => '/')));
 
-		$this->fax_model->delete_fax($id);
-		echo json_encode(array("status" => TRUE));
+		$delete_result = $this->fax_model->delete_fax($id);
+		echo json_encode(array("status" => $delete_result));
 	}
 }

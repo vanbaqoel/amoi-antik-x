@@ -137,9 +137,9 @@ class Server extends CI_Controller {
 			'kode_unit' => $this->session->kd_unit
 		);
 
-		$insert = $this->server_model->add_server($data);
+		$insert_result = $this->server_model->add_server($data);
 
-		echo json_encode(array("status" => TRUE));
+		echo json_encode(array("status" => $insert_result));
 	}
 
 	public function edit_server($id_enc = NULL)
@@ -193,8 +193,8 @@ class Server extends CI_Controller {
 
 		$id = $this->encrypt->decode(strtr($id_enc, array('.' => '+', '-' => '=', '~' => '/')));
 
-		$this->server_model->update_server(array('id' => $id), $data);
-		echo json_encode(array("status" => TRUE));
+		$update_result = $this->server_model->update_server(array('id' => $id), $data);
+		echo json_encode(array("status" => $update_result));
 	}
 
 	public function delete_server($id_enc = NULL)
@@ -205,7 +205,7 @@ class Server extends CI_Controller {
 
 		$id = $this->encrypt->decode(strtr($id_enc, array('.' => '+', '-' => '=', '~' => '/')));
 
-		$this->server_model->delete_server($id);
-		echo json_encode(array("status" => TRUE));
+		$delete_result = $this->server_model->delete_server($id);
+		echo json_encode(array("status" => $delete_result));
 	}
 }

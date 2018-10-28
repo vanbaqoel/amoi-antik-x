@@ -120,9 +120,9 @@ class Absensi extends CI_Controller {
 			'kode_unit' => $this->session->kd_unit
 		);
 
-		$insert = $this->absensi_model->add_absensi($data);
+		$insert_result = $this->absensi_model->add_absensi($data);
 
-		echo json_encode(array("status" => TRUE));
+		echo json_encode(array("status" => $insert_result));
 	}
 
 	public function edit_absensi($id_enc = NULL)
@@ -165,8 +165,8 @@ class Absensi extends CI_Controller {
 
 		$id = $this->encrypt->decode(strtr($id_enc, array('.' => '+', '-' => '=', '~' => '/')));
 
-		$this->absensi_model->update_absensi(array('id' => $id), $data);
-		echo json_encode(array("status" => TRUE));
+		$update_result = $this->absensi_model->update_absensi(array('id' => $id), $data);
+		echo json_encode(array("status" => $update_result));
 	}
 
 	public function delete_absensi($id_enc = NULL)
@@ -177,7 +177,7 @@ class Absensi extends CI_Controller {
 
 		$id = $this->encrypt->decode(strtr($id_enc, array('.' => '+', '-' => '=', '~' => '/')));
 
-		$this->absensi_model->delete_absensi($id);
-		echo json_encode(array("status" => TRUE));
+		$delete_result = $this->absensi_model->delete_absensi($id);
+		echo json_encode(array("status" => $delete_result));
 	}
 }

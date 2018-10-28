@@ -56,16 +56,25 @@ function save()
     async:false,
     success: function(data)
     {
-      console.log(data);
-      if (data["status"] = true) {
-        $('#modal-sukses').modal('show');
+      if (data[0]) {
+        // $('#modal-sukses').modal('show');
+        bootbox.alert(
+          '<div class="col-xs-12" style="display: flex;align-items: center;" ><i class="fa fa-check-circle fa-4x text-green"></i>&nbsp;&nbsp;&nbsp;Data berhasil disimpan&hellip;</div>',
+          function () {
+            window.location = document.location.protocol + "//" + document.location.host + "/amoi-antik/gkm";
+          }
+        );
       } else {
-        $('#modal-gagal').modal('show');
+        bootbox.alert(
+          '<div class="col-xs-12" style="display: flex;align-items: center;" ><i class="fa  fa-times-circle fa-4x text-red"></i>&nbsp;&nbsp;&nbsp;0Gagal menyimpan/mengubah data&hellip;</div>',
+        );
       }
     },
     error: function (jqXHR, textStatus, errorThrown)
     {
-        $('#modal-gagal').modal('show');
+        bootbox.alert(
+          '<div class="col-xs-12" style="display: flex;align-items: center;" ><i class="fa  fa-times-circle fa-4x text-red"></i>&nbsp;&nbsp;&nbsp;1Gagal menyimpan/mengubah data&hellip;</div>',
+        );
     }
   });
 }
@@ -91,9 +100,4 @@ $(document).ready(function () {
   {
     edit_inovasi(save_method);
   }
-
-  $('#btnSukses').on('click', function() {
-      window.location = document.location.protocol + "//" + document.location.host + "/amoi-antik/inovasi";
-  });
-
 })

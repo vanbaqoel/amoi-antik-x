@@ -27,14 +27,8 @@ class Server_model extends CI_Model {
             LEFT JOIN r_kategori b ON a.kategori = b.kd_kategori AND b.kd_jenis = 1
             LEFT JOIN r_kondisi c ON a.kondisi = c.kd_kondisi
             LEFT JOIN r_ruang d ON a.lokasi = d.kd_ruang";
-            /*
-        $this->db->select('*', 'r_kategori.deskripsi AS katdesc');
-        $this->db->from($this->table);
-        $this->db->join('r_kategori', 't_server.kategori = r_kategori.kd_kategori AND r_kategori.kd_jenis = 2');
-        $this->db->join('r_ruang', 't_server.lokasi = r_ruang.kd_ruang');*/
         if ($unit != '000') {
             $sql .= " WHERE a.kode_unit = '$unit'";
-            // $this->db->where('kode_unit', $unit);
         }
 
         $query = $this->db->query($sql);
@@ -77,14 +71,14 @@ class Server_model extends CI_Model {
     {
         $this->db->insert($this->table, $data);
 
-        return $this->db->insert_id();
+        return ($this->db->affected_rows() > 0);
     }
 
     public function update_server($where, $data)
     {
         $this->db->update($this->table, $data, $where);
 
-        return $this->db->affected_rows();
+        return ($this->db->affected_rows() > 0);
     }
 
     public function delete_server($id)
@@ -93,7 +87,7 @@ class Server_model extends CI_Model {
 
         $this->db->delete($this->table);
 
-        return $this->db->affected_rows();
+        return ($this->db->affected_rows() > 0);
     }
 }
 

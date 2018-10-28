@@ -125,9 +125,9 @@ class Printer extends CI_Controller {
 			'kode_unit' => $this->session->kd_unit
 		);
 
-		$insert = $this->printer_model->add_printer($data);
+		$insert_result = $this->printer_model->add_printer($data);
 
-		echo json_encode(array("status" => TRUE));
+		echo json_encode(array("status" => $insert_result));
 	}
 
 	public function edit_printer($id_enc = NULL)
@@ -172,8 +172,8 @@ class Printer extends CI_Controller {
 
 		$id = $this->encrypt->decode(strtr($id_enc, array('.' => '+', '-' => '=', '~' => '/')));
 
-		$this->printer_model->update_printer(array('id' => $id), $data);
-		echo json_encode(array("status" => TRUE));
+		$update_result = $this->printer_model->update_printer(array('id' => $id), $data);
+		echo json_encode(array("status" => $update_result));
 	}
 
 	public function delete_printer($id_enc = NULL)
@@ -184,7 +184,7 @@ class Printer extends CI_Controller {
 
 		$id = $this->encrypt->decode(strtr($id_enc, array('.' => '+', '-' => '=', '~' => '/')));
 
-		$this->printer_model->delete_printer($id);
-		echo json_encode(array("status" => TRUE));
+		$delete_result = $this->printer_model->delete_printer($id);
+		echo json_encode(array("status" => $delete_result));
 	}
 }

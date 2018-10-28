@@ -99,17 +99,11 @@ class Gkm extends CI_Controller {
 			'kode_unit' => $this->session->kd_unit
 		);
 
-		if ( !$this->upload->do_upload('txtFile')){
-			/*$error = array('error' => $this->upload->display_errors());
-			var_dump($error);*/
-				echo json_encode(array("status" => FALSE));
+		if (!$this->upload->do_upload('txtFile')){
+			echo json_encode(array("status" => FALSE));
 		} else {
-			$insert = $this->gkm_model->add_gkm($data);
-			if ($insert) {
-				echo json_encode(array("status" => TRUE));
-			} else {
-				echo json_encode(array("status" => FALSE));
-			}
+			$insert_result = $this->gkm_model->add_gkm($data);
+			echo json_encode(array("status" => $insert_result));
 		}
 	}
 
@@ -151,27 +145,17 @@ class Gkm extends CI_Controller {
 
 		$id = $this->encrypt->decode(strtr($id_enc, array('.' => '+', '-' => '=', '~' => '/')));
 
-		if (isset($_FILES['txtFile'])){
+		if (!empty($_FILES['txtFile']['name'])){
 			if (!$this->upload->do_upload('txtFile')){
-				$error = array('error' => $this->upload->display_errors());
-				var_dump($error);
 				echo json_encode(array("status" => FALSE));
 			} else {
-				$afrow = $this->gkm_model->update_gkm(array('id' => $id), $data);
-				if ($afrow != 0) {
-					echo json_encode(array("status" => TRUE));
-				} else {
-					echo json_encode(array("status" => FALSE));
-				}
+				$update_result = $this->gkm_model->update_gkm(array('id' => $id), $data);
+				echo json_encode(array("status" => $update_result));
 			}
 		} else {
 			unset($data['file_dok']);
-			$afrow = $this->gkm_model->update_gkm(array('id' => $id), $data);
-			if ($afrow != 0) {
-				echo json_encode(array("status" => TRUE));
-			} else {
-				echo json_encode(array("status" => FALSE));
-			}
+			$update_result = $this->gkm_model->update_gkm(array('id' => $id), $data);
+			echo json_encode(array("status" => $update_result));
 		}
 	}
 
@@ -183,7 +167,7 @@ class Gkm extends CI_Controller {
 
 		$id = $this->encrypt->decode(strtr($id_enc, array('.' => '+', '-' => '=', '~' => '/')));
 
-		$this->gkm_model->delete_gkm($id);
-		echo json_encode(array("status" => TRUE));
+		$delete_result = $this->gkm_model->delete_gkm($id);
+		echo json_encode(array("status" => $delete_result));
 	}
 }

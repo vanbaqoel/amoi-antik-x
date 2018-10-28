@@ -122,9 +122,9 @@ class Scanner extends CI_Controller {
 			'kode_unit' => $this->session->kd_unit
 		);
 
-		$insert = $this->scanner_model->add_scanner($data);
+		$insert_result = $this->scanner_model->add_scanner($data);
 
-		echo json_encode(array("status" => TRUE));
+		echo json_encode(array("status" => $insert_result));
 	}
 
 	public function edit_scanner($id_enc = NULL)
@@ -168,8 +168,8 @@ class Scanner extends CI_Controller {
 
 		$id = $this->encrypt->decode(strtr($id_enc, array('.' => '+', '-' => '=', '~' => '/')));
 
-		$this->scanner_model->update_scanner(array('id' => $id), $data);
-		echo json_encode(array("status" => TRUE));
+		$update_result = $this->scanner_model->update_scanner(array('id' => $id), $data);
+		echo json_encode(array("status" => $update_result));
 	}
 
 	public function delete_scanner($id_enc = NULL)
@@ -180,7 +180,7 @@ class Scanner extends CI_Controller {
 
 		$id = $this->encrypt->decode(strtr($id_enc, array('.' => '+', '-' => '=', '~' => '/')));
 
-		$this->scanner_model->delete_scanner($id);
-		echo json_encode(array("status" => TRUE));
+		$delete_result = $this->scanner_model->delete_scanner($id);
+		echo json_encode(array("status" => $delete_result));
 	}
 }

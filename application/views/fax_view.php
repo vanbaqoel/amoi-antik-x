@@ -31,7 +31,7 @@
                 if($this->session->kd_unit == '000')
                     echo "<th>Kode Unit</th>";
               ?>
-              <th>Aksi</th>
+              <th class="no-export">Aksi</th>
             </tr>
           </thead>
           <tbody>

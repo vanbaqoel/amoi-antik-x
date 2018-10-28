@@ -61,14 +61,14 @@ class Cctv_model extends CI_Model {
     {
         $this->db->insert($this->table, $data);
 
-        return $this->db->insert_id();
+        return ($this->db->affected_rows() > 0);
     }
 
     public function update_cctv($where, $data)
     {
         $this->db->update($this->table, $data, $where);
 
-        return $this->db->affected_rows();
+        return ($this->db->affected_rows() > 0);
     }
 
     public function delete_cctv($id)
@@ -77,7 +77,7 @@ class Cctv_model extends CI_Model {
 
         $this->db->delete($this->table);
 
-        return $this->db->affected_rows();
+        return ($this->db->affected_rows() > 0);
     }
 }
 

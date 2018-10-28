@@ -138,9 +138,9 @@ class Pc extends CI_Controller {
 			'kode_unit' => $this->session->kd_unit
 		);
 
-		$insert = $this->pc_model->add_pc($data);
+		$insert_result = $this->pc_model->add_pc($data);
 
-		echo json_encode(array("status" => TRUE));
+		echo json_encode(array("status" => $insert_result));
 	}
 
 	public function edit_pc($id_enc = NULL)
@@ -195,8 +195,8 @@ class Pc extends CI_Controller {
 
 		$id = $this->encrypt->decode(strtr($id_enc, array('.' => '+', '-' => '=', '~' => '/')));
 
-		$this->pc_model->update_pc(array('id' => $id), $data);
-		echo json_encode(array("status" => TRUE));
+		$update_result = $this->pc_model->update_pc(array('id' => $id), $data);
+		echo json_encode(array("status" => $update_result));
 	}
 
 	public function delete_pc($id_enc = NULL)
@@ -207,7 +207,7 @@ class Pc extends CI_Controller {
 
 		$id = $this->encrypt->decode(strtr($id_enc, array('.' => '+', '-' => '=', '~' => '/')));
 
-		$this->pc_model->delete_pc($id);
-		echo json_encode(array("status" => TRUE));
+		$delete_result = $this->pc_model->delete_pc($id);
+		echo json_encode(array("status" => $delete_result));
 	}
 }

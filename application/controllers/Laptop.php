@@ -137,9 +137,9 @@ class Laptop extends CI_Controller {
 			'kode_unit' => $this->session->kd_unit
 		);
 
-		$insert = $this->laptop_model->add_laptop($data);
+		$insert_result = $this->laptop_model->add_laptop($data);
 
-		echo json_encode(array("status" => TRUE));
+		echo json_encode(array("status" => $insert_result));
 	}
 
 	public function edit_laptop($id_enc = NULL)
@@ -194,8 +194,8 @@ class Laptop extends CI_Controller {
 
 		$id = $this->encrypt->decode(strtr($id_enc, array('.' => '+', '-' => '=', '~' => '/')));
 
-		$this->laptop_model->update_laptop(array('id' => $id), $data);
-		echo json_encode(array("status" => TRUE));
+		$update_result = $this->laptop_model->update_laptop(array('id' => $id), $data);
+		echo json_encode(array("status" => $update_result));
 	}
 
 	public function delete_laptop($id_enc = NULL)
@@ -206,7 +206,7 @@ class Laptop extends CI_Controller {
 
 		$id = $this->encrypt->decode(strtr($id_enc, array('.' => '+', '-' => '=', '~' => '/')));
 
-		$this->laptop_model->delete_laptop($id);
-		echo json_encode(array("status" => TRUE));
+		$delete_result = $this->laptop_model->delete_laptop($id);
+		echo json_encode(array("status" => $delete_result));
 	}
 }

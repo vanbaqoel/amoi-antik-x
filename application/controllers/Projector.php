@@ -121,9 +121,9 @@ class Projector extends CI_Controller {
 			'kode_unit' => $this->session->kd_unit
 		);
 
-		$insert = $this->projector_model->add_projector($data);
+		$insert_result = $this->projector_model->add_projector($data);
 
-		echo json_encode(array("status" => TRUE));
+		echo json_encode(array("status" => $insert_result));
 	}
 
 	public function edit_projector($id_enc = NULL)
@@ -166,8 +166,8 @@ class Projector extends CI_Controller {
 
 		$id = $this->encrypt->decode(strtr($id_enc, array('.' => '+', '-' => '=', '~' => '/')));
 
-		$this->projector_model->update_projector(array('id' => $id), $data);
-		echo json_encode(array("status" => TRUE));
+		$update_result = $this->projector_model->update_projector(array('id' => $id), $data);
+		echo json_encode(array("status" => $update_result));
 	}
 
 	public function delete_projector($id_enc = NULL)
@@ -178,7 +178,7 @@ class Projector extends CI_Controller {
 
 		$id = $this->encrypt->decode(strtr($id_enc, array('.' => '+', '-' => '=', '~' => '/')));
 
-		$this->projector_model->delete_projector($id);
-		echo json_encode(array("status" => TRUE));
+		$delete_result = $this->projector_model->delete_projector($id);
+		echo json_encode(array("status" => $delete_result));
 	}
 }
