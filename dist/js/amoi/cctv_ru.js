@@ -33,7 +33,7 @@ function edit_cctv(id)
     },
     error: function (jqXHR, textStatus, errorThrown)
     {
-        alert('Gagal menarik data...');
+      bootbox.alert('<div class="col-xs-12" style="display: flex;align-items: center;" ><i class="fa  fa-times-circle fa-4x text-red"></i>&nbsp;&nbsp;&nbsp;Gagal menarik data&hellip;</div>');
     }
   });
 }
@@ -58,13 +58,25 @@ function save()
     dataType: "JSON",
     success: function(data)
     {
-      alert("Data berhasil disimpan...");
-      //if success close modal and reload ajax table
-      window.location = document.location.protocol + "//" + document.location.host + "/amoi-antik/cctv";
+      console.log(data);
+      if (data.status) {
+        bootbox.alert(
+          '<div class="col-xs-12" style="display: flex;align-items: center;" ><i class="fa fa-check-circle fa-4x text-green"></i>&nbsp;&nbsp;&nbsp;Data berhasil disimpan&hellip;</div>',
+          function () {
+            window.location = document.location.protocol + "//" + document.location.host + "/amoi-antik/cctv";
+          }
+        );
+      } else {
+        bootbox.alert(
+          '<div class="col-xs-12" style="display: flex;align-items: center;" ><i class="fa  fa-times-circle fa-4x text-red"></i>&nbsp;&nbsp;&nbsp;Gagal menyimpan/mengubah data&hellip;</div>',
+        );
+      }
     },
     error: function (jqXHR, textStatus, errorThrown)
     {
-        alert('Gagal menyimpan/mengubah data...');
+      bootbox.alert(
+        '<div class="col-xs-12" style="display: flex;align-items: center;" ><i class="fa  fa-times-circle fa-4x text-red"></i>&nbsp;&nbsp;&nbsp;Gagal menyimpan/mengubah data&hellip;</div>',
+      );
     }
   });
 }

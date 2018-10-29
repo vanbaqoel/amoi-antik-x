@@ -245,11 +245,11 @@
             <i class="fa fa-check-square-o"></i> <span>Penilaian Standar</span>
           </a>
         </li>
-        <!-- <li>
+        <li>
           <a href="<?= base_url("ubah_pass") ?>">
             <i class="fa fa-lock"></i> <span>Ubah Kata Sandi</span>
           </a>
-        </li> -->
+        </li>
 
         <!-- <li class="header">SUPERVISI</li>
         <li>

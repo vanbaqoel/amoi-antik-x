@@ -27,7 +27,6 @@ function view_absensi(id)
       $('#txtLokasi').text(data.edesc);
       $('#txtKeterangan').text(data.keterangan);
 
-
       $('.modal').modal('show'); // show bootstrap modal when complete loaded
 
       absensi_id = id;

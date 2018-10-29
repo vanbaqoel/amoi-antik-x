@@ -13,7 +13,7 @@ class Ubah_pass extends CI_Controller {
 		if ($this->session->loggedin)
         {
 	        /* Load database model */
-	        //$this->load->model('ubah_pass_model');
+	        $this->load->model('user_model');
         } else {
             redirect(base_url('autentikasi'), 'refresh');
         }
@@ -24,8 +24,10 @@ class Ubah_pass extends CI_Controller {
 		$this->load->view('ubah_pass_view');
 	}
 
-	private function ping($ip)
+	public function do_ubah_pass()
 	{
-
+		$update_result = $this->user_model->ubah_pass($this->session->username, $this->input->post('txtLama'), $this->input->post('txtBaru'));
+		echo json_encode(array("status" => $update_result));
 	}
+
 }

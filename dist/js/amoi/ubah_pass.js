@@ -13,6 +13,7 @@ function save() {
 $(document).ready(function() {
   $('#my_form')
     .bootstrapValidator({
+      container: '#messages',
       feedbackIcons: {
           valid: 'glyphicon glyphicon-ok',
           invalid: 'glyphicon glyphicon-remove',
@@ -20,35 +21,74 @@ $(document).ready(function() {
       },
       excluded: [':disabled'],
       fields: {
-        txtOldPass: {
+        txtLama: {
           validators: {
             notEmpty: {
-                message: 'Harus diisi'
+                message: 'Kata sandi lama harus diisi'
             }
           }
         },
-        txtNewPass1: {
+        txtBaru: {
           validators: {
             notEmpty: {
-                message: 'Harus diisi'
+                message: 'Kata sandi baru harus diisi'
             },
             identical: {
-              field: 'txtNewPass0',
-              message: 'Tidak sama dengan kata sandi baru'
+              field: 'txtBaru1',
+              message: 'Kata sandi baru tidak sama dengan konfirmasi'
             }
           }
         },
-        txtNewPass0: {
+        txtBaru1: {
           validators: {
             notEmpty: {
-                message: 'Harus diisi'
+                message: 'Konfirmasi kata sandi baru harus diisi'
             },
             identical: {
-              field: 'txtNewPass1',
-              message: 'Tidak sama dengan konfirmasi kata sandi baru'
+              field: 'txtBaru',
+              message: 'Konfirmasi tidak sama dengan kata sandi baru'
             }
           }
         }
       }
+    })
+    .on('success.form.bv', function(e) {
+      // Prevent form submission
+      e.preventDefault();
+
+      // Get the form instance
+      var $form = $(e.target);
+
+      // Get the BootstrapValidator instance
+      var bv = $form.data('bootstrapValidator');
+
+      // Use Ajax to submit form data
+      $.ajax({
+        url : document.location.protocol + "//" + document.location.host + "/amoi-antik/ubah_pass/do_ubah_pass",
+        type: "POST",
+        data: $('form').serialize(),
+        dataType: "JSON",
+        success: function(data)
+        {
+          console.log(data);
+          if (data.status) {
+            bootbox.alert(
+              '<div class="col-xs-12" style="display: flex;align-items: center;" ><i class="fa fa-check-circle fa-4x text-green"></i>&nbsp;&nbsp;&nbsp;Kata sandi berhasil diubah&hellip;</div>',
+              function () {
+                window.location = document.location.protocol + "//" + document.location.host + "/amoi-antik/autentikasi/do_logout";
+              }
+            );
+          } else {
+            bootbox.alert(
+              '<div class="col-xs-12" style="display: flex;align-items: center;" ><i class="fa  fa-times-circle fa-4x text-red"></i>&nbsp;&nbsp;&nbsp;Gagal mengubah kata sandi&hellip; <br />&nbsp;&nbsp;&nbsp;Kata sandi lama salah!</div>',
+            );
+          }
+        },
+        error: function (jqXHR, textStatus, errorThrown)
+        {
+          bootbox.alert(
+            '<div class="col-xs-12" style="display: flex;align-items: center;" ><i class="fa  fa-times-circle fa-4x text-red"></i>&nbsp;&nbsp;&nbsp;Gagal mengubah kata sandi&hellip;</div>');
+        }
+      });
     });
 });

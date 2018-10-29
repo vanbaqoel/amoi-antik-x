@@ -13,51 +13,41 @@
     <section class="content">
 
       <div class="clearfix">
-        <div class="row">
-          <form class="" id="my_form">
-            <div class="col-xs-12 col-sm-6">
-              <div class="space visible-xs"></div>
-              <div class="profile-user-info profile-user-info-striped">
-                <div class="profile-info-row form-group">
-                  <label class="profile-info-name control-label"> Nama Pengguna </label>
-
-                  <div class="profile-info-value col-xs-12">
-                    <input type="text" class="form-control" disabled value="<?= $this->session->username; ?>">
-                  </div>
-                </div>
-
-                <div class="profile-info-row form-group">
-                  <label class="profile-info-name control-label" for="txtOldPass"> Kata Sandi Lama </label>
-
-                  <div class="profile-info-value col-xs-12">
-                    <input type="password" class="form-control" id="txtOldPass" name="txtOldPass">
-                  </div>
-                </div>
-
-                <div class="profile-info-row form-group">
-                  <label class="profile-info-name control-label" for="txtNewPass0"> Kata Sandi Baru </label>
-
-                  <div class="profile-info-value col-xs-12">
-                    <input type="password" class="form-control" id="txtNewPass0" name="txtNewPass0">
-                  </div>
-                </div>
-                <div class="profile-info-row form-group">
-                    <label class="profile-info-name control-label" for="txtNewPass1"> Ketik Ulang Kata Sandi Baru </label>
-
-                    <div class="profile-info-value col-xs-12">
-                      <input type="password" class="form-control" id="txtNewPass1" name="txtNewPass1">
-                    </div>
-                </div>
-              </div>
-
-              <br />
-              <div class="text-center">
-                <button type="button" class="btn btn-primary" onclick="save()"><i class="fa fa-save"></i> &nbsp; Simpan</button>
-                <button type="button" class="btn btn-default" onclick="bersih()"><i class="fa fa-eraser"></i> &nbsp; Bersihkan</button>
+        <form class="" id="my_form" style="max-width: 400px; margin: 0 auto;">
+          <div class="row" >
+            <div class="col-xs-12">
+              <div class="form-group input-group">
+                <span class="input-group-addon input-label">Sandi Lama</span>
+                <input type="password" class="form-control" id="txtLama" name="txtLama"">
               </div>
             </div>
-          </form>
-        </div>
+            <div class="col-xs-12">
+              <div class="form-group input-group">
+                <span class="input-group-addon input-label">Sandi Baru</span>
+                <input type="password" class="form-control" id="txtBaru" name="txtBaru">
+              </div>
+            </div>
+            <div class="col-xs-12">
+              <div class="form-group input-group">
+                <span class="input-group-addon input-label">Konfirmasi</span>
+                <input type="password" class="form-control" id="txtBaru1" name="txtBaru1">
+              </div>
+            </div>
+          <div class="row">
+            <div class="form-group">
+              <div class="col-xs-12 text-center">
+                <div id="messages"></div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+          </div>
+          <br />
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> &nbsp; Simpan</button>
+            <button type="button" class="btn btn-default" onclick="bersih()"><i class="fa fa-eraser"></i> &nbsp; Bersihkan</button>
+          </div>
+        </form>
       </div>
 
     </section>

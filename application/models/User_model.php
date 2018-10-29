@@ -28,5 +28,17 @@ class User_model extends CI_Model {
 
         return $query->result();
     }
+
+    public function ubah_pass($user, $pass_lama, $pass_baru)
+    {
+        $sql = "UPDATE users SET password = '".md5($user.$pass_baru."amoipasswordsuffix")."'
+                WHERE
+                    username = '$user' AND
+                    password = '".md5($user.$pass_lama."amoipasswordsuffix")."'";
+
+        $this->db->query($sql);
+
+        return ($this->db->affected_rows() > 0);
+    }
 }
 ?>
