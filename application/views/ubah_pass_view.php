@@ -1,4 +1,9 @@
 <?php include('header_view.php'); ?>
+<style type="text/css">
+  .form-control-feedback{
+    z-index: -1;
+  }
+</style>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -17,20 +22,23 @@
           <div class="row" >
             <div class="col-xs-12">
               <div class="form-group input-group">
-                <span class="input-group-addon input-label">Sandi Lama</span>
-                <input type="password" class="form-control" id="txtLama" name="txtLama"">
+                <span class="input-group-addon input-label" style="min-width: 124px">Kata Sandi Lama</span>
+                <input type="password" class="form-control" id="txtLama" name="txtLama">
+                <span class="input-group-addon togpass" data-showpass="0"><i class="fa fa-eye"></i></span>
               </div>
             </div>
             <div class="col-xs-12">
               <div class="form-group input-group">
-                <span class="input-group-addon input-label">Sandi Baru</span>
+                <span class="input-group-addon input-label" style="min-width: 124px">Kata Sandi Baru</span>
                 <input type="password" class="form-control" id="txtBaru" name="txtBaru">
+                <span class="input-group-addon togpass" data-showpass="0"><i class="fa fa-eye"></i></span>
               </div>
             </div>
             <div class="col-xs-12">
               <div class="form-group input-group">
-                <span class="input-group-addon input-label">Konfirmasi</span>
-                <input type="password" class="form-control" id="txtBaru1" name="txtBaru1">
+                <span class="input-group-addon input-label" style="min-width: 124px">Konfirmasi<br />Kata Sandi Baru</span>
+                <input type="password" class="form-control" id="txtBaru1" name="txtBaru1" style="height: 42px;"></input>
+                <span class="input-group-addon togpass" data-showpass="0"><i class="fa fa-eye"></i></span>
               </div>
             </div>
           <div class="row">

@@ -55,8 +55,8 @@ class Printer extends CI_Controller {
 
         	$rows[] = '<div class="btn-group">
                       <button type="button" class="btn btn-sm btn-default" title="Lihat" onclick="view_printer('."'$id_enc'".')"><i class="fa fa-eye"></i></button>
-                      <button type="button" class="btn btn-sm btn-default" title="Ubah" '.(($this->session->kd_unit == '000') ? 'disabled' : '').' onclick="edit_printer('."'$id_enc'".')"><i class="fa fa-pencil"></i></button>
-                      <button type="button" class="btn btn-sm btn-default" title="Hapus" '.(($this->session->kd_unit == '000') ? 'disabled' : '').' onclick="delete_printer('."'$id_enc'".')"><i class="fa fa-trash"></i></button>
+                      <button type="button" class="btn btn-sm btn-default" title="Ubah" '.($this->session->crud_locked ? 'disabled' : '').' onclick="edit_printer('."'$id_enc'".')"><i class="fa fa-pencil"></i></button>
+                      <button type="button" class="btn btn-sm btn-default" title="Hapus" '.($this->session->crud_locked ? 'disabled' : '').' onclick="delete_printer('."'$id_enc'".')"><i class="fa fa-trash"></i></button>
                       </div>';
 
         	$data[] = $rows;

@@ -16,7 +16,17 @@
         <div class="callout callout-primary" style="margin-bottom: 0!important;">
           <h4><i class="fa fa-comments"></i> Selamat Datang</h4>
           Aplikasi amoi-antik merupakan aplikasi yang digunakan untuk memonitor data spesifikasi dan jumlah perangkat TIK yang ada di Kanwil/KPPN lingkup Provinsi Kalimantan Barat. Fungsi yang tercakup dalam aplikasi ini adalah pemetaan standardisasi perangkat TIK, monitoring kepatuhan join domain, serta monitoring penggunaan komputer personal/server/laptop yang terhubung dengan jaringan internal Kementerian Keuangan.
+          <?php
+            if ($this->session->crud_locked) {
+          ?>
+          <hr />
+          <span class="text-danger">
+            <h4><i class="fa fa-exclamation-circle"></i> Perhatian</h4>
+            <?= $this->session->name ?> saat ini sedang berada dalam masa penilaian Montik. Oleh karena itu, semua fungsi rekam, ubah, dan hapus dinonaktifkan sementara waktu untuk menjaga konsistensi data.
+          </span>
+        <?php } ?>
         </div>
+
       </div>
 
       <div class="row margin">

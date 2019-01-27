@@ -11,6 +11,26 @@ function save() {
 }
 
 $(document).ready(function() {
+  $('.form-control-feedback').css({'z-index': '-1'});
+
+  $('.togpass').on('click', function () {
+    var objBefore = $(this).prevAll('input');
+    var objAfter = $(this).find(">:first-child");
+    console.log($(this).attr("data-showpass"));
+
+    if ($(this).attr("data-showpass") == 0) {
+      objBefore.attr("type", "text");
+      objAfter.removeClass("fa-eye");
+      objAfter.addClass("fa-eye-slash");
+      $(this).attr("data-showpass", "1");
+    } else {
+      objBefore.attr("type", "password");
+      objAfter.removeClass("fa-eye-slash");
+      objAfter.addClass("fa-eye");
+      $(this).attr("data-showpass", "0");
+    }
+  });
+
   $('#my_form')
     .bootstrapValidator({
       container: '#messages',

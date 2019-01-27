@@ -227,7 +227,7 @@ $(document).ready(function () {
   }, 500);
 
   /* Disable Tambah button if logged in as Administrator */
-  if (sk == '000') {antrian_table.button('0').disable();}
+  if (cl == 1) {antrian_table.button('0').disable();}
 
   $('#btnPrint').on('click', function () {
     printElement(document.getElementById("printThis"));

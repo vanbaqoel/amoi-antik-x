@@ -26,6 +26,14 @@ class Autentikasi extends CI_Controller {
 			$data = array('error_message' => 'Nama pengguna atau kata sandi yang Anda masukkan salah!');
 			$this->load->view('login_view', $data);
 		} else {
+			$crud_locked = FALSE;
+			if ($list[0]->KD_UNIT == '000') {
+	        	$crud_locked = TRUE;
+	        } else {
+	        	$unit_locked = $this->config->item('masa_penilaian');
+	        	$crud_locked = $unit_locked[$list[0]->KD_UNIT];
+	        }
+
 			$info = array(
 				'username' => $list[0]->USERNAME,
 				'role' => $list[0]->ROLE,
@@ -33,7 +41,8 @@ class Autentikasi extends CI_Controller {
 				'tipe' => $list[0]->TIPE,
 				'name' => $list[0]->NAME,
 				'avatar' => $list[0]->AVATAR,
-				'loggedin' => TRUE
+				'loggedin' => TRUE,
+				'crud_locked' => $crud_locked
 			);
 
 			$this->session->set_userdata($info);

@@ -194,6 +194,7 @@
 <!-- Page Script -->
 <script type="text/javascript">
   var sk = '<?= $this->session->kd_unit; ?>';
+var cl = '<?= $this->session->crud_locked; ?>';
   var sname = '<?= strtoupper($this->session->name); ?>';
 </script>
 <script src="<?= base_url(); ?>dist/js/amoi/printer.js"></script>

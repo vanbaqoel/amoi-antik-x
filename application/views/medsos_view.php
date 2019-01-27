@@ -5,7 +5,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        <i class="fa fa-lightbulb-o"></i> - INOVASI TIK
+        <i class="fa fa-globe"></i> - MEDIA ONLINE
       </h1>
     </section>
 
@@ -20,13 +20,8 @@
           <thead>
             <tr>
               <th>No.</th>
-              <th>ID</th>
-              <th>Judul</th>
-              <th>Deskripsi</th>
-              <th>Lingkup</th>
-              <th>Tgl. Penerapan</th>
-              <th class="no-export">Laporan/Dokumentasi</th>
-              <th>Keterangan</th>
+              <th>Platform</th>
+              <th>Akun/URL</th>
               <?php
                 if($this->session->kd_unit == '000')
                     echo "<th>Kode Unit</th>";
@@ -38,7 +33,6 @@
           </tbody>
         </table>
       </div>
-      <!-- /.modal -->
     </section>
     <!-- /.content -->
   </div>
@@ -52,7 +46,7 @@
 var cl = '<?= $this->session->crud_locked; ?>';
   var sname = '<?= strtoupper($this->session->name); ?>';
 </script>
-<script src="<?= base_url(); ?>dist/js/amoi/inovasi.js"></script>
+<script src="<?= base_url(); ?>dist/js/amoi/medsos.js"></script>
 
 </body>
 </html>

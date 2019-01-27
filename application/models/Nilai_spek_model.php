@@ -164,7 +164,7 @@ class Nilai_spek_model extends CI_Model {
                 SELECT
                     id,
                     IF(print_method >= 2, 1, 0) print_method,
-                    IF(kategori = 1, IF(print_speed >= 35, 1, 0), IF(print_speed >= 15, 1, 0)) print_speed,
+                    /*IF(kategori = 1, IF(print_speed >= 35, 1, 0), IF(print_speed >= 15, 1, 0))*/ 1 print_speed,
                     IF(media_size = 'MIN. A4', 1, 0) media_size,
                     IF(koneksi > 0, 1, 0) koneksi,
                     kode_unit
@@ -325,7 +325,7 @@ class Nilai_spek_model extends CI_Model {
             FROM (
                 SELECT
                     id,
-                    IF(kategori > 2, 1, 0) kategori,
+                    IF(kategori > 1, 1, 0) kategori,
                     kode_unit
                 FROM t_tv
                 WHERE kondisi != 4 AND status = 1" . (($unit != '000') ? " AND kode_unit = '$unit'" : "") . "

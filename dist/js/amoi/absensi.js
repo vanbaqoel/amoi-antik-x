@@ -231,8 +231,10 @@ $(document).ready(function () {
     });
   }, 500);
 
-  /* Disable Tambah button if logged in as Administrator */
-  if (sk == '000') {absensi_table.button('0').disable();}
+  /* Disable Tambah button if CRUD is locked */
+  if (cl == 1) {absensi_table.button('0').disable();}
+
+  console.log(cl);
 
   $('#btnPrint').on('click', function () {
     printElement(document.getElementById("printThis"));

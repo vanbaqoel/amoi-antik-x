@@ -36,7 +36,7 @@
     ?>
               </select>
             </div>
-            <button id="btnCek" type="button" class="btn btn-default" onclick="nilai_spek()"><i class="fa fa-search"></i>&nbsp;&nbsp;Proses</button>
+            <button id="btnCek" type="button" class="btn btn-default" onclick="nilai_spek()" <?= ($this->session->crud_locked ? 'disabled' : '') ?>><i class="fa fa-search"></i>&nbsp;&nbsp;Proses</button>
           </form>
         </div>
       </div>

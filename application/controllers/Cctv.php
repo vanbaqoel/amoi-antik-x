@@ -54,8 +54,8 @@ class Cctv extends CI_Controller {
 
         	$rows[] = '<div class="btn-group">
                       <button type="button" class="btn btn-sm btn-default" title="Lihat" onclick="view_cctv('."'$id_enc'".')"><i class="fa fa-eye"></i></button>
-                      <button type="button" class="btn btn-sm btn-default" title="Ubah" '.(($this->session->kd_unit == '000') ? 'disabled' : '').' onclick="edit_cctv('."'$id_enc'".')"><i class="fa fa-pencil"></i></button>
-                      <button type="button" class="btn btn-sm btn-default" title="Hapus" '.(($this->session->kd_unit == '000') ? 'disabled' : '').' onclick="delete_cctv('."'$id_enc'".')"><i class="fa fa-trash"></i></button>
+                      <button type="button" class="btn btn-sm btn-default" title="Ubah" '.($this->session->crud_locked ? 'disabled' : '').' onclick="edit_cctv('."'$id_enc'".')"><i class="fa fa-pencil"></i></button>
+                      <button type="button" class="btn btn-sm btn-default" title="Hapus" '.($this->session->crud_locked ? 'disabled' : '').' onclick="delete_cctv('."'$id_enc'".')"><i class="fa fa-trash"></i></button>
                       </div>';
 
         	$data[] = $rows;

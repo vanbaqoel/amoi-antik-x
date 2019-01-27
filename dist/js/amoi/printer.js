@@ -235,7 +235,7 @@ $(document).ready(function () {
   }, 500);
 
   /* Disable Tambah button if logged in as Administrator */
-  if (sk == '000') {printer_table.button('0').disable();}
+  if (cl == 1) {printer_table.button('0').disable();}
 
   $('#btnPrint').on('click', function () {
     printElement(document.getElementById("printThis"));
