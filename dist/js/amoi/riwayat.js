@@ -1,12 +1,12 @@
 
-var projector_table;
-var projector_id;
+var riwayat_table;
+var riwayat_id;
 
-function view_projector(id)
+function view_riwayat(id)
 {
   //Ajax Load data from ajax
   $.ajax({
-    url : document.location.protocol + "//" + document.location.host + "/amoi-antik/projector/edit_projector/" + id,
+    url : document.location.protocol + "//" + document.location.host + "/amoi-antik/riwayat/edit_riwayat/" + id,
     type: "GET",
     dataType: "JSON",
     success: function(data)
@@ -30,7 +30,7 @@ function view_projector(id)
 
       $('.modal').modal('show'); // show bootstrap modal when complete loaded
 
-      projector_id = id;
+      riwayat_id = id;
 
     },
     error: function (jqXHR, textStatus, errorThrown)
@@ -40,12 +40,12 @@ function view_projector(id)
   });
 }
 
-function edit_projector(id)
+function edit_riwayat(id)
 {
-  window.location = document.location.protocol + "//" + document.location.host + "/amoi-antik/projector/ru/" + id;
+  window.location = document.location.protocol + "//" + document.location.host + "/amoi-antik/riwayat/ru/" + id;
 }
 
-function delete_projector(id)
+function delete_riwayat(id)
 {
   bootbox.confirm(
     '<div class="col-xs-12" style="display: flex;align-items: center;" ><i class="fa fa-question-circle fa-4x text-blue"></i>&nbsp;&nbsp;&nbsp;Apakah Anda yakin mau menghapus data ini?</div>',
@@ -54,7 +54,7 @@ function delete_projector(id)
       if (result) {
         // ajax delete data from database
         $.ajax({
-          url : document.location.protocol + "//" + document.location.host + "/amoi-antik/projector/delete_projector/" + id,
+          url : document.location.protocol + "//" + document.location.host + "/amoi-antik/riwayat/delete_riwayat/" + id,
           type: "POST",
           dataType: "JSON",
           success: function(data)
@@ -63,7 +63,7 @@ function delete_projector(id)
               bootbox.alert(
                 '<div class="col-xs-12" style="display: flex;align-items: center;" ><i class="fa fa-check-circle fa-4x text-green"></i>&nbsp;&nbsp;&nbsp;Data berhasil dihapus&hellip;</div>',
                 function () {
-                  projector_table.ajax.reload();
+                  riwayat_table.ajax.reload();
                 }
               );
             } else {
@@ -100,7 +100,7 @@ function printElement(elem)
     document.body.appendChild($printSection);
   }
 
-  $printSection.innerHTML = "<h3>&nbsp;&nbsp;DATA DETAIL LCD PROJECTOR</h3>";
+  $printSection.innerHTML = "<h3>&nbsp;&nbsp;DATA DETAIL LCD riwayat</h3>";
 
   $printSection.appendChild(domClone);
 }
@@ -111,12 +111,12 @@ $(document).ready(function () {
   $('.select2').select2();
 
   $('.sidebar-menu').tree();
-  projector_table =
+  riwayat_table =
     $('#dynamic-table').DataTable({
       serverSide: false,
       /* Load data for the table's content from an Ajax source */
       ajax: {
-          url: document.location.protocol + "//" + document.location.host + "/amoi-antik/projector/get_all", /* Populate data using a method in controller */
+          url: document.location.protocol + "//" + document.location.host + "/amoi-antik/riwayat/get_all/" + kdp + "/" + idp, /* Populate data using a method in controller */
           type: "POST"
       },
       autoWidth: false,
@@ -126,7 +126,7 @@ $(document).ready(function () {
       lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
       columnDefs: [
         {
-          targets: [ 0, 1, 2, 5, 6, 7, 8 ],
+          targets: [ 0, 1, 3, 4, 6 ],
           className: "text-center"
         },
         {
@@ -169,14 +169,14 @@ $(document).ready(function () {
   $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group';
   $.fn.dataTable.Buttons.swfPath = document.location.protocol + "//" + document.location.host + "/amoi-antik/dist/swf/flashExport-1.2.4.swf";
 
-  new $.fn.dataTable.Buttons(projector_table, {
+  new $.fn.dataTable.Buttons(riwayat_table, {
     buttons: [
       {
         text: "<i class='fa fa-plus bigger-110 green'></i> <span>&nbsp;&nbsp;Tambah</span>",
         className: "btn btn-default",
         titleAttr: "Tambah data baru",
         action: function ( e, dt, node, config ) {
-          window.location = document.location.protocol + "//" + document.location.host + "/amoi-antik/projector/ru/add";
+          window.location = document.location.protocol + "//" + document.location.host + "/amoi-antik/riwayat/ru/add";
         }
       },
       {
@@ -184,7 +184,7 @@ $(document).ready(function () {
         text: "<i class='fa fa-file-excel-o bigger-110 green'></i> <span>&nbsp;&nbsp;Excel</span>",
         className: "btn btn-white btn-default btn-bold",
         titleAttr: "Simpan sebagai file Excel",
-        filename: "daftar-projector",
+        filename: "daftar-riwayat",
         exportOptions: {
           orthogonal: 'sort',
           columns: ':not(.no-export)'
@@ -195,7 +195,7 @@ $(document).ready(function () {
         text: "<i class='fa fa-print bigger-110 grey'></i> <span>&nbsp;&nbsp;Cetak</span>",
         className: "btn btn-default",
         titleAttr: "Cetak",
-        title: 'DAFTAR LCD PROJECTOR',
+        title: 'DAFTAR LCD riwayat',
         exportOptions: {
           columns: ':not(.no-export)'
         },
@@ -218,7 +218,7 @@ $(document).ready(function () {
     ]
   });
 
-  projector_table.buttons().container().appendTo($('.tableTools-container'));
+  riwayat_table.buttons().container().appendTo($('.tableTools-container'));
 
   setTimeout(function() {
     $($('.tableTools-container')).find('a.dt-button').each(function() {
@@ -229,16 +229,12 @@ $(document).ready(function () {
   }, 500);
 
   /* Disable Tambah button if logged in as Administrator */
-  if (cl == 1) {projector_table.button('0').disable();}
+  if (cl == 1) {riwayat_table.button('0').disable();}
 
   $('#btnPrint').on('click', function () {
     printElement(document.getElementById("printThis"));
     $('body *').addClass('hide-me'); /* Menghindari bentrok dengan print datatable */
 
     window.print();
-  });
-
-  $('#btnRiwayat').on('click', function () {
-    window.open(document.location.protocol + "//" + document.location.host + "/amoi-antik/riwayat/show/3/" + projector_id);
   });
 })
